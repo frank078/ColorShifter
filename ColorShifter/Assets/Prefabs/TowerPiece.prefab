@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2746691725445602147}
   - component: {fileID: 2746691725445602144}
   - component: {fileID: 2746691725445602159}
+  - component: {fileID: 3267320302306398474}
   m_Layer: 0
   m_Name: TowerPiece
   m_TagString: Untagged
@@ -128,3 +129,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2746691725445602144}
   fallSpeed: -500
+--- !u!114 &3267320302306398474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2746691725445602145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48699fade2ddb3c4aaa48d20fabbf7f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newRotation: 45
+  speed: 10
