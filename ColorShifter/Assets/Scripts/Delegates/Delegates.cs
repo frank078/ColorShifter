@@ -16,7 +16,6 @@ public delegate void MulticastOneFloatParam(float value);
 
 public class Delegates : MonoBehaviour
 {
-
     void Start()
     {
         
@@ -26,5 +25,4 @@ public class Delegates : MonoBehaviour
     {
         
     }
-
 }
