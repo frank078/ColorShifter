@@ -12,9 +12,26 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Transform PlayerStart = null;
 
+    public MulticastNoParams OnTowerPulling; // subscribed from WallManager
+
 
     void Awake()
     {
+        // SINGLETON
+        // WITHOUT THIS, INSTANCE WILL BE NULL
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // will not destroy this gameObject when loading new scene
+        }
+        else if(Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        // ------------------------------------------
+
+
         SpawnPlayer(); // use this on OnSceneLoaded later    
     }
 
@@ -27,5 +44,10 @@ public class GameManager : MonoBehaviour
         _Player = Instantiate(PlayerPawn, PlayerStart.position, PlayerStart.rotation);
 
         Player = _Player;
+    }
+
+    public void ModifyColoredWalls()
+    {
+        OnTowerPulling?.Invoke(); // call the delegate functions that was subscribed
     }
 }
