@@ -33,7 +33,6 @@ public class WallManager : MonoBehaviour
             foreach (GameObject _coloredWalls in coloredWalls)
             {
                 int shuffleColor = Random.Range(1, 4);
-                Debug.Log(shuffleColor);
                 switch (shuffleColor)
                 {
                     case 1:                                                   //RED
