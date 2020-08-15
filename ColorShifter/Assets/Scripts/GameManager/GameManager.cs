@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         // ------------------------------------------
 
 
-        SpawnPlayer(); // use this on OnSceneLoaded later    
+        SpawnPlayer(); // TODO: use this on OnSceneLoaded later    
     }
 
 
