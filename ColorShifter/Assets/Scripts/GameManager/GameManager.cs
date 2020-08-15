@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Transform PlayerStart = null;
 
-    public MulticastNoParams OnTowerPulling; // subscribed from WallManager
+    public MulticastOneParam OnTowerPulling; // subscribed from WallManager
 
 
     void Awake()
@@ -46,8 +46,8 @@ public class GameManager : MonoBehaviour
         Player = _Player;
     }
 
-    public void ModifyColoredWalls()
+    public void ModifyColoredWalls(int TowerNumber)
     {
-        OnTowerPulling?.Invoke(); // call the delegate functions that was subscribed
+        OnTowerPulling?.Invoke(TowerNumber); // call the delegate functions that was subscribed
     }
 }

@@ -390,6 +390,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
 --- !u!1001 &1183968319
@@ -470,6 +474,10 @@ PrefabInstance:
     - target: {fileID: 3267320302306398474, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
@@ -636,6 +644,10 @@ PrefabInstance:
     - target: {fileID: 3267320302306398474, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
@@ -830,6 +842,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
 --- !u!1001 &1697885794
@@ -894,6 +910,10 @@ PrefabInstance:
     - target: {fileID: 7774503962272185756, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
