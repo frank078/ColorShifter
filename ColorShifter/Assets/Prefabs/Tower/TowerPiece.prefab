@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd927aaafd6e8d449ebeace133484e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerNumber: 0
 --- !u!114 &2520762994201315817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +164,10 @@ MonoBehaviour:
   - {fileID: 5382455037238300776}
   - {fileID: 6414029536068203103}
   - {fileID: 3895396677406651217}
+  colorSelection:
+  - {fileID: 2100000, guid: 94b5ce43f64d83847bbc4d1c7429c44b, type: 2}
+  - {fileID: 2100000, guid: 65503d7782338cc48bf1a6a5b6f40cb6, type: 2}
+  - {fileID: 2100000, guid: 986252f49546ff440b062a37cb0c2f76, type: 2}
 --- !u!1001 &3563192594349276689
 PrefabInstance:
   m_ObjectHideFlags: 0

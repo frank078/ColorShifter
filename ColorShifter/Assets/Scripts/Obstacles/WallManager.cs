@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallManager : MonoBehaviour
 {
     public GameObject[] coloredWalls;
-
+    public Material[] colorSelection;
     private int thisTowerNumber;
 
     void Start()
@@ -36,14 +36,14 @@ public class WallManager : MonoBehaviour
                 Debug.Log(shuffleColor);
                 switch (shuffleColor)
                 {
-                    case 1:
-                        _coloredWalls.GetComponent<MeshRenderer>().material.color = Color.red;
+                    case 1:                                                   //RED
+                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[0];
                         break;
-                    case 2:
-                        _coloredWalls.GetComponent<MeshRenderer>().material.color = Color.yellow;
+                    case 2:                                                   //YELLOW
+                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[1];
                         break;
-                    case 3:
-                        _coloredWalls.GetComponent<MeshRenderer>().material.color = Color.green;
+                    case 3:                                                   //GREEN
+                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[2];
                         break;
                 }
             }
