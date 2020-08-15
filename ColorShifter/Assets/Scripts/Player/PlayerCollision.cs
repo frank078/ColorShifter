@@ -22,7 +22,7 @@ public class PlayerCollision : MonoBehaviour
             // if player color is the same as one of the walls that collide
             if(currentColor.material.name == coloredWalls.material.name)
             {
-                ShufflePlayerColor();
+                StartCoroutine(delay(0.1f)); // delay it, to avoid getting killed from changing color while still inside the walls
             }
             else
             {
@@ -56,5 +56,11 @@ public class PlayerCollision : MonoBehaviour
                 ChangePlayerColor(2); // GREEN
                 break;
         }
+    }
+
+    IEnumerator delay(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime); // will continue after this delay, before will call it first before delay
+        ShufflePlayerColor();
     }
 }
