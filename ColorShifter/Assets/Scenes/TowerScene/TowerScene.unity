@@ -207,7 +207,7 @@ MonoBehaviour:
   - {fileID: 1031830436}
   - {fileID: 835203899}
   - {fileID: 251093765}
-  fallSpeed: -10
+  fallSpeed: 10
 --- !u!1001 &251093763
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -516,7 +516,7 @@ MonoBehaviour:
   - {fileID: 1593325586}
   - {fileID: 1576283742}
   - {fileID: 1084914203}
-  fallSpeed: -10
+  fallSpeed: 10
 --- !u!4 &1184428098
 Transform:
   m_ObjectHideFlags: 0
