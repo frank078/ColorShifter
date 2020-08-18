@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     GameObject Player = null; // after the player spawned it will set the player to this (Use this for ref player)
 
+    public GameObject GetPlayer() { return Player; } // get player
+    
     [SerializeField] Transform PlayerStart = null;
 
     public MulticastOneParam OnTowerPulling; // subscribed from WallManager
