@@ -13,27 +13,27 @@ public class Timer : MonoBehaviour
     [SerializeField] private int m_targetMultiplier = 1;
 
     private GameObject thePlayer;
+    private TowerFall tFall;
 
     void Start()
     {
-        thePlayer = GameManager.Instance.GetPlayer();    
+        thePlayer = GameManager.Instance.GetPlayer();
+        tFall = GameObject.FindObjectOfType<TowerFall>();
     }
     // Update is called once per frame
     void Update()
     {
+        // IF OVER TARGET, INCREASE SPEED
         if (isTimerPlaying && thePlayer != null)
         {
             timer += Time.deltaTime * timeSpeed;
             if (timer >= targetTimer)
             {
-                Debug.Log("MARVELOUS");
                 targetMultiplier++;
+                tFall.increaseFallSpeed();
             }
         }
-
         //Debug.Log(timer + "         " + targetTimer );
-
-
     }
 
     // targetTimer = targetTimer * Multiplier
