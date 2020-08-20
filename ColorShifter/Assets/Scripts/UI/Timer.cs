@@ -32,8 +32,12 @@ public class Timer : MonoBehaviour
                 targetMultiplier++;
                 tFall.increaseFallSpeed();
             }
+            //Debug.Log(timer + "         " + targetTimer);
         }
-        //Debug.Log(timer + "         " + targetTimer );
+        else if(thePlayer == null)
+        {
+            tFall.StopTower();
+        }
     }
 
     // targetTimer = targetTimer * Multiplier

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TowerFall : MonoBehaviour
 {
@@ -26,5 +27,16 @@ public class TowerFall : MonoBehaviour
     public void increaseFallSpeed()
     {
         fallSpeed += speedMultiplier;
+    }
+
+    public void StopTower() // call the Enumerator delayStop
+    {
+        StartCoroutine(delayStop(1.5f));
+    }
+
+    IEnumerator delayStop(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        fallSpeed = 0f;
     }
 }
