@@ -60,7 +60,7 @@ public class HealthComponent : MonoBehaviour
         if(deathFX != null)
         {
                        //object      position          rotation. (transform.rotation if you want it to be auto)
-            Instantiate(deathFX, transform.position, Quaternion.Euler(-90, 0, 0));
+            Instantiate(deathFX, transform.position + new Vector3(0, -1, 0), Quaternion.Euler(-90, 0, 0));
 
             Debug.Log("Health Component - Death Called");
         }

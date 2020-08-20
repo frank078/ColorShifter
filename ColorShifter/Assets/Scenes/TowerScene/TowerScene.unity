@@ -288,6 +288,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
 --- !u!4 &251093764 stripped
@@ -750,6 +754,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
 --- !u!1001 &1685194054
@@ -830,6 +838,10 @@ PrefabInstance:
     - target: {fileID: 3267320302306398474, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
@@ -912,6 +924,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
 --- !u!1001 &2746691723993745845
@@ -973,6 +989,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8454042017186102207, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
+      propertyPath: TowerNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c336cc80dc9f434fab8a672a8ced209, type: 3}
 --- !u!1001 &4301306900254037652
@@ -1016,7 +1036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5608263657685617655, guid: cd7f5e56313a08049b358ad1bba9c82e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5608263657685617655, guid: cd7f5e56313a08049b358ad1bba9c82e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
