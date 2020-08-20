@@ -8,6 +8,8 @@ public class PlayerCollision : MonoBehaviour
     private MeshRenderer currentColor;
     private int nextTower;
 
+    public GameObject playerPassEffect;
+
     private void Start()
     {
         currentColor = gameObject.GetComponent<MeshRenderer>();
@@ -69,5 +71,6 @@ public class PlayerCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime); // will continue after this delay, before will call it first before delay
         ShufflePlayerColor();
+        Instantiate(playerPassEffect, transform.position + new Vector3(0, -1, 0), Quaternion.Euler(-90, 0, 0));
     }
 }

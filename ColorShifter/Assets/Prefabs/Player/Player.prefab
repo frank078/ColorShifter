@@ -127,3 +127,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 94b5ce43f64d83847bbc4d1c7429c44b, type: 2}
   - {fileID: 2100000, guid: 65503d7782338cc48bf1a6a5b6f40cb6, type: 2}
   - {fileID: 2100000, guid: 986252f49546ff440b062a37cb0c2f76, type: 2}
+  playerPassEffect: {fileID: 4764177790826315072, guid: 61cffc61855a16045836f802ea2f5b03, type: 3}
