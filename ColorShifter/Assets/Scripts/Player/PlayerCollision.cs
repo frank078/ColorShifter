@@ -10,6 +10,8 @@ public class PlayerCollision : MonoBehaviour
 
     public GameObject playerPassEffect;
 
+    private int totalTriggered = 0;
+
     private void Start()
     {
         currentColor = gameObject.GetComponent<MeshRenderer>();
@@ -27,8 +29,11 @@ public class PlayerCollision : MonoBehaviour
             // if player color is the same as one of the walls that collide
             if(currentColor.material.name == coloredWallsColor.material.name)
             {
-                StartCoroutine(delay(0.1f)); // delay it, to avoid getting killed from changing color while still inside the walls
-                return; // AVOID DOUBLE TRIGGER
+                if(totalTriggered == 0) // AVOID DOUBLE TRIGGER
+                {
+                    totalTriggered++;
+                    StartCoroutine(delay(0.1f)); // delay it, to avoid getting killed from changing color while still inside the walls
+                }
             }
             else
             {
@@ -73,5 +78,6 @@ public class PlayerCollision : MonoBehaviour
         yield return new WaitForSeconds(delayTime); // will continue after this delay, before will call it first before delay
         ShufflePlayerColor();
         Instantiate(playerPassEffect, transform.position + new Vector3(0, -1, 0), Quaternion.Euler(-90, 0, 0));
+        totalTriggered = 0; // RESET
     }
 }

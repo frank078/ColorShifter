@@ -79,6 +79,8 @@ public class WallManager : MonoBehaviour
         if(thisTowerNumber == NextTowerNumber)
         {
             int totalNumber = 0;
+            int indexColoredWalls = 0;
+
             playerCurrentMaterial = thePlayer.GetComponent<MeshRenderer>();
             foreach (GameObject _coloredWalls in coloredWalls)
             {
@@ -89,6 +91,31 @@ public class WallManager : MonoBehaviour
                 else
                 {
                     totalNumber++;
+                }             
+            }
+            if(totalNumber == 8)
+            {
+                foreach(GameObject _coloredWalls in coloredWalls)
+                {
+                    // 33% chances player color will be in one of them. Once one of them is the same, RETURN
+                    int playerColorRate = Random.Range(1, 4);
+                    
+                    if (playerColorRate == 1)
+                    {
+                        _coloredWalls.GetComponent<MeshRenderer>().material = playerCurrentMaterial.material;
+                        Debug.Log(playerCurrentMaterial.material.name + "            " + _coloredWalls.GetComponent<MeshRenderer>().material);
+                        return;
+                    }
+                    else if (playerColorRate == 2 || playerColorRate == 3)
+                    {
+                        indexColoredWalls++;
+                        if (indexColoredWalls == 8)
+                        {
+                            _coloredWalls.GetComponent<MeshRenderer>().material = playerCurrentMaterial.material;
+                            Debug.Log("E LUCK");
+                            return;
+                        }
+                    }
                 }
             }
         }
