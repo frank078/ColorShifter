@@ -14,7 +14,6 @@ public class WallManager : MonoBehaviour
     private MeshRenderer playerCurrentMaterial;
     // ------------------
 
-
     void Start()
     {
         //SUBSCRIPTION
@@ -79,16 +78,17 @@ public class WallManager : MonoBehaviour
         // making sure only the next tower number the player has to collide
         if(thisTowerNumber == NextTowerNumber)
         {
+            int totalNumber = 0;
             playerCurrentMaterial = thePlayer.GetComponent<MeshRenderer>();
             foreach (GameObject _coloredWalls in coloredWalls)
             {
                 if (_coloredWalls.GetComponent<MeshRenderer>().material.name == playerCurrentMaterial.material.name)
                 {
-                    Debug.Log("SAME COLOR" + playerCurrentMaterial.material.name);
+                    return;
                 }
                 else
                 {
-                    Debug.Log("NO COLOR" + playerCurrentMaterial.material.name);
+                    totalNumber++;
                 }
             }
         }

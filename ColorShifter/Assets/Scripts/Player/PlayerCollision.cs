@@ -28,6 +28,7 @@ public class PlayerCollision : MonoBehaviour
             if(currentColor.material.name == coloredWallsColor.material.name)
             {
                 StartCoroutine(delay(0.1f)); // delay it, to avoid getting killed from changing color while still inside the walls
+                return; // AVOID DOUBLE TRIGGER
             }
             else
             {
