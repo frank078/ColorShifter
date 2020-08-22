@@ -99,6 +99,8 @@ public class WallManager : MonoBehaviour
             // if there are NO color that matched the player and one of the walls. Below here will force ONE of the walls to change to player color
             if(totalNumber == 8)
             {
+                Debug.Log("FORCE COLOR");
+
                 if(PlayerColorScan() == null) 
                 {
                     Debug.LogError("ERROR, NO COLOR DETECTION from PlayerColorScan()");
