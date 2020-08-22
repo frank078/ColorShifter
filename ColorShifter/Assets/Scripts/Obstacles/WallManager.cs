@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WallManager : MonoBehaviour
 {
-    public GameObject[] coloredWalls;
-    public Material[] colorSelection;
+    public GameObject[] coloredWalls; // the ColoredWalls in the gameobject (Cylinder)
+    public Material[] colorSelection; // color that the walls can change
     private int thisTowerNumber;
     private int maxColorSelection;
 
@@ -82,6 +82,8 @@ public class WallManager : MonoBehaviour
             int indexColoredWalls = 0;
 
             playerCurrentMaterial = thePlayer.GetComponent<MeshRenderer>();
+
+            // if there is a color that matched player and one of the walls, return
             foreach (GameObject _coloredWalls in coloredWalls)
             {
                 if (_coloredWalls.GetComponent<MeshRenderer>().material.name == playerCurrentMaterial.material.name)
@@ -93,17 +95,25 @@ public class WallManager : MonoBehaviour
                     totalNumber++;
                 }             
             }
+
+            // if there are NO color that matched the player and one of the walls. Below here will force ONE of the walls to change to player color
             if(totalNumber == 8)
             {
+                if(PlayerColorScan() == null) 
+                {
+                    Debug.LogError("ERROR, NO COLOR DETECTION from PlayerColorScan()");
+                    return;
+                }
+
+                // GACHA
                 foreach(GameObject _coloredWalls in coloredWalls)
                 {
                     // 33% chances player color will be in one of them. Once one of them is the same, RETURN
                     int playerColorRate = Random.Range(1, 4);
                     
                     if (playerColorRate == 1)
-                    {
-                        _coloredWalls.GetComponent<MeshRenderer>().material = playerCurrentMaterial.material;
-                        Debug.Log(playerCurrentMaterial.material.name + "            " + _coloredWalls.GetComponent<MeshRenderer>().material);
+                    {  
+                        _coloredWalls.GetComponent<MeshRenderer>().material = PlayerColorScan();
                         return;
                     }
                     else if (playerColorRate == 2 || playerColorRate == 3)
@@ -111,7 +121,7 @@ public class WallManager : MonoBehaviour
                         indexColoredWalls++;
                         if (indexColoredWalls == 8)
                         {
-                            _coloredWalls.GetComponent<MeshRenderer>().material = playerCurrentMaterial.material;
+                            _coloredWalls.GetComponent<MeshRenderer>().material = PlayerColorScan();
                             Debug.Log("E LUCK");
                             return;
                         }
@@ -120,11 +130,19 @@ public class WallManager : MonoBehaviour
             }
         }
     }
+
+    // Return the material from colorSelection arrays
+    public Material PlayerColorScan()
+    {
+        // If there is a color that matched one of the colorSelection index and player color
+        foreach(Material _colorSelection in colorSelection)
+        {
+            // Need the word Instance bcoz once you get or set a material onto a gameobject, it creates a copy which named (Instance) beside the material
+            if(_colorSelection.name + " (Instance)" == playerCurrentMaterial.material.name)
+            {
+                return _colorSelection;
+            }
+        }
+        return null;
+    }
 }
-
-
-// ONCE COLLIDE WITH WALLS
-// CHECK THE NEXT TOWER BY FOREACH
-// IF NONE COLOR IS THE SAME AS PLAYER
-// DO A SWITCH (INDEX WILL BE THE CYLINDER)
-// THAT INDEX WILL BE WHERE THE COLOR HEADED TO
