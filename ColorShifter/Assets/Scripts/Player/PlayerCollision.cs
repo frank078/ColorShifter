@@ -20,7 +20,7 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // if other is ColoredWalls
-        if (other.CompareTag("Colored"))
+        if (other.CompareTag("Walls"))
         {
             // ColoredWalls Ref  (this gameobject is Cylinder)
             MeshRenderer coloredWallsColor = other.gameObject.GetComponent<MeshRenderer>();

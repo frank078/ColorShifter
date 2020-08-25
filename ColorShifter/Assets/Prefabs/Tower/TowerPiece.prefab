@@ -289,15 +289,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 539370284540677440, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
-      value: Colored
+      value: Walls
       objectReference: {fileID: 0}
     - target: {fileID: 2711729973698265968, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
-      value: Colored
+      value: Walls
       objectReference: {fileID: 0}
     - target: {fileID: 3114910184797177173, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
-      value: Colored
+      value: Walls
       objectReference: {fileID: 0}
     - target: {fileID: 5898666904428763447, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_Name
@@ -305,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6246102660796071964, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
-      value: Colored
+      value: Walls
       objectReference: {fileID: 0}
     - target: {fileID: 6527852076203246477, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_LocalPosition.x
@@ -353,19 +353,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7525573425269099598, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
-      value: Colored
+      value: Walls
       objectReference: {fileID: 0}
     - target: {fileID: 8044559252180855398, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
-      value: Colored
+      value: Walls
       objectReference: {fileID: 0}
     - target: {fileID: 8917499584157347449, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
-      value: Colored
+      value: Walls
       objectReference: {fileID: 0}
     - target: {fileID: 9192934534804276080, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
-      value: Colored
+      value: Walls
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d88c80753040434cae732453f1b3197, type: 3}
