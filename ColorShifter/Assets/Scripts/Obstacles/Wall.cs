@@ -6,7 +6,7 @@ public class Wall : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && other.GetComponent<MeshRenderer>().material.color == Color.red)
+        if (other.tag == "Player")
         {
             GameplayStatics.DealDamage(other.gameObject, 1);
         }

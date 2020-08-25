@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &8090275359855462751
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7208596655450993899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
 --- !u!1001 &7551267355443366330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,15 +23,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 8.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_LocalRotation.x
@@ -29,11 +43,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_RootOrder
@@ -41,7 +55,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -71,5 +85,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coins
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
+      propertyPath: m_TagString
+      value: Coins
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
+--- !u!1 &7208596655450993899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 220c152e071157d4f9ac8db8d9e57d77, type: 3}
+  m_PrefabInstance: {fileID: 7551267355443366330}
+  m_PrefabAsset: {fileID: 0}

@@ -8,9 +8,14 @@ public class PlayerCollision : MonoBehaviour
     private MeshRenderer currentColor;
     private int nextTower;
 
+    //PARTICLES
     public GameObject playerPassEffect;
 
+    // AVOID Double Trigger
     private int totalTriggered = 0;
+
+    // COINS
+    private int m_coins = 0;
 
     private void Start()
     {
@@ -39,6 +44,11 @@ public class PlayerCollision : MonoBehaviour
             {
                 GameplayStatics.DealDamage(gameObject, 1);
             }
+        }
+
+        if (other.CompareTag("Coins"))
+        {
+            IncreaseCoins();
         }
     }
 
@@ -79,5 +89,18 @@ public class PlayerCollision : MonoBehaviour
         ShufflePlayerColor();
         Instantiate(playerPassEffect, transform.position + new Vector3(0, -1, 0), Quaternion.Euler(-90, 0, 0));
         totalTriggered = 0; // RESET
+    }
+
+
+    public void IncreaseCoins()
+    {
+        coins++;
+    }
+
+    
+    public int coins // GET SET the value
+    {
+        get { return m_coins; }
+        set { m_coins = value; }
     }
 }
