@@ -14,12 +14,6 @@ public class Coins : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gameObject.SetActive(false);
-            Invoke("SetActive", 2);
         }
-    }
-
-    void SetActive()
-    {
-        gameObject.SetActive(true);
     }
 }

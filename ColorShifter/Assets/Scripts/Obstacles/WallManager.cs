@@ -40,13 +40,17 @@ public class WallManager : MonoBehaviour
 
         // SET maxColorSelection
         maxColorSelection = colorSelection.Length + 1; // For Max Number gacha we get the max color at start + 1
+
+        // SHUFFLE ALL WALLS AND CHECK NEXT WALL (CALL ONCE)
+        ModifyColoredWalls(99);
+        CheckPlayerColor(99); // on the start of the function it will set to 1 from the if statements
     }
 
     // Shuffle Tower Color
     void ModifyColoredWalls(int TowerNumber)
     {
         // making sure not all of the tower get shuffle
-        if(thisTowerNumber == TowerNumber)
+        if(thisTowerNumber == TowerNumber || TowerNumber == 99)
         {
             foreach (GameObject _coloredWalls in coloredWalls)
             {
