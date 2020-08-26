@@ -8,4 +8,18 @@ public class Coins : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+            Invoke("SetActive", 2);
+        }
+    }
+
+    void SetActive()
+    {
+        gameObject.SetActive(true);
+    }
 }
