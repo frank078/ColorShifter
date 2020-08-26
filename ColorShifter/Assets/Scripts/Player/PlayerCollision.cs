@@ -95,7 +95,6 @@ public class PlayerCollision : MonoBehaviour
     public void IncreaseCoins()
     {
         coins++;
-        Debug.Log(coins);
     }
 
     
