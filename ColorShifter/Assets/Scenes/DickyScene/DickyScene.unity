@@ -519,7 +519,7 @@ MonoBehaviour:
   - {fileID: 1576283742}
   - {fileID: 1084914203}
   m_fallSpeed: 10
-  speedMultiplier: 0.1
+  speedMultiplier: 1
 --- !u!4 &1184428098
 Transform:
   m_ObjectHideFlags: 0
