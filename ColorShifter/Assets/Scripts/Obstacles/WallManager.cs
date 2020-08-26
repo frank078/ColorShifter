@@ -41,7 +41,7 @@ public class WallManager : MonoBehaviour
         // SET maxColorSelection
         maxColorSelection = colorSelection.Length + 1; // For Max Number gacha we get the max color at start + 1
 
-        // SHUFFLE ALL WALLS AND CHECK NEXT WALL (CALL ONCE)
+        // SHUFFLE ALL WALLS BESIDE THE FIRST AND CHECK NEXT WALL (CALL ONCE)
         ModifyColoredWalls(99);
         CheckPlayerColor(99); // on the start of the function it will set to 1 from the if statements
     }
@@ -50,11 +50,33 @@ public class WallManager : MonoBehaviour
     void ModifyColoredWalls(int TowerNumber)
     {
         // making sure not all of the tower get shuffle
-        if(thisTowerNumber == TowerNumber || TowerNumber == 99)
+        if(thisTowerNumber == TowerNumber)
         {
             foreach (GameObject _coloredWalls in coloredWalls)
             {
               //int = (min inclusive and max exclusive). has to be 1 number higher
+                int shuffleColor = Random.Range(1, maxColorSelection);
+                switch (shuffleColor)
+                {
+                    case 1:                                                   //RED
+                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[0];
+                        break;
+                    case 2:                                                   //YELLOW
+                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[1];
+                        break;
+                    case 3:                                                   //GREEN
+                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[2];
+                        break;
+                }
+            }
+        }
+
+        // ONLY GETS CALL AT THE START (ONLY TOWER 1 WILL NOT BE SHUFFLED)
+        if(TowerNumber == 99 && thisTowerNumber != 1)
+        {
+            foreach (GameObject _coloredWalls in coloredWalls)
+            {
+                //int = (min inclusive and max exclusive). has to be 1 number higher
                 int shuffleColor = Random.Range(1, maxColorSelection);
                 switch (shuffleColor)
                 {
