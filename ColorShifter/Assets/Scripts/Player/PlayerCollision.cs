@@ -8,6 +8,8 @@ public class PlayerCollision : MonoBehaviour
     private MeshRenderer currentColor;
     private int nextTower;
 
+    public AudioSource coinPickup;
+
     //PARTICLES
     public GameObject playerPassEffect;
 
@@ -95,6 +97,9 @@ public class PlayerCollision : MonoBehaviour
     public void IncreaseCoins()
     {
         coins++;
+
+        // Play sound effect
+        coinPickup.Play();
     }
 
     
