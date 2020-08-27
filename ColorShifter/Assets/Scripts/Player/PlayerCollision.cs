@@ -8,10 +8,9 @@ public class PlayerCollision : MonoBehaviour
     private MeshRenderer currentColor;
     private int nextTower;
 
-    public AudioSource coinPickup;
-
     //PARTICLES
     public GameObject playerPassEffect;
+    public GameObject coinPickup;
 
     // AVOID Double Trigger
     private int totalTriggered = 0;
@@ -50,7 +49,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.CompareTag("Coins"))
         {
-            IncreaseCoins();
+            IncreaseCoins(other.gameObject);
         }
     }
 
@@ -94,12 +93,12 @@ public class PlayerCollision : MonoBehaviour
     }
 
 
-    public void IncreaseCoins()
+    public void IncreaseCoins(GameObject coin)
     {
         coins++;
 
-        // Play sound effect
-        coinPickup.Play();
+        // Play particles
+        Instantiate(coinPickup, coin.transform.position, Quaternion.Euler(-90, 0, 0));
     }
 
     

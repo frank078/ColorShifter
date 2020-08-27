@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7526497969362477430}
   - component: {fileID: -6177354939144679220}
   m_Layer: 0
-  m_Name: Effects
+  m_Name: CoinParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  VFX: []
+  VFX:
+  - {fileID: 1180108559667517146, guid: 3e7c27af1c111a74fbfa49663ab15d4d, type: 3}
 --- !u!82 &-6177354939144679220
 AudioSource:
   m_ObjectHideFlags: 0
