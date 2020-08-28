@@ -96,6 +96,7 @@ public class PlayerCollision : MonoBehaviour
     public void IncreaseCoins(GameObject coin)
     {
         coins++;
+        GameManager.Instance.ModifyCoinsUI(coins); // call the delegate functions for CoinsUI
 
         // Play particles
         Instantiate(coinPickup, coin.transform.position, Quaternion.Euler(-90, 0, 0));

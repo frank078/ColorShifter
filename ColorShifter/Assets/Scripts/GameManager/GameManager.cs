@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public MulticastOneParam OnTowerPulling; // subscribed from WallManager
     public MulticastOneParam OnTowerChecking; // subscribed from WallManager
+    public MulticastOneParam OnCoinsCollided; // subscribed from CoinsUI
 
 
     void Awake()
@@ -59,5 +60,10 @@ public class GameManager : MonoBehaviour
     public void CheckPlayerColor(int NextTowerNumber)
     {
         OnTowerChecking?.Invoke(NextTowerNumber); // call the delegate functions that was subscribed
+    }
+
+    public void ModifyCoinsUI(int CurrentCoins)
+    {
+        OnCoinsCollided?.Invoke(CurrentCoins);
     }
 }
