@@ -12,6 +12,7 @@ public class CoinsManager : MonoBehaviour
     {
         //SUBSCRIPTION
         GameManager.Instance.OnTowerPulling += ModifyCoins;
+
         if(coins.Length == 0)
         {
             Debug.LogError("Coins has not been set to CoinsManager");

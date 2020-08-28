@@ -12,8 +12,14 @@ public class Effects : MonoBehaviour
 
     void Start()
     {
+        if (VFX.Length == 0)
+        {
+            Debug.LogError("VFX has not been set to Effects");
+            return;
+        }
+
         // foreach all gameobject in VFX and instantiate it and add it to the spawnedEffects list
-        foreach(GameObject effect in VFX)
+        foreach (GameObject effect in VFX)
         {
             GameObject _neweffect = Instantiate(effect, transform.position, transform.rotation);
 
