@@ -38,7 +38,7 @@ public class PlayerCollision : MonoBehaviour
                 if(totalTriggered == 0) // AVOID DOUBLE TRIGGER
                 {
                     totalTriggered++;
-                    StartCoroutine(delay(0.1f)); // delay it, to avoid getting killed from changing color while still inside the walls
+                    StartCoroutine(delayWallTrigger(0.1f)); // delay it, to avoid getting killed from changing color while still inside the walls
                 }
             }
             else
@@ -84,11 +84,14 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    IEnumerator delay(float delayTime)
+    IEnumerator delayWallTrigger(float delayTime)
     {
         yield return new WaitForSeconds(delayTime); // will continue after this delay, before will call it first before delay
         ShufflePlayerColor();
+
+        GameManager.Instance.ModifyScoreUI();
         Instantiate(playerPassEffect, transform.position + new Vector3(0, -1, 0), Quaternion.Euler(-90, 0, 0));
+
         totalTriggered = 0; // RESET
     }
 

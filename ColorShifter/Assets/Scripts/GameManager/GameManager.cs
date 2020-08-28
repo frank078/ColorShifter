@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public MulticastOneParam OnTowerPulling; // subscribed from WallManager
     public MulticastOneParam OnTowerChecking; // subscribed from WallManager
     public MulticastOneParam OnCoinsCollided; // subscribed from CoinsUI
+    public MulticastOneParam OnWallsCollided; // subscribed from ScoreUI
+
+    // SCORE
+    private int m_score = 0;
 
 
     void Awake()
@@ -65,5 +69,18 @@ public class GameManager : MonoBehaviour
     public void ModifyCoinsUI(int CurrentCoins)
     {
         OnCoinsCollided?.Invoke(CurrentCoins);
+    }
+
+    public void ModifyScoreUI()
+    {
+        score++;
+        OnWallsCollided?.Invoke(score);
+    }
+
+
+    public int score // GET SET the value
+    {
+        get { return m_score; }
+        set { m_score = value; }
     }
 }
