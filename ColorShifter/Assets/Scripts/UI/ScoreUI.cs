@@ -6,7 +6,8 @@ using TMPro; // call textmeshpro
 public class ScoreUI : MonoBehaviour
 {
     private TextMeshProUGUI scoreText;
-    private int score;
+    private int currentScore;
+
     void Start()
     {
         GameManager.Instance.OnWallsCollided += ModifyScore;
@@ -18,7 +19,7 @@ public class ScoreUI : MonoBehaviour
 
     void ModifyScore(int playerScore)
     {
-        score = playerScore;
-        scoreText.text = score.ToString();
+        currentScore = playerScore;
+        scoreText.text = currentScore.ToString();
     }
 }

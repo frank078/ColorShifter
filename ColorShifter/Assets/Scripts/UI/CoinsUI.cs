@@ -6,6 +6,7 @@ using TMPro; // call textmeshpro
 public class CoinsUI : MonoBehaviour
 {
     private TextMeshProUGUI coinsText;
+    private int currentCoins;
 
     void Start()
     {
@@ -16,11 +17,9 @@ public class CoinsUI : MonoBehaviour
         coinsText.text = "0"; //TODO: SAVE SYSTEM LOAD COINS
     }
 
-
     void ModifyCoins(int playerCoins)
     {
-        int currentCoins = playerCoins;
-
+        currentCoins = playerCoins;
         coinsText.text = currentCoins.ToString();
     }
 }

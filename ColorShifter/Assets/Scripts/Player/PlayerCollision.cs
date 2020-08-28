@@ -15,8 +15,6 @@ public class PlayerCollision : MonoBehaviour
     // AVOID Double Trigger
     private int totalTriggered = 0;
 
-    // COINS
-    private int m_coins = 0;
 
     private void Start()
     {
@@ -89,7 +87,9 @@ public class PlayerCollision : MonoBehaviour
         yield return new WaitForSeconds(delayTime); // will continue after this delay, before will call it first before delay
         ShufflePlayerColor();
 
-        GameManager.Instance.ModifyScoreUI();
+        GameManager.Instance.ModifyScoreUI(); // call the delegate functions for ScoreUI
+
+        //Play particles
         Instantiate(playerPassEffect, transform.position + new Vector3(0, -1, 0), Quaternion.Euler(-90, 0, 0));
 
         totalTriggered = 0; // RESET
@@ -98,17 +98,9 @@ public class PlayerCollision : MonoBehaviour
 
     public void IncreaseCoins(GameObject coin)
     {
-        coins++;
-        GameManager.Instance.ModifyCoinsUI(coins); // call the delegate functions for CoinsUI
+        GameManager.Instance.ModifyCoinsUI(); // call the delegate functions for CoinsUI
 
         // Play particles
         Instantiate(coinPickup, coin.transform.position, Quaternion.Euler(-90, 0, 0));
-    }
-
-    
-    public int coins // GET SET the value
-    {
-        get { return m_coins; }
-        set { m_coins = value; }
     }
 }

@@ -19,8 +19,20 @@ public class GameManager : MonoBehaviour
     public MulticastOneParam OnCoinsCollided; // subscribed from CoinsUI
     public MulticastOneParam OnWallsCollided; // subscribed from ScoreUI
 
-    // SCORE
+    // SCORE & COINS
     private int m_score = 0;
+    private int m_coins = 0;
+    public int score // GET SET the value
+    {
+        get { return m_score; }
+        set { m_score = value; }
+    }
+    public int coins // GET SET the value
+    {
+        get { return m_coins; }
+        set { m_coins = value; }
+    }
+    //-------------------
 
 
     void Awake()
@@ -39,7 +51,6 @@ public class GameManager : MonoBehaviour
         }
         // ------------------------------------------
 
-
         SpawnPlayer(); // TODO: use this on OnSceneLoaded later    
     }
 
@@ -54,6 +65,8 @@ public class GameManager : MonoBehaviour
         Player = _Player;
     }
 
+    // DELEGATES
+
     // This way it calls all the ColoredWalls. If you want one of them, has to ref the selected walls
     public void ModifyColoredWalls(int TowerNumber)
     {
@@ -66,9 +79,10 @@ public class GameManager : MonoBehaviour
         OnTowerChecking?.Invoke(NextTowerNumber); // call the delegate functions that was subscribed
     }
 
-    public void ModifyCoinsUI(int CurrentCoins)
+    public void ModifyCoinsUI()
     {
-        OnCoinsCollided?.Invoke(CurrentCoins);
+        coins++;
+        OnCoinsCollided?.Invoke(coins);
     }
 
     public void ModifyScoreUI()
@@ -76,11 +90,7 @@ public class GameManager : MonoBehaviour
         score++;
         OnWallsCollided?.Invoke(score);
     }
+    // -------------------------------------------
 
 
-    public int score // GET SET the value
-    {
-        get { return m_score; }
-        set { m_score = value; }
-    }
 }
