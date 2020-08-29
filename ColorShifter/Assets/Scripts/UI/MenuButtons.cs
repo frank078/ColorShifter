@@ -11,4 +11,10 @@ public class MenuButtons : MonoBehaviour
         pauseMenu.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
+
+    public void unpauseButton()
+    {
+        pauseMenu.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
 }
