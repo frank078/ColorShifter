@@ -85,6 +85,9 @@ public class GameManager : MonoBehaviour
             deathUI.SetActive(false);
 
             SpawnPlayer();
+
+            coins = 0;
+            score = 0;
         }
     }
 
