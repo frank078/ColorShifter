@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    Scene curScene;
+
     public static GameManager Instance { get; private set; } // to call the gamemananger
 
     [SerializeField] GameObject PlayerPawn = null; // used for the player to spawned
@@ -22,6 +26,7 @@ public class GameManager : MonoBehaviour
     // SCORE & COINS
     private int m_score = 0;
     private int m_coins = 0;
+
     public int score // GET SET the value
     {
         get { return m_score; }
@@ -34,6 +39,9 @@ public class GameManager : MonoBehaviour
     }
     //-------------------
 
+    public Text finalCoins;
+
+    public GameObject deathUI; //TODO: Change after OnSceneLoaded
 
     void Awake()
     {
@@ -50,10 +58,35 @@ public class GameManager : MonoBehaviour
             return;
         }
         // ------------------------------------------
-
-        SpawnPlayer(); // TODO: use this on OnSceneLoaded later    
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        curScene = scene;
+
+        if(curScene.buildIndex == 0) // TODO: Change index
+        {
+            Debug.Log("This is game scene");
+
+            PlayerStart = GameObject.Find("PlayerStart").transform;
+            deathUI = GameObject.Find("LoseUI");
+            finalCoins = GameObject.Find("CoinAmount").GetComponent<Text>();
+
+            deathUI.SetActive(false);
+
+            SpawnPlayer();
+        }
+    }
 
     void SpawnPlayer()
     {
@@ -92,5 +125,25 @@ public class GameManager : MonoBehaviour
     }
     // -------------------------------------------
 
+    public void Death()
+    {
+        finalCoins.text = coins.ToString();
 
+        deathUI.SetActive(true);
+
+        ResetSubscribe();
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ResetSubscribe()
+    {
+        OnTowerPulling = null;
+        OnTowerChecking = null;
+        OnCoinsCollided = null;
+        OnWallsCollided = null;
+    }
 }
