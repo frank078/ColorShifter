@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 190795726}
   - component: {fileID: 190795727}
   - component: {fileID: 190795729}
+  - component: {fileID: 190795730}
   - component: {fileID: 190795728}
   m_Layer: 0
   m_Name: TowerManager
@@ -386,6 +387,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerTurn: {fileID: 190795728}
+--- !u!114 &190795730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190795725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af94d9666465024abf2596b98aa45a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSpeed: 1
+  m_targetTimer: 30
+  m_targetMultiplier: 1
 --- !u!1001 &251093763
 PrefabInstance:
   m_ObjectHideFlags: 0
