@@ -5,11 +5,15 @@ using UnityEngine;
 public class MenuButtons : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject loseUI;
 
     public void pauseButton()
     {
-        pauseMenu.gameObject.SetActive(true);
-        Time.timeScale = 0;
+        if(loseUI.gameObject.activeInHierarchy == false)
+        {
+            pauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void unpauseButton()

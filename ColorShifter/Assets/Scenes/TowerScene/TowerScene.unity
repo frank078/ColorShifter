@@ -164,6 +164,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 184113020}
+    - target: {fileID: 301183577468405236, guid: 0c1785de03a92ae47a9fad3ec3bb1014, type: 3}
+      propertyPath: loseUI
+      value: 
+      objectReference: {fileID: 907040758}
     - target: {fileID: 8345468102476435424, guid: 0c1785de03a92ae47a9fad3ec3bb1014, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -822,5 +826,9 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 184113020}
+    - target: {fileID: 3794231825604356632, guid: 6573891e7b61ccf418c8e6611c960cf6, type: 3}
+      propertyPath: loseUI
+      value: 
+      objectReference: {fileID: 907040758}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6573891e7b61ccf418c8e6611c960cf6, type: 3}
