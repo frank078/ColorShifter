@@ -8,11 +8,18 @@ public class TowerRotate : MonoBehaviour
 
     public float speed = 10.0f;
 
-    // Update is called once per frame
+    // GET PLAYER HEALTH
+    PlayerHealth playerHealth;
+
+    void Start()
+    {
+        playerHealth = GameObject.FindObjectOfType<PlayerHealth>();
+    }
+
     void Update()
     {
         // Turn Right
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && playerHealth.health > 0)
         {
             currentRotation = transform.eulerAngles;
             currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y + newRotation, Time.deltaTime * speed);
@@ -20,7 +27,7 @@ public class TowerRotate : MonoBehaviour
         }
 
         // Turn Left
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && playerHealth.health > 0)
         {
             currentRotation = transform.eulerAngles;
             currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y - newRotation, Time.deltaTime * speed);
