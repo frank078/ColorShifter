@@ -42,6 +42,7 @@ public class CoinsManager : MonoBehaviour
                 // FIRST SECTOR (BACK LINE)
                 if(coinsIndex < 5)
                 {
+                    Debug.Log(_coins + "30%");
                     //30% succession on coins spawning
                     float odds = Random.Range(0f, 1f);
                     if (0.3f >= odds)
@@ -56,6 +57,7 @@ public class CoinsManager : MonoBehaviour
                 // SECOND SECTOR (FRONT LINE)
                 else
                 {
+                    Debug.Log(_coins + "40%");
                     //40% succession on coins spawning
                     float odds = Random.Range(0f, 1f);
                     if (0.4f >= odds)
