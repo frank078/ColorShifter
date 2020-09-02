@@ -32,24 +32,6 @@ public class Timer : MonoBehaviour
     {
         thePlayer = GameManager.Instance.GetPlayer();
         tFall = GameObject.FindObjectOfType<TowerFall>();
-
-        if(thePlayer == null)
-        {
-            Debug.Log("thePlayer error");
-        }
-        else
-        {
-            Debug.Log("Asuna");
-        }
-
-        if(tFall == null)
-        {
-            Debug.Log("tFall error");
-        }
-        else
-        {
-            Debug.Log("Futaba");
-        }
     }
     // Update is called once per frame
     void Update()

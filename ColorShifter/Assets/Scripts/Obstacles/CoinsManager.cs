@@ -49,9 +49,9 @@ public class CoinsManager : MonoBehaviour
                 {
                 // DIAMONDS SPAWNING
 
-                    //10% succession on diamonds spawning
+                    //3% succession on diamonds spawning
                     float oddsDiamonds = Random.Range(0f, 1f);
-                    if (0.1f >= oddsDiamonds)
+                    if (0.03f >= oddsDiamonds)
                     {
                         diamonds[diamondIndex].SetActive(true);
                         // coins start from 0, so the same as diamondIndex
