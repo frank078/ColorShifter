@@ -45,6 +45,7 @@ public class PlayerCollision : MonoBehaviour
             }
         }
 
+        // For Coins and Diamonds
         if (other.CompareTag("Coins"))
         {
             IncreaseCoins(other.gameObject);
@@ -98,7 +99,15 @@ public class PlayerCollision : MonoBehaviour
 
     public void IncreaseCoins(GameObject coin)
     {
-        GameManager.Instance.ModifyCoinsUI(); // call the delegate functions for CoinsUI
+        if(coin.gameObject.GetComponent<Diamonds>() != null)
+        {
+            //call the delegate functions for CoinsUI
+            GameManager.Instance.ModifyCoinsUI(5); // DIAMONDS
+        }
+        else
+        {
+            GameManager.Instance.ModifyCoinsUI(1); // COINS
+        }
 
         // Play particles
         Instantiate(coinPickup, coin.transform.position, Quaternion.Euler(-90, 0, 0));

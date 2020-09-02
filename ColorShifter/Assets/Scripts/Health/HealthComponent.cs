@@ -40,7 +40,7 @@ public class HealthComponent : MonoBehaviour
         }
         else
         {
-            Debug.LogError(name + " No functions bound to OnDamaged delegate");
+            //Debug.LogError(name + " No functions bound to OnDamaged delegate");
         }
     }
 
@@ -53,7 +53,7 @@ public class HealthComponent : MonoBehaviour
         }
         else
         {
-            Debug.LogError(name + " No functions bound to OnDeath Delegate");
+            //Debug.LogError(name + " No functions bound to OnDeath Delegate");
         }
 
         //PARTICLES (Currently no particles is made)

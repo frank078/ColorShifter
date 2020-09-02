@@ -115,9 +115,9 @@ public class GameManager : MonoBehaviour
         OnTowerChecking?.Invoke(NextTowerNumber); // call the delegate functions that was subscribed
     }
 
-    public void ModifyCoinsUI()
+    public void ModifyCoinsUI(int coinsAmount)
     {
-        coins++;
+        coins = coins + coinsAmount;
         OnCoinsCollided?.Invoke(coins);
     }
 
