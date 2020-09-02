@@ -33,5 +33,23 @@ public class TowerRotate : MonoBehaviour
             currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y - newRotation, Time.deltaTime * speed);
             transform.eulerAngles = currentRotation;
         }
+
+        // Touch Controls
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary && playerHealth.health > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.position.x > Screen.width / 2)
+            {
+                currentRotation = transform.eulerAngles;
+                currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y + newRotation, Time.deltaTime * speed);
+                transform.eulerAngles = currentRotation;
+            }
+            if (touch.position.x < Screen.width / 2)
+            {
+                currentRotation = transform.eulerAngles;
+                currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y - newRotation, Time.deltaTime * speed);
+                transform.eulerAngles = currentRotation;
+            }
+        }
     }
 }
