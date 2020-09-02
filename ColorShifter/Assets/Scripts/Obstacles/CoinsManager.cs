@@ -38,6 +38,8 @@ public class CoinsManager : MonoBehaviour
             foreach (GameObject _coins in coins)
             {
                 coinsIndex++;
+
+                // FIRST SECTOR (BACK LINE)
                 if(coinsIndex < 5)
                 {
                     //30% succession on coins spawning
@@ -51,6 +53,7 @@ public class CoinsManager : MonoBehaviour
                         _coins.SetActive(false);
                     }
                 }
+                // SECOND SECTOR (FRONT LINE)
                 else
                 {
                     //40% succession on coins spawning
