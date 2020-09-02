@@ -8,6 +8,9 @@ public class CoinsManager : MonoBehaviour
     public GameObject[] coins; // coins in this children
     private int thisTowerNumber;
 
+    public GameObject[] diamonds;
+    
+
     private void Start()
     {
         //SUBSCRIPTION
@@ -32,35 +35,55 @@ public class CoinsManager : MonoBehaviour
     {
         if (thisTowerNumber == TowerNumber || TowerNumber == 99)
         {
-            float coinsIndex = 0; // coins index in coins[] array
+            int coinsIndex = 0; // coins index to check first and second coins sector
+            int diamondIndex = -1; // diamond index in diamonds[] array
 
             // SET ACTIVE DEACTIVATE COINS
             foreach (GameObject _coins in coins)
             {
                 coinsIndex++;
+                diamondIndex++;
 
                 // FIRST SECTOR (BACK LINE)
                 if(coinsIndex < 5)
                 {
-                    Debug.Log(_coins + "30%");
-                    //30% succession on coins spawning
-                    float odds = Random.Range(0f, 1f);
-                    if (0.3f >= odds)
+                // DIAMONDS SPAWNING
+
+                    //10% succession on diamonds spawning
+                    float oddsDiamonds = Random.Range(0f, 1f);
+                    if (0.1f >= oddsDiamonds)
                     {
-                        _coins.SetActive(true);
-                    }
-                    else
-                    {
+                        diamonds[diamondIndex].SetActive(true);
+                        // coins start from 0, so the same as diamondIndex
                         _coins.SetActive(false);
                     }
+                //------------------------------
+
+                // COINS SPAWNING
+                    else
+                    {
+                        diamonds[diamondIndex].SetActive(false);
+
+                        //40% succession on coins spawning
+                        float odds = Random.Range(0f, 1f);
+                        if (0.4f >= odds)
+                        {
+                            _coins.SetActive(true);
+                        }
+                        else
+                        {
+                            _coins.SetActive(false);
+                        }
+                    }
+                //----------------------------
                 }
+
                 // SECOND SECTOR (FRONT LINE)
                 else
                 {
-                    Debug.Log(_coins + "40%");
-                    //40% succession on coins spawning
+                    //30% succession on coins spawning
                     float odds = Random.Range(0f, 1f);
-                    if (0.4f >= odds)
+                    if (0.3f >= odds)
                     {
                         _coins.SetActive(true);
                     }
