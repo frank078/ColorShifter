@@ -68,19 +68,41 @@ public class PlayerCollision : MonoBehaviour
 
     void ShufflePlayerColor()
     {
-        int shuffleColor = Random.Range(0, 3);
-        switch (shuffleColor)
+        // Check gacha on each color
+        for (int i = 0; i < colorSelection.Length; i++)
         {
-            case 0:
-                ChangePlayerColor(0); // RED
+            // 33% succession
+            float odds = Random.Range(0f, 1f);
+            if(0.33f >= odds)
+            {
+                ChangePlayerColor(i);
                 break;
-            case 1:
-                ChangePlayerColor(1); // YELLOW
-                break;
-            case 2:
-                ChangePlayerColor(2); // GREEN
-                break;
+            }
+            else
+            {
+                // Shuffle again if this is last element
+                if(i == colorSelection.Length - 1)
+                {
+                    ShufflePlayerColor();
+                    Debug.Log("SHUFFLE AGAIN");
+                }
+            }
         }
+        // JUST IN CASE ON THE TOP IS BROKEN (SAFEKEEPING FOR NOW)
+
+        //int shuffleColor = Random.Range(0, 3);
+        //switch (shuffleColor)
+        //{
+        //    case 0:
+        //        ChangePlayerColor(0); // RED
+        //        break;
+        //    case 1:
+        //        ChangePlayerColor(1); // YELLOW
+        //        break;
+        //    case 2:
+        //        ChangePlayerColor(2); // GREEN
+        //        break;
+        //}
     }
 
     IEnumerator delayWallTrigger(float delayTime)
