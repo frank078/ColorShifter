@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
                 tFall.increaseFallSpeed();
                 CheckTimer();
             }
-            Debug.Log(timer + "         " + targetTimer);
+            //Debug.Log(timer + "         " + targetTimer);
         }
         else if(thePlayer == null)
         {
