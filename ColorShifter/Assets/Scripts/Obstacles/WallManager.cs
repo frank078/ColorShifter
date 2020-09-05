@@ -7,7 +7,6 @@ public class WallManager : MonoBehaviour
     public GameObject[] coloredWalls; // the ColoredWalls in the gameobject (Cylinder)
     public Material[] colorSelection; // color that the walls can change
     private int thisTowerNumber;
-    private int maxColorSelection;
 
     // PLAYER REFERENCES
     private GameObject thePlayer;
@@ -36,10 +35,7 @@ public class WallManager : MonoBehaviour
         // PLAYER GET REFERENCES (playerCurrentMaterial will reget every success collision)
         thePlayer = GameManager.Instance.GetPlayer();
         playerCurrentMaterial = thePlayer.GetComponent<MeshRenderer>();
-        
 
-        // SET maxColorSelection
-        maxColorSelection = colorSelection.Length + 1; // For Max Number gacha we get the max color at start + 1
 
         // SHUFFLE ALL WALLS BESIDE THE FIRST AND CHECK NEXT WALL (CALL ONCE)
         ModifyColoredWalls(99);
@@ -54,20 +50,25 @@ public class WallManager : MonoBehaviour
         {
             foreach (GameObject _coloredWalls in coloredWalls)
             {
-              //int = (min inclusive and max exclusive). has to be 1 number higher
-                int shuffleColor = Random.Range(1, maxColorSelection);
-                switch (shuffleColor)
-                {
-                    case 1:                                                   //RED
-                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[0];
-                        break;
-                    case 2:                                                   //YELLOW
-                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[1];
-                        break;
-                    case 3:                                                   //GREEN
-                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[2];
-                        break;
-                }
+                GachaColor(_coloredWalls);
+
+
+                // JUST IN CASE ON THE TOP IS BROKEN (SAFEKEEPING FOR NOW)
+
+                ////int = (min inclusive and max exclusive). has to be 1 number higher
+                //  int shuffleColor = Random.Range(1, 4);
+                //  switch (shuffleColor)
+                //  {
+                //      case 1:                                                   //RED
+                //          _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[0];
+                //          break;
+                //      case 2:                                                   //YELLOW
+                //          _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[1];
+                //          break;
+                //      case 3:                                                   //GREEN
+                //          _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[2];
+                //          break;
+                //  }
             }
         }
 
@@ -76,19 +77,47 @@ public class WallManager : MonoBehaviour
         {
             foreach (GameObject _coloredWalls in coloredWalls)
             {
-                //int = (min inclusive and max exclusive). has to be 1 number higher
-                int shuffleColor = Random.Range(1, maxColorSelection);
-                switch (shuffleColor)
+                GachaColor(_coloredWalls);
+
+
+                // JUST IN CASE ON THE TOP IS BROKEN (SAFEKEEPING FOR NOW)
+
+                ////int = (min inclusive and max exclusive). has to be 1 number higher
+                //int shuffleColor = Random.Range(1, 4);
+                //switch (shuffleColor)
+                //{
+                //    case 1:                                                   //RED
+                //        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[0];
+                //        break;
+                //    case 2:                                                   //YELLOW
+                //        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[1];
+                //        break;
+                //    case 3:                                                   //GREEN
+                //        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[2];
+                //        break;
+                //}
+            }
+        }
+    }
+
+    public void GachaColor(GameObject wallColor)
+    {
+        // Color gacha on each walls
+        for (int i = 0; i < colorSelection.Length; i++)
+        {
+            // 33% succession
+            float odds = Random.Range(0f, 1f);
+            if (0.33f >= odds)
+            {
+                // Need the whole gamobject since you need to change the material from that
+                wallColor.GetComponent<MeshRenderer>().material = colorSelection[i];
+                break;
+            }
+            else // if none color has been set, regacha again
+            {
+                if (i == colorSelection.Length - 1)
                 {
-                    case 1:                                                   //RED
-                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[0];
-                        break;
-                    case 2:                                                   //YELLOW
-                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[1];
-                        break;
-                    case 3:                                                   //GREEN
-                        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[2];
-                        break;
+                    GachaColor(wallColor); // usign wallColor will be fine since we haven't got any results
                 }
             }
         }
