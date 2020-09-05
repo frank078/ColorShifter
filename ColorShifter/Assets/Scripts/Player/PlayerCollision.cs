@@ -61,12 +61,12 @@ public class PlayerCollision : MonoBehaviour
             return;
         }
 
+        // Check if the Game unlocks Blue yet
         if( colorSelection[index].name == "Blue")
         {
             if (!GameManager.Instance.isBlue)
             {
                 ShufflePlayerColor();
-                Debug.Log(" NO BLUE YET");
                 return; // has to put return since it calls the function below which was changing color
             }
         }
@@ -85,7 +85,7 @@ public class PlayerCollision : MonoBehaviour
             if (0.25f >= odds)
             {
                 ChangePlayerColor(i);
-                break;
+                return;
             }
             else
             {
