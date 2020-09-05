@@ -31,9 +31,9 @@ public class PlayerCollision : MonoBehaviour
             nextTower = 1 + other.gameObject.transform.parent.parent.GetComponentInParent<TowerObjectPulling>().TowerNumber;
 
             // if player color is the same as one of the walls that collide
-            if(currentColor.material.name == coloredWallsColor.material.name)
+            if (currentColor.material.name == coloredWallsColor.material.name)
             {
-                if(totalTriggered == 0) // AVOID DOUBLE TRIGGER
+                if (totalTriggered == 0) // AVOID DOUBLE TRIGGER
                 {
                     totalTriggered++;
                     StartCoroutine(delayWallTrigger(0.1f)); // delay it, to avoid getting killed from changing color while still inside the walls
@@ -57,13 +57,22 @@ public class PlayerCollision : MonoBehaviour
         // If the Index is higher than color selection (ex: want blue, but havent unlocked yet)
         if (colorSelection.Length - 1 < index)
         {
-            ShufflePlayerColor();
+            Debug.LogError("COLOR OUT OF INDEX");
+            return;
         }
-        else
+
+        if( colorSelection[index].name == "Blue")
         {
-            currentColor.material = colorSelection[index];
-            GameManager.Instance.CheckPlayerColor(nextTower); // call it here so that they could get latest material references
+            if (!GameManager.Instance.isBlue)
+            {
+                ShufflePlayerColor();
+                Debug.Log(" NO BLUE YET");
+                return; // has to put return since it calls the function below which was changing color
+            }
         }
+
+        currentColor.material = colorSelection[index];
+        GameManager.Instance.CheckPlayerColor(nextTower); // call it here so that they could get latest material references
     }
 
     void ShufflePlayerColor()
@@ -71,9 +80,9 @@ public class PlayerCollision : MonoBehaviour
         // Check gacha on each color
         for (int i = 0; i < colorSelection.Length; i++)
         {
-            // 33% succession
+            // 25% succession
             float odds = Random.Range(0f, 1f);
-            if(0.33f >= odds)
+            if (0.25f >= odds)
             {
                 ChangePlayerColor(i);
                 break;
@@ -81,10 +90,9 @@ public class PlayerCollision : MonoBehaviour
             else
             {
                 // Shuffle again if this is last element
-                if(i == colorSelection.Length - 1)
+                if (i == colorSelection.Length - 1)
                 {
                     ShufflePlayerColor();
-                    Debug.Log("SHUFFLE AGAIN");
                 }
             }
         }
@@ -121,7 +129,7 @@ public class PlayerCollision : MonoBehaviour
 
     public void IncreaseCoins(GameObject coin)
     {
-        if(coin.gameObject.GetComponent<Diamonds>() != null)
+        if (coin.gameObject.GetComponent<Diamonds>() != null)
         {
             //call the delegate functions for CoinsUI
             GameManager.Instance.ModifyCoinsUI(5); // DIAMONDS

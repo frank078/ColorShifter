@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     private int m_score = 0;
     private int m_coins = 0;
 
+    // DYNAMIC DIFFICULTY
+    public bool isBlue = false;
+
     public int score // GET SET the value
     {
         get { return m_score; }
@@ -86,6 +89,7 @@ public class GameManager : MonoBehaviour
 
             SpawnPlayer();
 
+            //TODO: SAVE SYSTEM
             coins = 0;
             score = 0;
         }
@@ -148,5 +152,10 @@ public class GameManager : MonoBehaviour
         OnTowerChecking = null;
         OnCoinsCollided = null;
         OnWallsCollided = null;
+    }
+
+    public void SetBlue()
+    {
+        isBlue = true;
     }
 }
