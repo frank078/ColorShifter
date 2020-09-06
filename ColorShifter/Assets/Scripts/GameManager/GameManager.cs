@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
             PlayerStart = GameObject.Find("PlayerStart").transform;
             deathUI = GameObject.Find("LoseUI");
-            finalCoins = GameObject.Find("CoinAmount").GetComponent<Text>();
+            finalCoins = GameObject.Find("CoinAmountDeath").GetComponent<Text>();
 
             deathUI.SetActive(false);
 
