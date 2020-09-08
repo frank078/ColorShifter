@@ -761,6 +761,10 @@ PrefabInstance:
       propertyPath: deathUI
       value: 
       objectReference: {fileID: 907040758}
+    - target: {fileID: 7559097369140540223, guid: fbb610af4d57a644f8831d80742ffac0, type: 3}
+      propertyPath: isRestart
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbb610af4d57a644f8831d80742ffac0, type: 3}
 --- !u!1001 &1724994462

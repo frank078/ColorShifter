@@ -43,8 +43,11 @@ public class GameManager : MonoBehaviour
     //-------------------
 
     public Text finalCoins;
-
     public GameObject deathUI; //TODO: Change after OnSceneLoaded
+    public Text coinsMainMenu;
+    public GameObject mainMenuUI;
+
+    public bool isRestart;
 
     void Awake()
     {
@@ -82,8 +85,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("This is game scene");
 
             PlayerStart = GameObject.Find("PlayerStart").transform;
+            // Lose UI coins
             deathUI = GameObject.Find("LoseUI");
             finalCoins = GameObject.Find("CoinAmountDeath").GetComponent<Text>();
+            // Main Menu coins
+            mainMenuUI = GameObject.Find("MainMenu");
+            coinsMainMenu = GameObject.Find("CoinAmountMainMenu").GetComponent<Text>();
+            coinsMainMenu.text = "0"; // TODO: Once save system is in, change the amount to the saved coins
 
             deathUI.SetActive(false);
 
@@ -143,6 +151,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartButton()
     {
+        isRestart = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
