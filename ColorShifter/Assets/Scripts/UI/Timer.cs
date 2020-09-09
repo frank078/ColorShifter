@@ -5,11 +5,11 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     float timer;
-    public float timeSpeed = 1f;
+    private float timeSpeed = 1f; // This is for the timer speed
     bool isTimerPlaying = true;
 
     // for get set, that way it will not accidently change number
-    [SerializeField] private float m_targetTimer = 30;
+    [SerializeField] private float m_targetTimer = 15;
     [SerializeField] private int m_targetMultiplier = 1;
 
     // targetTimer = targetTimer * Multiplier

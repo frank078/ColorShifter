@@ -14,7 +14,7 @@ public class TowerFall : MonoBehaviour
     }
 
 
-    public float speedMultiplier = 1.0f; // TODO: SET THIS TO PRIVATE ONCE THE SPEED HAS BEEN TESTED
+    public float speedMultiplier = .5f; // TODO: SET THIS TO PRIVATE ONCE THE SPEED HAS BEEN TESTED
 
     void FixedUpdate()
     {

@@ -58,7 +58,7 @@ MonoBehaviour:
   - {fileID: 5852287668224319639}
   - {fileID: 5852287667658424132}
   m_fallSpeed: 10
-  speedMultiplier: 1
+  speedMultiplier: 0.5
 --- !u!114 &8586593395155429559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeSpeed: 1
-  m_targetTimer: 30
+  m_targetTimer: 15
   m_targetMultiplier: 1
 --- !u!82 &8586593395155429552
 AudioSource:
