@@ -9,14 +9,13 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        // Reminder: The logic is reversed in order to achieve the retart
         if (GameManager.Instance.isRestart == true)
         {
-            Time.timeScale = 0;           
+            StartGame();                     
         }
         else
         {
-            StartGame();
+            Time.timeScale = 0;
         }
     }
 
@@ -25,6 +24,5 @@ public class MainMenu : MonoBehaviour
         mainMenuUI.SetActive(false);
         Time.timeScale = 1;
         gameUI.SetActive(true);
-        GameManager.Instance.isRestart = false;
     }
 }

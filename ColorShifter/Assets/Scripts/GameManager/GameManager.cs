@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     GameObject Player = null; // after the player spawned it will set the player to this (Use this for ref player)
 
     public GameObject GetPlayer() { return Player; } // get player
-    
+
     [SerializeField] Transform PlayerStart = null;
 
     public MulticastOneParam OnTowerPulling; // subscribed from WallManager
@@ -42,10 +42,9 @@ public class GameManager : MonoBehaviour
     }
     //-------------------
 
-    public Text finalCoins;
-    public GameObject deathUI; //TODO: Change after OnSceneLoaded
-    public Text coinsMainMenu;
-    public GameObject mainMenuUI;
+    public Text finalCoins, coinsMainMenu;
+    public GameObject deathUI, mainMenuUI, pauseUI; //TODO: Change after OnSceneLoaded
+    public Button pauseToMenu, loseToRestart, loseToMenu;
 
     public bool isRestart;
 
@@ -85,15 +84,48 @@ public class GameManager : MonoBehaviour
             Debug.Log("This is game scene");
 
             PlayerStart = GameObject.Find("PlayerStart").transform;
-            // Lose UI coins
+
+            //----------------------------------------------------------------------------------------------------------------------
+            // GAMEOBJECT 
+            // This is death UI
             deathUI = GameObject.Find("LoseUI");
-            finalCoins = GameObject.Find("CoinAmountDeath").GetComponent<Text>();
-            // Main Menu coins
+
+            //This is main menu UI
             mainMenuUI = GameObject.Find("MainMenu");
+
+            //This is pause UI
+            pauseUI = GameObject.Find("PauseUI");
+
+            //----------------------------------------------------------------------------------------------------------------------
+
+            // ---------------------------------------------------------------------------------------------------------------------
+            // TEXT
+            // lose coins text
+            finalCoins = GameObject.Find("CoinAmountDeath").GetComponent<Text>();
+
+            // main menu coins text
             coinsMainMenu = GameObject.Find("CoinAmountMainMenu").GetComponent<Text>();
             coinsMainMenu.text = "0"; // TODO: Once save system is in, change the amount to the saved coins
 
+            // ---------------------------------------------------------------------------------------------------------------------
+
+            // ---------------------------------------------------------------------------------------------------------------------
+            // BUTTONS
+            // Pause UI's Main Menu button
+            pauseToMenu = GameObject.Find("PauseMenuButton").GetComponent<Button>();
+            pauseToMenu.onClick.AddListener(() => RestartOrMenuButton(false));
+
+            // Lose  UI's Main Menu button
+            loseToMenu = GameObject.Find("LoseMenuButton").GetComponent<Button>();
+            loseToMenu.onClick.AddListener(() => RestartOrMenuButton(false));
+
+            // Lose UI's Restart Button
+            loseToRestart = GameObject.Find("RestartButton").GetComponent<Button>();
+            loseToRestart.onClick.AddListener(() => RestartOrMenuButton(true));
+            // ---------------------------------------------------------------------------------------------------------------------
+
             deathUI.SetActive(false);
+            pauseUI.SetActive(false);
 
             SpawnPlayer();
 
@@ -149,9 +181,13 @@ public class GameManager : MonoBehaviour
         ResetSubscribe();
     }
 
-    public void RestartButton()
+    // The button to either restart or go to the main menu
+    // If true = restart (remove main menu UI)
+    // If false = main menu (open main menu UI)
+    public void RestartOrMenuButton(bool isRestarted)
     {
-        isRestart = true;
+        isRestart = isRestarted;
+        ResetSubscribe();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
