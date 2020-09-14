@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
     {
         curScene = scene;
         // TowerScene and DickyScene
-        if(curScene.buildIndex == 0 || curScene.buildIndex == 1) // TODO: Change index
+        if(curScene.buildIndex == 0 || curScene.buildIndex == 1 || curScene.buildIndex == 2) // TODO: Change index
         {
             Debug.Log("This is game scene");
 

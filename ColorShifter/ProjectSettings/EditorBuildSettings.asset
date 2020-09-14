@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DickyScene/DickyScene.unity
     guid: 51b4b80623478fe4ba3aa59be9cd8eb4
+  - enabled: 1
+    path: Assets/Scenes/DavidTest/DavidScene.unity
+    guid: 7a4b09bf62588b74c8bd1ead8db98d24
   m_configObjects: {}
