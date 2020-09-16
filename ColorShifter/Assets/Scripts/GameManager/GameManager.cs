@@ -179,6 +179,7 @@ public class GameManager : MonoBehaviour
         deathUI.SetActive(true);
 
         ResetSubscribe();
+        SetBlue(false); // lock blue colors
     }
 
     // The button to either restart or go to the main menu
@@ -199,8 +200,10 @@ public class GameManager : MonoBehaviour
         OnWallsCollided = null;
     }
 
-    public void SetBlue()
+    public void SetBlue(bool value)
     {
-        isBlue = true;
+        // true = unlocked blue
+        // false = locked blue
+        isBlue = value;
     }
 }
