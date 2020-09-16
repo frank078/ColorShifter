@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
                 tFall.increaseFallSpeed();
                 CheckTimer();
             }
-            //Debug.Log(timer + "         " + targetTimer);
+            //Debug.Log("Timer is " + timer + "         " + targetTimer); 
         }
         else if(thePlayer == null)
         {
@@ -59,7 +59,8 @@ public class Timer : MonoBehaviour
         // if target multiplier is 3 or targetTimer is over a minute
         if(targetMultiplier == 3)
         {
-            GameManager.Instance.SetBlue();
+            // unlocked blue
+            GameManager.Instance.SetBlue(true);
         }
     }
 }
