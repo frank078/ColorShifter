@@ -84,7 +84,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af94d9666465024abf2596b98aa45a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSpeed: 1
   m_targetTimer: 15
   m_targetMultiplier: 1
 --- !u!82 &8586593395155429552
