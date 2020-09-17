@@ -62,9 +62,19 @@ public class PlayerCollision : MonoBehaviour
         }
 
         // Check if the Game unlocks Green yet
-        if( colorSelection[index].name == "Green")
+        if(colorSelection[index].name == "Green")
         {
             if (!GameManager.Instance.isGreen)
+            {
+                ShufflePlayerColor();
+                return; // has to put return since it calls the function below which was changing color
+            }
+        }
+
+        // Check if the Game unlocks Pink yet
+        if (colorSelection[index].name == "Pink")
+        {
+            if (!GameManager.Instance.isPink)
             {
                 ShufflePlayerColor();
                 return; // has to put return since it calls the function below which was changing color
@@ -80,9 +90,9 @@ public class PlayerCollision : MonoBehaviour
         // Check gacha on each color
         for (int i = 0; i < colorSelection.Length; i++)
         {
-            // 25% succession
+            // 20% succession
             float odds = Random.Range(0f, 1f);
-            if (0.25f >= odds)
+            if (0.20f >= odds)
             {
                 ChangePlayerColor(i);
                 return;

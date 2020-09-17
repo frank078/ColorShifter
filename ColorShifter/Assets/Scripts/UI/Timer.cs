@@ -56,11 +56,18 @@ public class Timer : MonoBehaviour
 
     void CheckTimer()
     {
-        // if target multiplier is 3 or targetTimer is over a minute
+        // if target multiplier is 3 or targetTimer is over 30 sec
         if(targetMultiplier == 3)
         {
             // unlocked green
             GameManager.Instance.SetGreen(true);
+        }
+
+        // if target multiplier is 6 or targetTimer is over 75 sec
+        if(targetMultiplier == 6)
+        {
+            // unlocked pink
+            GameManager.Instance.SetPink(true);
         }
     }
 }

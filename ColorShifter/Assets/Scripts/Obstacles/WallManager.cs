@@ -69,9 +69,9 @@ public class WallManager : MonoBehaviour
         // Color gacha on each walls
         for (int i = 0; i < colorSelection.Length; i++)
         {
-            // 25% succession
+            // 20% succession
             float odds = Random.Range(0f, 1f);
-            if (0.25f >= odds)
+            if (0.20f >= odds)
             {
                 // Need the whole gamobject since you need to change the material from that
                 wallColor.GetComponent<MeshRenderer>().material = colorSelection[i];
@@ -91,10 +91,22 @@ public class WallManager : MonoBehaviour
     // Check new color in Dynamic Difficulty
     void CheckNewColor(int index, GameObject wallColor)
     {
-        if(colorSelection[index].name == "Green")
+        // Check if the Game unlocks Green yet
+        if (colorSelection[index].name == "Green")
         {
             // If hasn't unlocked, redo the gacha with the coloredWalls index reference
             if (!GameManager.Instance.isGreen)
+            {
+                GachaColor(wallColor);
+                return;
+            }
+        }
+
+        // Check if the Game unlocks Pink yet
+        if (colorSelection[index].name == "Pink")
+        {
+            // If hasn't unlocked, redo the gacha with the coloredWalls index reference
+            if (!GameManager.Instance.isPink)
             {
                 GachaColor(wallColor);
                 return;

@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     // DYNAMIC DIFFICULTY
     public bool isGreen = false;
+    public bool isPink = false;
 
     public int score // GET SET the value
     {
@@ -180,6 +181,7 @@ public class GameManager : MonoBehaviour
 
         ResetSubscribe();
         SetGreen(false); // lock green colors
+        SetPink(false); // lock pink colors
     }
 
     // The button to either restart or go to the main menu
@@ -205,5 +207,12 @@ public class GameManager : MonoBehaviour
         // true = unlocked green
         // false = locked green
         isGreen = value;
+    }
+
+    public void SetPink(bool value)
+    {
+        // true = unlocked pink
+        // false = locked pink
+        isPink = value;
     }
 }
