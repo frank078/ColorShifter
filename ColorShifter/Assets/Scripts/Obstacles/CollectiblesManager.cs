@@ -37,7 +37,7 @@ public class CollectiblesManager : MonoBehaviour
         DisableAllBlocker();
     }
 
-
+    // COINS AND DIAMONDS
     void ModifyCoins(int TowerNumber)
     {
         if (thisTowerNumber == TowerNumber || TowerNumber == 99)
@@ -103,22 +103,26 @@ public class CollectiblesManager : MonoBehaviour
         }
     }
 
-
+    // BLOCKERS
     void ModifyBlocker(int TowerNumber)
     {
-        if (thisTowerNumber == TowerNumber)
+        // Check if the Game unlocks Blocker yet
+        if (GameManager.Instance.isBlocker)
         {
-            foreach (GameObject _blockers in blockers)
+            if (thisTowerNumber == TowerNumber)
             {
-                // 15% succession
-                float odds = Random.Range(0f, 1f);
-                if (0.15f >= odds)
+                foreach (GameObject _blockers in blockers)
                 {
-                    _blockers.SetActive(true);
-                }
-                else
-                {
-                    _blockers.SetActive(false);
+                    // 15% succession
+                    float odds = Random.Range(0f, 1f);
+                    if (0.15f >= odds)
+                    {
+                        _blockers.SetActive(true);
+                    }
+                    else
+                    {
+                        _blockers.SetActive(false);
+                    }
                 }
             }
         }

@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     // DYNAMIC DIFFICULTY
     public bool isGreen = false;
     public bool isPink = false;
+    public bool isBlocker = false;
 
     public int score // GET SET the value
     {
@@ -180,8 +181,7 @@ public class GameManager : MonoBehaviour
         deathUI.SetActive(true);
 
         ResetSubscribe();
-        SetGreen(false); // lock green colors
-        SetPink(false); // lock pink colors
+        ResetDifficulty();
     }
 
     // The button to either restart or go to the main menu
@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
     {
         isRestart = isRestarted;
         ResetSubscribe();
+        ResetDifficulty();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -200,6 +201,13 @@ public class GameManager : MonoBehaviour
         OnTowerChecking = null;
         OnCoinsCollided = null;
         OnWallsCollided = null;
+    }
+
+    public void ResetDifficulty()
+    {
+        SetGreen(false); // lock green colors
+        SetPink(false); // lock pink colors
+        SetBlocker(false); // lock blocker
     }
 
     public void SetGreen(bool value)
@@ -214,5 +222,12 @@ public class GameManager : MonoBehaviour
         // true = unlocked pink
         // false = locked pink
         isPink = value;
+    }
+
+    public void SetBlocker(bool value)
+    {
+        // true = unlocked blocker
+        // false = locked blocker
+        isBlocker = value;
     }
 }

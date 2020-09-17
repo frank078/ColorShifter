@@ -63,8 +63,15 @@ public class Timer : MonoBehaviour
             GameManager.Instance.SetGreen(true);
         }
 
-        // if target multiplier is 6 or targetTimer is over 75 sec
-        if(targetMultiplier == 6)
+        // if target multiplier is 5 or targetTimer is over 60 sec
+        if(targetMultiplier == 5)
+        {
+            // unlocked blocker
+            GameManager.Instance.SetBlocker(true);
+        }
+
+        // if target multiplier is 7 or targetTimer is over 90 sec
+        if(targetMultiplier == 7)
         {
             // unlocked pink
             GameManager.Instance.SetPink(true);
