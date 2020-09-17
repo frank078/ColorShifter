@@ -54,17 +54,17 @@ public class PlayerCollision : MonoBehaviour
 
     void ChangePlayerColor(int index)
     {
-        // If the Index is higher than color selection (ex: want blue, but havent unlocked yet)
+        // If the Index is higher than color selection (ex: want green, but havent unlocked yet)
         if (colorSelection.Length - 1 < index)
         {
             Debug.LogError("COLOR OUT OF INDEX");
             return;
         }
 
-        // Check if the Game unlocks Blue yet
-        if( colorSelection[index].name == "Blue")
+        // Check if the Game unlocks Green yet
+        if( colorSelection[index].name == "Green")
         {
-            if (!GameManager.Instance.isBlue)
+            if (!GameManager.Instance.isGreen)
             {
                 ShufflePlayerColor();
                 return; // has to put return since it calls the function below which was changing color
@@ -96,21 +96,6 @@ public class PlayerCollision : MonoBehaviour
                 }
             }
         }
-        // JUST IN CASE ON THE TOP IS BROKEN (SAFEKEEPING FOR NOW)
-
-        //int shuffleColor = Random.Range(0, 3);
-        //switch (shuffleColor)
-        //{
-        //    case 0:
-        //        ChangePlayerColor(0); // RED
-        //        break;
-        //    case 1:
-        //        ChangePlayerColor(1); // YELLOW
-        //        break;
-        //    case 2:
-        //        ChangePlayerColor(2); // GREEN
-        //        break;
-        //}
     }
 
     IEnumerator delayWallTrigger(float delayTime)

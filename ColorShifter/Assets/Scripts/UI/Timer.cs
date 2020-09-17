@@ -59,8 +59,8 @@ public class Timer : MonoBehaviour
         // if target multiplier is 3 or targetTimer is over a minute
         if(targetMultiplier == 3)
         {
-            // unlocked blue
-            GameManager.Instance.SetBlue(true);
+            // unlocked green
+            GameManager.Instance.SetGreen(true);
         }
     }
 }

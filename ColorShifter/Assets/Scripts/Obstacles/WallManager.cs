@@ -51,24 +51,6 @@ public class WallManager : MonoBehaviour
             foreach (GameObject _coloredWalls in coloredWalls)
             {
                 GachaColor(_coloredWalls);
-
-
-                // JUST IN CASE ON THE TOP IS BROKEN (SAFEKEEPING FOR NOW)
-
-                ////int = (min inclusive and max exclusive). has to be 1 number higher
-                //  int shuffleColor = Random.Range(1, 4);
-                //  switch (shuffleColor)
-                //  {
-                //      case 1:                                                   //RED
-                //          _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[0];
-                //          break;
-                //      case 2:                                                   //YELLOW
-                //          _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[1];
-                //          break;
-                //      case 3:                                                   //GREEN
-                //          _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[2];
-                //          break;
-                //  }
             }
         }
 
@@ -78,24 +60,6 @@ public class WallManager : MonoBehaviour
             foreach (GameObject _coloredWalls in coloredWalls)
             {
                 GachaColor(_coloredWalls);
-
-
-                // JUST IN CASE ON THE TOP IS BROKEN (SAFEKEEPING FOR NOW)
-
-                ////int = (min inclusive and max exclusive). has to be 1 number higher
-                //int shuffleColor = Random.Range(1, 4);
-                //switch (shuffleColor)
-                //{
-                //    case 1:                                                   //RED
-                //        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[0];
-                //        break;
-                //    case 2:                                                   //YELLOW
-                //        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[1];
-                //        break;
-                //    case 3:                                                   //GREEN
-                //        _coloredWalls.GetComponent<MeshRenderer>().material = colorSelection[2];
-                //        break;
-                //}
             }
         }
     }
@@ -127,10 +91,10 @@ public class WallManager : MonoBehaviour
     // Check new color in Dynamic Difficulty
     void CheckNewColor(int index, GameObject wallColor)
     {
-        if(colorSelection[index].name == "Blue")
+        if(colorSelection[index].name == "Green")
         {
             // If hasn't unlocked, redo the gacha with the coloredWalls index reference
-            if (!GameManager.Instance.isBlue)
+            if (!GameManager.Instance.isGreen)
             {
                 GachaColor(wallColor);
                 return;

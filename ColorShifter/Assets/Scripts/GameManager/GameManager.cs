@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private int m_coins = 0;
 
     // DYNAMIC DIFFICULTY
-    public bool isBlue = false;
+    public bool isGreen = false;
 
     public int score // GET SET the value
     {
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
         deathUI.SetActive(true);
 
         ResetSubscribe();
-        SetBlue(false); // lock blue colors
+        SetGreen(false); // lock green colors
     }
 
     // The button to either restart or go to the main menu
@@ -200,10 +200,10 @@ public class GameManager : MonoBehaviour
         OnWallsCollided = null;
     }
 
-    public void SetBlue(bool value)
+    public void SetGreen(bool value)
     {
-        // true = unlocked blue
-        // false = locked blue
-        isBlue = value;
+        // true = unlocked green
+        // false = locked green
+        isGreen = value;
     }
 }

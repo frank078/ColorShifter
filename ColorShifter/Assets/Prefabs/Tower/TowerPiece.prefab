@@ -394,8 +394,8 @@ MonoBehaviour:
   colorSelection:
   - {fileID: 2100000, guid: 94b5ce43f64d83847bbc4d1c7429c44b, type: 2}
   - {fileID: 2100000, guid: 65503d7782338cc48bf1a6a5b6f40cb6, type: 2}
-  - {fileID: 2100000, guid: 986252f49546ff440b062a37cb0c2f76, type: 2}
   - {fileID: 2100000, guid: a191a8d5bb968ae40a2f36c57fb037b6, type: 2}
+  - {fileID: 2100000, guid: 986252f49546ff440b062a37cb0c2f76, type: 2}
 --- !u!1 &7447287834986992353
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +798,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walls
       objectReference: {fileID: 0}
+    - target: {fileID: 3537615656499132573, guid: 9d88c80753040434cae732453f1b3197, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a191a8d5bb968ae40a2f36c57fb037b6, type: 2}
+    - target: {fileID: 4981107951704934455, guid: 9d88c80753040434cae732453f1b3197, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a191a8d5bb968ae40a2f36c57fb037b6, type: 2}
     - target: {fileID: 5898666904428763447, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_Name
       value: ColoredWalls
@@ -862,6 +870,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walls
       objectReference: {fileID: 0}
+    - target: {fileID: 9018473915223280659, guid: 9d88c80753040434cae732453f1b3197, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a191a8d5bb968ae40a2f36c57fb037b6, type: 2}
     - target: {fileID: 9192934534804276080, guid: 9d88c80753040434cae732453f1b3197, type: 3}
       propertyPath: m_TagString
       value: Walls
