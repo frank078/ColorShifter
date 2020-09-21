@@ -218,7 +218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8345468102476435425, guid: 0c1785de03a92ae47a9fad3ec3bb1014, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c1785de03a92ae47a9fad3ec3bb1014, type: 3}
@@ -226,6 +226,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2765848171880507487, guid: 6573891e7b61ccf418c8e6611c960cf6, type: 3}
   m_PrefabInstance: {fileID: 2765848171708989219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &294238471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8345468102476435425, guid: 0c1785de03a92ae47a9fad3ec3bb1014, type: 3}
+  m_PrefabInstance: {fileID: 139867606}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &438417147 stripped
 GameObject:
@@ -319,6 +324,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6256083022696004096, guid: 950eda97df0071d4bbf5519b9817be74, type: 3}
+      propertyPath: gameUI
+      value: 
+      objectReference: {fileID: 294238471}
     - target: {fileID: 8727738387342617781, guid: 950eda97df0071d4bbf5519b9817be74, type: 3}
       propertyPath: mainMenuUI
       value: 
