@@ -6,22 +6,34 @@ using UnityEngine.UI;
 public class ShopBehavior : MonoBehaviour
 {
     // Variables
-    GameObject shopItem;
+    [System.Serializable] class ShopItem
+    {
+        public Mesh ItemObject;
+        public int Price;
+        public bool IsPurchased = false;
+    }
+
+    [SerializeField] List<ShopItem> ShopItemsList;
+
+    GameObject itemTemplate;
     GameObject g;
     [SerializeField] Transform shopScrollView;
 
     // Start is called before the first frame update
     void Start()
     {
-        shopItem = shopScrollView.GetChild(0).gameObject;
+        itemTemplate = shopScrollView.GetChild(0).gameObject;
 
-        // change final number depending on how many items are in the shop
         // remember to also change the constraint count in the content scroll
-        for (int i = 0; i < 5; i++)
+        int len = ShopItemsList.Count;
+        for (int i = 0; i < len; i++)
         {
-            g = Instantiate(shopItem, shopScrollView);
+            g = Instantiate(itemTemplate, shopScrollView);
+            g.transform.GetChild(0).GetComponent<MeshFilter>().mesh = ShopItemsList[i].ItemObject;
+            g.transform.GetChild(2).GetComponent<Text>().text = ShopItemsList[i].Price.ToString();
+            g.transform.GetChild(3).GetComponent<Button>().interactable = !ShopItemsList[i].IsPurchased;
         }
 
-        Destroy(shopItem);
+        Destroy(itemTemplate);
     }
 }
