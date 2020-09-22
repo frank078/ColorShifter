@@ -339,6 +339,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3110584549225533032, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 662271284}
+    - target: {fileID: 3110584549225533032, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3110584549503815054, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
