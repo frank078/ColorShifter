@@ -43,11 +43,19 @@ public class ShopBehavior : MonoBehaviour
 
     void OnShopItemButtonClicked(int itemIndex)
     {
-        //Purchase Item
-        ShopItemsList[itemIndex].IsPurchased = true;
-        //Disable the button
-        buyButton = shopScrollView.GetChild(itemIndex).GetChild(3).GetComponent<Button>();
-        buyButton.interactable = false;
-        buyButton.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
+        if (SpendCoins.Instance.HasEnoughCoins(ShopItemsList[itemIndex].Price))
+        {
+            SpendCoins.Instance.UseCoins(ShopItemsList[itemIndex].Price);
+            //Purchase Item
+            ShopItemsList[itemIndex].IsPurchased = true;
+            //Disable the button
+            buyButton = shopScrollView.GetChild(itemIndex).GetChild(3).GetComponent<Button>();
+            buyButton.interactable = false;
+            buyButton.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
+        }
+        else
+        {
+            Debug.Log("Broke ass bitch");
+        }
     }
 }
