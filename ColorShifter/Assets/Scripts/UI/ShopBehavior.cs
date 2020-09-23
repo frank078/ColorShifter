@@ -14,6 +14,7 @@ public class ShopBehavior : MonoBehaviour
     }
 
     [SerializeField] List<ShopItem> ShopItemsList;
+    [SerializeField] Text CoinsText;
 
     GameObject itemTemplate;
     GameObject g;
@@ -39,6 +40,9 @@ public class ShopBehavior : MonoBehaviour
         }
 
         Destroy(itemTemplate);
+
+        // Set the coins in the UI
+        SetCoinsUI();
     }
 
     void OnShopItemButtonClicked(int itemIndex)
@@ -52,10 +56,18 @@ public class ShopBehavior : MonoBehaviour
             buyButton = shopScrollView.GetChild(itemIndex).GetChild(3).GetComponent<Button>();
             buyButton.interactable = false;
             buyButton.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
+
+            // Set the coins in the UI
+            SetCoinsUI();
         }
         else
         {
             Debug.Log("Broke ass bitch");
         }
+    }
+
+    void SetCoinsUI()
+    {
+        CoinsText.text = SpendCoins.Instance.Coins.ToString();
     }
 }

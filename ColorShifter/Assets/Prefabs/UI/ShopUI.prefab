@@ -335,6 +335,7 @@ MonoBehaviour:
   - ItemObject: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Price: 200
     IsPurchased: 0
+  CoinsText: {fileID: 3110584549683997196}
   shopScrollView: {fileID: 6097864335397833711}
 --- !u!1 &1570028315185437942
 GameObject:
@@ -833,7 +834,7 @@ GameObject:
   - component: {fileID: 3110584549683997683}
   - component: {fileID: 3110584549683997196}
   m_Layer: 5
-  m_Name: CoinAmountMainMenu
+  m_Name: CoinAmountShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
