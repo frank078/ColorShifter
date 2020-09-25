@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 
             // main menu coins text
             coinsMainMenu = GameObject.Find("CoinAmountMainMenu").GetComponent<Text>();
-            coinsMainMenu.text = "0"; // TODO: Once save system is in, change the amount to the saved coins
+            coinsMainMenu.text = PlayerPrefs.GetInt("CurrentCoins", 0).ToString();
 
             // ---------------------------------------------------------------------------------------------------------------------
 
@@ -132,8 +132,10 @@ public class GameManager : MonoBehaviour
             SpawnPlayer();
 
             //TODO: SAVE SYSTEM
-            //coins = 0;
+            coins = PlayerPrefs.GetInt("CurrentCoins", 0);
             //score = 0;
+
+            //Debug.Log(PlayerPrefs.GetInt("CurrentCoins"));
         }
     }
 
@@ -176,6 +178,8 @@ public class GameManager : MonoBehaviour
 
     public void Death()
     {
+        PlayerPrefs.SetInt("CurrentCoins", coins);
+
         finalCoins.text = coins.ToString();
         SpendCoins.Instance.Coins = coins;
 

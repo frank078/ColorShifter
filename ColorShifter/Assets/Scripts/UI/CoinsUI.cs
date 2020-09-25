@@ -14,7 +14,7 @@ public class CoinsUI : MonoBehaviour
 
         coinsText = gameObject.GetComponent<TextMeshProUGUI>();
 
-        coinsText.text = "0"; //TODO: SAVE SYSTEM LOAD COINS
+        coinsText.text = PlayerPrefs.GetInt("CurrentCoins", 0).ToString();
     }
 
     void ModifyCoins(int playerCoins)
