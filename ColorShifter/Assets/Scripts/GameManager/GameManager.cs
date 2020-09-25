@@ -132,8 +132,8 @@ public class GameManager : MonoBehaviour
             SpawnPlayer();
 
             //TODO: SAVE SYSTEM
-            coins = 0;
-            score = 0;
+            //coins = 0;
+            //score = 0;
         }
     }
 
@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
     public void Death()
     {
         finalCoins.text = coins.ToString();
+        SpendCoins.Instance.Coins = coins;
 
         deathUI.SetActive(true);
 
