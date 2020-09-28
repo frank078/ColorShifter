@@ -1018,27 +1018,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2973211168230950400, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2973211168230950400, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2973211168230950400, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 725
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2973211168230950400, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -218.09888
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2973211168230950400, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1250
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2973211168230950400, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1250
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3110584549225533032, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_Camera
@@ -1098,7 +1098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3110584549503815055, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3498129087034262411, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1170,7 +1170,7 @@ PrefabInstance:
       objectReference: {fileID: 438417147}
     - target: {fileID: 6097864335397833711, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 5410
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436323100120963170, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
       propertyPath: m_AnchorMin.y

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,8 +46,9 @@ public class GameManager : MonoBehaviour
     //-------------------
 
     public Text finalCoins, coinsMainMenu;
-    public GameObject deathUI, mainMenuUI, pauseUI; //TODO: Change after OnSceneLoaded
+    public GameObject deathUI, mainMenuUI, pauseUI, highScore, shopUI; //TODO: Change after OnSceneLoaded
     public Button pauseToMenu, loseToRestart, loseToMenu;
+    public TextMeshProUGUI highScoreText;
 
     public bool isRestart;
 
@@ -98,6 +100,12 @@ public class GameManager : MonoBehaviour
             //This is pause UI
             pauseUI = GameObject.Find("PauseUI");
 
+            //This is High Score UI
+            highScore = GameObject.Find("HighScore");
+
+            //This is shopUI
+            shopUI = GameObject.Find("ShopUI");
+
             //----------------------------------------------------------------------------------------------------------------------
 
             // ---------------------------------------------------------------------------------------------------------------------
@@ -108,6 +116,9 @@ public class GameManager : MonoBehaviour
             // main menu coins text
             coinsMainMenu = GameObject.Find("CoinAmountMainMenu").GetComponent<Text>();
             coinsMainMenu.text = PlayerPrefs.GetInt("CurrentCoins", 0).ToString();
+
+            // Death UI High Score
+            highScoreText = highScore.GetComponent<TextMeshProUGUI>();
 
             // ---------------------------------------------------------------------------------------------------------------------
 
@@ -126,16 +137,19 @@ public class GameManager : MonoBehaviour
             loseToRestart.onClick.AddListener(() => RestartOrMenuButton(true));
             // ---------------------------------------------------------------------------------------------------------------------
 
+            highScore.SetActive(false);
             deathUI.SetActive(false);
             pauseUI.SetActive(false);
+            shopUI.SetActive(false);
 
             SpawnPlayer();
 
             //TODO: SAVE SYSTEM
             coins = PlayerPrefs.GetInt("CurrentCoins", 0);
-            //score = 0;
+            highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+            SpendCoins.Instance.Coins = coins;
 
-            //Debug.Log(PlayerPrefs.GetInt("CurrentCoins"));
+            //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
         }
     }
 
@@ -180,13 +194,28 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("CurrentCoins", coins);
 
+        if(score > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            highScore.SetActive(true);
+            PlayerPrefs.SetInt("HighScore", score);
+            highScoreText.text = "High Score\n" + score.ToString();
+        }
+
+        score = 0;
+
         finalCoins.text = coins.ToString();
-        SpendCoins.Instance.Coins = coins;
+        SpendCoins.Instance.Coins = coins;      
 
         deathUI.SetActive(true);
 
         ResetSubscribe();
         ResetDifficulty();
+    }
+
+    //Reset Score ONLY FOR DEVELOPEMENT
+    public void ResetScore()
+    {
+        PlayerPrefs.DeleteKey("HighScore");
     }
 
     // The button to either restart or go to the main menu
