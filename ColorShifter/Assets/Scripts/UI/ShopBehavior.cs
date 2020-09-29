@@ -40,7 +40,7 @@ public class ShopBehavior : MonoBehaviour
             buyButton.AddEventListener(i, OnShopItemButtonClicked);
             selectButton = g.transform.GetChild(4).GetComponent<Button>();
             selectButton.interactable = !ShopItemsList[i].IsPurchased;
-            selectButton.AddEventListener(i, OnShopItemButtonClicked);
+            selectButton.AddEventListener(i, OnSelectButtonClicked);
         }
 
         Destroy(itemTemplate);
@@ -73,6 +73,20 @@ public class ShopBehavior : MonoBehaviour
         {
             Debug.Log("Broke ass bitch");
         }
+    }
+
+    void OnSelectButtonClicked(int itemIndex)
+    {
+        int len = ShopItemsList.Count;
+        for (int i = 0; i < len; i++)
+        {
+            selectButton = shopScrollView.GetChild(i).GetChild(4).GetComponent<Button>();
+            selectButton.interactable = ShopItemsList[i].IsPurchased;
+            selectButton.transform.GetChild(0).GetComponent<Text>().text = "SELECT";
+        }
+        selectButton = shopScrollView.GetChild(itemIndex).GetChild(4).GetComponent<Button>();
+        selectButton.interactable = false;
+        selectButton.transform.GetChild(0).GetComponent<Text>().text = "SELECTED";
     }
 
     void SetCoinsUI()

@@ -1686,7 +1686,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0.6686816, b: 1, a: 1}
     m_HighlightedColor: {r: 0.1843137, g: 0.76626617, b: 0.8784314, a: 1}
     m_PressedColor: {r: 0, g: 0.67058825, b: 1, a: 1}
-    m_SelectedColor: {r: 1, g: 0.9424448, b: 0, a: 1}
+    m_SelectedColor: {r: 0, g: 0.67058825, b: 1, a: 1}
     m_DisabledColor: {r: 1, g: 0.9411765, b: 0, a: 0.8784314}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1784,4 +1784,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Select
+  m_Text: SELECT
