@@ -21,6 +21,7 @@ public class ShopBehavior : MonoBehaviour
     [SerializeField] Transform shopScrollView;
 
     Button buyButton;
+    Button selectButton;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,9 @@ public class ShopBehavior : MonoBehaviour
             buyButton = g.transform.GetChild(3).GetComponent<Button>();
             buyButton.interactable = !ShopItemsList[i].IsPurchased;
             buyButton.AddEventListener(i, OnShopItemButtonClicked);
+            selectButton = g.transform.GetChild(4).GetComponent<Button>();
+            selectButton.interactable = !ShopItemsList[i].IsPurchased;
+            selectButton.AddEventListener(i, OnShopItemButtonClicked);
         }
 
         Destroy(itemTemplate);
@@ -52,11 +56,16 @@ public class ShopBehavior : MonoBehaviour
             SpendCoins.Instance.UseCoins(ShopItemsList[itemIndex].Price);
             //Purchase Item
             ShopItemsList[itemIndex].IsPurchased = true;
-            //Disable the button
-            buyButton = shopScrollView.GetChild(itemIndex).GetChild(3).GetComponent<Button>();
-            buyButton.interactable = false;
-            buyButton.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
 
+            //Disable the buy button
+            buyButton = shopScrollView.GetChild(itemIndex).GetChild(3).GetComponent<Button>();
+            buyButton.gameObject.SetActive(false);
+            //buyButton.interactable = false;
+            //buyButton.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
+
+            //Enable the select Button
+            selectButton = shopScrollView.GetChild(itemIndex).GetChild(4).GetComponent<Button>();
+            selectButton.gameObject.SetActive(true);
             // Set the coins in the UI
             SetCoinsUI();
         }
