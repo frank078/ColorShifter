@@ -81,7 +81,7 @@ public class ShopBehavior : MonoBehaviour
         for (int i = 0; i < len; i++)
         {
             selectButton = shopScrollView.GetChild(i).GetChild(4).GetComponent<Button>();
-            selectButton.interactable = ShopItemsList[i].IsPurchased;
+            selectButton.interactable = true;
             selectButton.transform.GetChild(0).GetComponent<Text>().text = "SELECT";
         }
         selectButton = shopScrollView.GetChild(itemIndex).GetChild(4).GetComponent<Button>();
