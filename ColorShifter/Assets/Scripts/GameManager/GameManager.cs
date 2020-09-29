@@ -264,4 +264,10 @@ public class GameManager : MonoBehaviour
         // false = locked blocker
         isBlocker = value;
     }
+
+    public void GetLatestCoins()
+    {
+        coinsMainMenu.text = PlayerPrefs.GetInt("CurrentCoins", 0).ToString();
+        coins = PlayerPrefs.GetInt("CurrentCoins", 0);
+    }
 }

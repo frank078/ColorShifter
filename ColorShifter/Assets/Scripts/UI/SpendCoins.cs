@@ -28,6 +28,8 @@ public class SpendCoins : MonoBehaviour
     public void UseCoins(int amount)
     {
         Coins -= amount;
+        PlayerPrefs.SetInt("CurrentCoins", Coins);
+        GameManager.Instance.GetLatestCoins();
     }
 
     public bool HasEnoughCoins(int amount)
