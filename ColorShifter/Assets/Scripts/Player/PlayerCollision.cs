@@ -36,7 +36,7 @@ public class PlayerCollision : MonoBehaviour
                 if (totalTriggered == 0) // AVOID DOUBLE TRIGGER
                 {
                     totalTriggered++;
-                    StartCoroutine(delayWallTrigger(0.1f)); // delay it, to avoid getting killed from changing color while still inside the walls
+                    StartCoroutine(delayWallTrigger(0.15f)); // delay it, to avoid getting killed from changing color while still inside the walls
                 }
             }
             else
