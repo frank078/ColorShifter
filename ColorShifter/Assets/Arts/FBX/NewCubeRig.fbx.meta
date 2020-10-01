@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: ef459ba872bd44b7093a5e18aff391c4
+guid: 91cffa665bf3a4ae7afe8232a0f6301f
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: CubeTpose
+    second: NewCubeTpose
   - first:
-      74: -4875479834446786195
-    second: CubeGoingRightTrans
+      74: 5496775747360006668
+    second: NewCubeGoingRightTrans
   - first:
-      74: 4532457986426011076
-    second: CubeGoingRightIdle
+      74: 5878641340247914465
+    second: NewCubeGoingRightIdle
   - first:
-      74: -4839686271656271529
-    second: CubeRightBackToMidTrans
+      74: -6814996559195224404
+    second: NewCubeRightBackToMidTrans
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -44,7 +44,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: CubeTpose
+      name: NewCubeTpose
       takeName: Take 001
       internalID: 0
       firstFrame: 1
@@ -73,7 +73,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: CubeGoingRightTrans
+      name: NewCubeGoingRightTrans
       takeName: Take 001
       internalID: 0
       firstFrame: 10
@@ -102,7 +102,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: CubeGoingRightIdle
+      name: NewCubeGoingRightIdle
       takeName: Take 001
       internalID: 0
       firstFrame: 18
@@ -131,11 +131,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: CubeRightBackToMidTrans
+      name: NewCubeRightBackToMidTrans
       takeName: Take 001
       internalID: 0
-      firstFrame: 44
-      lastFrame: 60
+      firstFrame: 48
+      lastFrame: 68
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
