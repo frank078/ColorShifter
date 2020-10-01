@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public Material[] colorSelection; // TODO: Add new colors the further player went
-    private MeshRenderer currentColor;
+    private SkinnedMeshRenderer currentColor;
     private int nextTower;
 
     //PARTICLES
@@ -18,7 +18,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void Start()
     {
-        currentColor = gameObject.GetComponent<MeshRenderer>();
+        currentColor = gameObject.GetComponent<SkinnedMeshRenderer>();
         ChangePlayerColor(0);
     }
     private void OnTriggerEnter(Collider other)

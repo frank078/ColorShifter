@@ -10,7 +10,7 @@ public class WallManager : MonoBehaviour
 
     // PLAYER REFERENCES
     private GameObject thePlayer;
-    private MeshRenderer playerCurrentMaterial;
+    private SkinnedMeshRenderer playerCurrentMaterial;
     // ------------------
 
     void Start()
@@ -34,7 +34,7 @@ public class WallManager : MonoBehaviour
 
         // PLAYER GET REFERENCES (playerCurrentMaterial will reget every success collision)
         thePlayer = GameManager.Instance.GetPlayer();
-        playerCurrentMaterial = thePlayer.GetComponent<MeshRenderer>();
+        playerCurrentMaterial = thePlayer.GetComponent<SkinnedMeshRenderer>();
 
 
         // SHUFFLE ALL WALLS BESIDE THE FIRST AND CHECK NEXT WALL (CALL ONCE)
@@ -127,7 +127,7 @@ public class WallManager : MonoBehaviour
             int totalNumber = 0;
             int indexColoredWalls = 0;
 
-            playerCurrentMaterial = thePlayer.GetComponent<MeshRenderer>();
+            playerCurrentMaterial = thePlayer.GetComponent<SkinnedMeshRenderer>();
 
             // if there is a color that matched player and one of the walls, return
             foreach (GameObject _coloredWalls in coloredWalls)
