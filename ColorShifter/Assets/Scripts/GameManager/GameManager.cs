@@ -160,6 +160,12 @@ public class GameManager : MonoBehaviour
         //player                          PlayerStartPos        PlayerStartRot
         _Player = Instantiate(PlayerPawn, PlayerStart.position, PlayerStart.rotation);
 
+        // if Player somehow is not null, destroy it
+        if(Player != null)
+        {
+            Destroy(Player);
+        }
+
         Player = _Player;
     }
 
