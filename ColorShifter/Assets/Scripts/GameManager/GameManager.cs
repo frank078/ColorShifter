@@ -56,12 +56,12 @@ public class GameManager : MonoBehaviour
     {
         // SINGLETON
         // WITHOUT THIS, INSTANCE WILL BE NULL
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject); // will not destroy this gameObject when loading new scene
         }
-        else if(Instance != null)
+        else if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         curScene = scene;
         // TowerScene and DickyScene
-        if(curScene.buildIndex == 0 || curScene.buildIndex == 1 || curScene.buildIndex == 2) // TODO: Change index
+        if (curScene.buildIndex == 0 || curScene.buildIndex == 1 || curScene.buildIndex == 2) // TODO: Change index
         {
             Debug.Log("This is game scene");
 
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
             pauseUI.SetActive(false);
             shopUI.SetActive(false);
 
-            SpawnPlayer();
+            SpawnPlayer(PlayerPawn);
 
             //TODO: SAVE SYSTEM
             coins = PlayerPrefs.GetInt("CurrentCoins", 0);
@@ -153,15 +153,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SpawnPlayer()
+    void SpawnPlayer(GameObject selectedPlayer)
     {
         GameObject _Player;
 
         //player                          PlayerStartPos        PlayerStartRot
-        _Player = Instantiate(PlayerPawn, PlayerStart.position, PlayerStart.rotation);
+        _Player = Instantiate(selectedPlayer, PlayerStart.position, PlayerStart.rotation);
 
         // if Player somehow is not null, destroy it
-        if(Player != null)
+        if (Player != null)
         {
             Destroy(Player);
         }
@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("CurrentCoins", coins);
 
-        if(score > PlayerPrefs.GetInt("HighScore", 0))
+        if (score > PlayerPrefs.GetInt("HighScore", 0))
         {
             highScore.SetActive(true);
             PlayerPrefs.SetInt("HighScore", score);
@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour
         score = 0;
 
         finalCoins.text = coins.ToString();
-        SpendCoins.Instance.Coins = coins;      
+        SpendCoins.Instance.Coins = coins;
 
         deathUI.SetActive(true);
 
