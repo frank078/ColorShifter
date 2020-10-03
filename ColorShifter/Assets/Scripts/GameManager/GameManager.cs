@@ -157,14 +157,14 @@ public class GameManager : MonoBehaviour
     {
         GameObject _Player;
 
-        //player                          PlayerStartPos        PlayerStartRot
-        _Player = Instantiate(selectedPlayer, PlayerStart.position, PlayerStart.rotation);
-
         // if Player somehow is not null, destroy it
         if (Player != null)
         {
             Destroy(Player);
         }
+
+        //player                          PlayerStartPos        PlayerStartRot
+        _Player = Instantiate(selectedPlayer, PlayerStart.position, PlayerStart.rotation);
 
         Player = _Player;
     }
