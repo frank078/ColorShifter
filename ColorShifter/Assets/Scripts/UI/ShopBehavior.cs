@@ -5,6 +5,24 @@ using UnityEngine.UI;
 
 public class ShopBehavior : MonoBehaviour
 {
+    #region SIngleton:ShopBehavior
+
+    public static ShopBehavior Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
     // Variables
     [System.Serializable] class ShopItem
     {
@@ -105,5 +123,16 @@ public class ShopBehavior : MonoBehaviour
     void SetCoinsUI()
     {
         CoinsText.text = SpendCoins.Instance.Coins.ToString();
+    }
+
+    // Call on game manager OnSceneLoaded
+    public void GetCurrentCharacter()
+    {
+        int _PlayerIndex;
+
+        _PlayerIndex = PlayerPrefs.GetInt("CurrentChar", 0);
+
+        //Switch the player character
+        GameManager.Instance.SpawnPlayer(ShopItemsList[_PlayerIndex].playerGameObject);
     }
 }

@@ -149,6 +149,8 @@ public class GameManager : MonoBehaviour
             highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
             SpendCoins.Instance.Coins = coins;
 
+            ShopBehavior.Instance.GetCurrentCharacter();
+
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
         }
     }
