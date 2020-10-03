@@ -9,6 +9,7 @@ public class ShopBehavior : MonoBehaviour
     [System.Serializable] class ShopItem
     {
         public Mesh ItemObject;
+        public GameObject playerGameObject;
         public int Price;
         public bool IsPurchased = false;
     }
@@ -82,6 +83,7 @@ public class ShopBehavior : MonoBehaviour
 
     void OnSelectButtonClicked(int itemIndex)
     {
+        //This loop resets other buttons selected
         int len = ShopItemsList.Count;
         for (int i = 0; i < len; i++)
         {
@@ -89,9 +91,15 @@ public class ShopBehavior : MonoBehaviour
             selectButton.interactable = true;
             selectButton.transform.GetChild(0).GetComponent<Text>().text = "SELECT";
         }
+        // This gets the index of the item selected
         selectButton = shopScrollView.GetChild(itemIndex).GetChild(4).GetComponent<Button>();
         selectButton.interactable = false;
         selectButton.transform.GetChild(0).GetComponent<Text>().text = "SELECTED";
+
+        PlayerPrefs.SetInt("CurrentChar", itemIndex);
+
+        //Switch the player character
+        GameManager.Instance.SpawnPlayer(ShopItemsList[itemIndex].playerGameObject);
     }
 
     void SetCoinsUI()

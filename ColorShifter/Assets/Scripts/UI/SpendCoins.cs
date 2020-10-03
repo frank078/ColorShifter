@@ -24,6 +24,12 @@ public class SpendCoins : MonoBehaviour
 
     public int Coins;
 
+    // For testing only!!!!!! comment out start when done
+    private void Start()
+    {
+        Coins = 10000;
+    }
+
     // Update is called once per frame
     public void UseCoins(int amount)
     {

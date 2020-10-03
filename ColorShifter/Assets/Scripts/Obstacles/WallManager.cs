@@ -127,7 +127,16 @@ public class WallManager : MonoBehaviour
             int totalNumber = 0;
             int indexColoredWalls = 0;
 
-            playerCurrentMaterial = thePlayer.GetComponent<SkinnedMeshRenderer>();
+            // chack if the player switched characters
+            if (playerCurrentMaterial == null)
+            {
+                thePlayer = GameManager.Instance.GetPlayer();
+                playerCurrentMaterial = thePlayer.GetComponent<SkinnedMeshRenderer>();
+            }
+            else
+            {
+                playerCurrentMaterial = thePlayer.GetComponent<SkinnedMeshRenderer>();
+            }
 
             // if there is a color that matched player and one of the walls, return
             foreach (GameObject _coloredWalls in coloredWalls)

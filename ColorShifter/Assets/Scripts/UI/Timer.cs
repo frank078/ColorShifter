@@ -48,9 +48,14 @@ public class Timer : MonoBehaviour
             }
             //Debug.Log("Timer is " + timer + "         " + targetTimer); 
         }
+        // When player switches characters
         else if(thePlayer == null)
         {
-            tFall.StopTower();
+            thePlayer = GameManager.Instance.GetPlayer();
+            if(thePlayer == null)
+            {
+                tFall.StopTower();
+            }
         }
     }
 

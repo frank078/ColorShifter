@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SpawnPlayer(GameObject selectedPlayer)
+    public void SpawnPlayer(GameObject selectedPlayer)
     {
         GameObject _Player;
 
