@@ -32,12 +32,17 @@ public class ShopBehavior : MonoBehaviour
         int len = ShopItemsList.Count;
         for (int i = 0; i < len; i++)
         {
+            // the shop item gameobject
             g = Instantiate(itemTemplate, shopScrollView);
             g.transform.GetChild(0).GetComponent<MeshFilter>().mesh = ShopItemsList[i].ItemObject;
+            g.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.red;
+            g.transform.GetChild(0).GetComponent<Transform>().localScale = new Vector3(450, 450, 450);
             g.transform.GetChild(2).GetComponent<Text>().text = ShopItemsList[i].Price.ToString();
+            //Buy button
             buyButton = g.transform.GetChild(3).GetComponent<Button>();
             buyButton.interactable = !ShopItemsList[i].IsPurchased;
             buyButton.AddEventListener(i, OnShopItemButtonClicked);
+            //Select Button
             selectButton = g.transform.GetChild(4).GetComponent<Button>();
             selectButton.interactable = !ShopItemsList[i].IsPurchased;
             selectButton.AddEventListener(i, OnSelectButtonClicked);
