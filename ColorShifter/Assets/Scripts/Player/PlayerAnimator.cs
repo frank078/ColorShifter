@@ -21,5 +21,21 @@ public class PlayerAnimator : MonoBehaviour
             animator.ResetTrigger("IsRight");
             animator.SetTrigger("IsLeft");
         }
+
+        // Player animations with touch controls
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.position.x > Screen.width / 2)
+            {
+                animator.ResetTrigger("IsLeft");
+                animator.SetTrigger("IsRight");
+            }
+            if (touch.position.x < Screen.width / 2)
+            {
+                animator.ResetTrigger("IsRight");
+                animator.SetTrigger("IsLeft");
+            }
+        }
     }
 }
