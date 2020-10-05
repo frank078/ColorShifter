@@ -9,26 +9,17 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         // Press Right, Move right, stop left animation
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !animator.GetBool("IsRight"))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            animator.SetBool("IsRight", true);
-            animator.SetBool("IsLeft", false);
-        }
-
-        if(Input.GetKeyUp(KeyCode.RightArrow) && animator.GetBool("IsRight"))
-        {
-            animator.SetBool("IsRight", false);
+            animator.ResetTrigger("IsLeft");
+            animator.SetTrigger("IsRight");
         }
 
         // Press Left, Move left, stop right animation
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && !animator.GetBool("IsLeft"))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            animator.SetBool("IsLeft", true);
-            animator.SetBool("IsRight", false);
-        }
-        if(Input.GetKeyUp(KeyCode.LeftArrow) && animator.GetBool("IsLeft"))
-        {
-            animator.SetBool("IsLeft", false);
+            animator.ResetTrigger("IsRight");
+            animator.SetTrigger("IsLeft");
         }
     }
 }
