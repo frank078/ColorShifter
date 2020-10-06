@@ -67,7 +67,10 @@ public class ShopBehavior : MonoBehaviour
             selectButton.AddEventListener(i, OnSelectButtonClicked);
         }
 
+        // REMINDER: The items on ShopScrollView start at 1
         Destroy(itemTemplate);
+
+        FirstButtonToSelect();
 
         // Set the coins in the UI
         SetCoinsUI();
@@ -134,5 +137,19 @@ public class ShopBehavior : MonoBehaviour
 
         //Switch the player character
         GameManager.Instance.SpawnPlayer(ShopItemsList[_PlayerIndex].playerGameObject);
+    }
+
+    void FirstButtonToSelect()
+    {
+        // First Button does not need buy
+        ShopItemsList[1].IsPurchased = true;
+
+        buyButton = shopScrollView.GetChild(1).GetChild(3).GetComponent<Button>();
+        buyButton.gameObject.SetActive(false);
+
+        selectButton = shopScrollView.GetChild(1).GetChild(4).GetComponent<Button>();
+        selectButton.gameObject.SetActive(true);
+
+        OnSelectButtonClicked(PlayerPrefs.GetInt("CurrentChar", 0) + 1);
     }
 }
