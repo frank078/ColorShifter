@@ -70,7 +70,10 @@ public class ShopBehavior : MonoBehaviour
         // REMINDER: The items on ShopScrollView start at 1
         Destroy(itemTemplate);
 
-        FirstButtonToSelect();
+        if (PlayerPrefs.GetInt("CurrentChar", 0) == 0)
+        {
+            FirstButtonToSelect();
+        }
 
         // Set the coins in the UI
         SetCoinsUI();
@@ -149,7 +152,9 @@ public class ShopBehavior : MonoBehaviour
 
         selectButton = shopScrollView.GetChild(1).GetChild(4).GetComponent<Button>();
         selectButton.gameObject.SetActive(true);
+        selectButton.interactable = false;
+        selectButton.transform.GetChild(0).GetComponent<Text>().text = "SELECTED";
 
-        OnSelectButtonClicked(PlayerPrefs.GetInt("CurrentChar", 0) + 1);
+        //OnSelectButtonClicked(1); //TODO: Fix the +1 error every time you start the shop
     }
 }
