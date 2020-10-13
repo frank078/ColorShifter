@@ -107,6 +107,13 @@ public class ShopBehavior : MonoBehaviour
         {
             FirstButtonToSelect();
         }
+        else
+        {
+            selectButton = shopScrollView.GetChild(PlayerPrefs.GetInt("CurrentChar", 0) + 1).GetChild(4).GetComponent<Button>();
+            selectButton.gameObject.SetActive(true);
+            selectButton.interactable = false;
+            selectButton.transform.GetChild(0).GetComponent<Text>().text = "SELECTED";
+        }
 
         // Set the coins in the UI
         SetCoinsUI();
