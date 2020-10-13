@@ -42,10 +42,19 @@ public class ShopBehavior : MonoBehaviour
     Button buyButton;
     Button selectButton;
 
+    bool[] buttonsBought;
+
     // Start is called before the first frame update
     void Start()
     {
+        //For testing only!
+        //ES3.DeleteKey("Asuna");
+
         itemTemplate = shopScrollView.GetChild(0).gameObject;
+
+        buttonsBought = new bool[ShopItemsList.Count];
+
+        buttonsBought = ES3.Load("Asuna", buttonsBought);
 
         // remember to also change the constraint count in the content scroll
         int len = ShopItemsList.Count;
@@ -65,7 +74,31 @@ public class ShopBehavior : MonoBehaviour
             selectButton = g.transform.GetChild(4).GetComponent<Button>();
             selectButton.interactable = !ShopItemsList[i].IsPurchased;
             selectButton.AddEventListener(i, OnSelectButtonClicked);
+
+            // take the save for bought buttons
+            if (buttonsBought[i] == true)
+            {
+                ShopItemsList[i].IsPurchased = true;
+
+                //Disable the buy button
+                buyButton.gameObject.SetActive(false);
+
+                //Enable the select Button
+                selectButton.gameObject.SetActive(true);
+            }          
         }
+
+        // First button always bought --------------------------------------------------------------
+        ShopItemsList[1].IsPurchased = true;
+
+        //Disable the buy button
+        buyButton = shopScrollView.GetChild(1).GetChild(3).GetComponent<Button>();
+        buyButton.gameObject.SetActive(false);
+
+        //Enable the select Button
+        selectButton = shopScrollView.GetChild(1).GetChild(4).GetComponent<Button>();
+        selectButton.gameObject.SetActive(true);
+        //------------------------------------------------------------------------------------------
 
         // REMINDER: The items on ShopScrollView start at 1
         Destroy(itemTemplate);
@@ -97,6 +130,10 @@ public class ShopBehavior : MonoBehaviour
             selectButton = shopScrollView.GetChild(itemIndex).GetChild(4).GetComponent<Button>();
             selectButton.gameObject.SetActive(true);
             // Set the coins in the UI
+
+            buttonsBought[itemIndex] = true;
+            ES3.Save("Asuna", buttonsBought);
+
             SetCoinsUI();
         }
         else
