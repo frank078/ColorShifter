@@ -18,7 +18,8 @@ public class AdmobAds : MonoBehaviour
     string LoseAdID = "ca-app-pub-6546446247412058/5322586669";
 
     public InterstitialAd interstitial;
-    public RewardBasedVideoAd rewardedAd;
+    public RewardBasedVideoAd ContinueAd;
+    public RewardBasedVideoAd CoinsAd;
 
     public static AdmobAds instance;
 
@@ -33,7 +34,8 @@ public class AdmobAds : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this);
 
-        rewardedAd = RewardBasedVideoAd.Instance;
+        ContinueAd = RewardBasedVideoAd.Instance;
+        CoinsAd = RewardBasedVideoAd.Instance;
     }
 
     // Start is called before the first frame update
@@ -47,27 +49,27 @@ public class AdmobAds : MonoBehaviour
 
     public void loadContinueVideo()
     {
-        rewardedAd.LoadAd(new AdRequest.Builder().Build(), rewarded_Ad_ID);
+        ContinueAd.LoadAd(new AdRequest.Builder().Build(), rewarded_Ad_ID);
 
-        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
-        rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-        rewardedAd.OnAdOpening += HandleRewardedAdOpening;
-        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-        rewardedAd.OnAdRewarded += ContinueReward;
-        rewardedAd.OnAdLeavingApplication += HandleOnRewardAdleavingApp;
+        ContinueAd.OnAdLoaded += HandleRewardedAdLoaded;
+        ContinueAd.OnAdClosed += HandleRewardedAdClosed;
+        ContinueAd.OnAdOpening += HandleRewardedAdOpening;
+        ContinueAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+        ContinueAd.OnAdRewarded += ContinueReward;
+        ContinueAd.OnAdLeavingApplication += HandleOnRewardAdleavingApp;
 
     }
 
     public void loadCoinsVideo()
     {
-        rewardedAd.LoadAd(new AdRequest.Builder().Build(), rewarded_Ad_ID);
+        CoinsAd.LoadAd(new AdRequest.Builder().Build(), rewarded_Ad_ID);
 
-        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
-        rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-        rewardedAd.OnAdOpening += HandleRewardedAdOpening;
-        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-        rewardedAd.OnAdRewarded += CoinsReward;
-        rewardedAd.OnAdLeavingApplication += HandleOnRewardAdleavingApp;
+        CoinsAd.OnAdLoaded += HandleRewardedAdLoaded;
+        CoinsAd.OnAdClosed += HandleRewardedAdClosed;
+        CoinsAd.OnAdOpening += HandleRewardedAdOpening;
+        CoinsAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+        CoinsAd.OnAdRewarded += CoinsReward;
+        CoinsAd.OnAdLeavingApplication += HandleOnRewardAdleavingApp;
 
     }
 
@@ -135,11 +137,23 @@ public class AdmobAds : MonoBehaviour
 
 
 
-    public void showVideoAd()
+    public void ShowContinueVideoAd()
     {
-        if (rewardedAd.IsLoaded())
+        if (ContinueAd.IsLoaded())
         {
-            rewardedAd.Show();
+            ContinueAd.Show();
+        }
+        else
+        {
+            Debug.Log("Rewarded Video ad not loaded");
+        }
+    }
+
+    public void ShowCoinsVideoAd()
+    {
+        if (CoinsAd.IsLoaded())
+        {
+            CoinsAd.Show();
         }
         else
         {

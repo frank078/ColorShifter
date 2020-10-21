@@ -293,11 +293,12 @@ public class GameManager : MonoBehaviour
     //call this on continue button
     public void ContinueVideo()
     {
-        AdmobAds.instance.showVideoAd();
+        AdmobAds.instance.ShowContinueVideoAd();
     }
 
     public void ContinueRward()
     {
+        Debug.Log("Rewarded bitch");
         deathUI.SetActive(false);
         Player.SetActive(true);
     }
@@ -305,7 +306,7 @@ public class GameManager : MonoBehaviour
     //call this on the coins rewards
     public void CoinsVideo()
     {
-        AdmobAds.instance.showVideoAd();
+        AdmobAds.instance.ShowCoinsVideoAd();
     }
 
     public void CoinsReward()
@@ -318,5 +319,5 @@ public class GameManager : MonoBehaviour
     {
         AdmobAds.instance.ShowInterstitialAd();
     }
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------
 }
