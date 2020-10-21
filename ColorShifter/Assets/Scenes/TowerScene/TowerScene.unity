@@ -237,6 +237,49 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3110584549503815055, guid: d165b9f0aca597047b2f632b35c3ef54, type: 3}
   m_PrefabInstance: {fileID: 2476449996073287833}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &864094393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 864094395}
+  - component: {fileID: 864094394}
+  m_Layer: 0
+  m_Name: AdManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &864094394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864094393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d014222efdc12340ab4d09db90c8a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &864094395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864094393}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.958292, y: 5.2259426, z: 7.129507}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &865749524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,6 +491,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 864272599750989951, guid: 9b7bda6c5c6aafd449140f08e9849e18, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ContinueVideo
+      objectReference: {fileID: 0}
     - target: {fileID: 2765848171801221010, guid: 9b7bda6c5c6aafd449140f08e9849e18, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6

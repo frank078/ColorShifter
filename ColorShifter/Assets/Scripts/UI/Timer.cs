@@ -37,7 +37,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         // IF OVER TARGET, INCREASE SPEED
-        if (isTimerPlaying && thePlayer != null)
+        if (isTimerPlaying && thePlayer.activeInHierarchy)
         {
             timer += Time.deltaTime * timeSpeed;
             if (timer >= targetTimer)
@@ -49,10 +49,10 @@ public class Timer : MonoBehaviour
             //Debug.Log("Timer is " + timer + "         " + targetTimer); 
         }
         // When player switches characters
-        else if(thePlayer == null)
+        else if(!thePlayer.activeInHierarchy)
         {
             thePlayer = GameManager.Instance.GetPlayer();
-            if(thePlayer == null)
+            if(!thePlayer.activeInHierarchy)
             {
                 tFall.StopTower();
             }

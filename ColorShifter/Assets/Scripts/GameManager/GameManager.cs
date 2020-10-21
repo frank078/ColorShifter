@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour
 
             ShopBehavior.Instance.GetCurrentCharacter();
 
+            GetAdsAtStart();
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
         }
     }
@@ -216,8 +217,10 @@ public class GameManager : MonoBehaviour
 
         deathUI.SetActive(true);
 
-        ResetSubscribe();
-        ResetDifficulty();
+        LoseAd();
+
+        //ResetSubscribe();
+        //ResetDifficulty();
     }
 
     //Reset Score ONLY FOR DEVELOPEMENT
@@ -278,4 +281,43 @@ public class GameManager : MonoBehaviour
         coinsMainMenu.text = PlayerPrefs.GetInt("CurrentCoins", 0).ToString();
         coins = PlayerPrefs.GetInt("CurrentCoins", 0);
     }
+
+    // ADs -----------------------------------------------------------------------------------------------------------------------------------------
+    public void GetAdsAtStart()
+    {
+        AdmobAds.instance.requestInterstital();
+        AdmobAds.instance.loadContinueVideo();
+        AdmobAds.instance.loadCoinsVideo();
+    }
+
+    //call this on continue button
+    public void ContinueVideo()
+    {
+        AdmobAds.instance.showVideoAd();
+    }
+
+    public void ContinueRward()
+    {
+        deathUI.SetActive(true);
+
+        Player.SetActive(true);
+    }
+
+    //call this on the coins rewards
+    public void CoinsVideo()
+    {
+        AdmobAds.instance.showVideoAd();
+    }
+
+    public void CoinsReward()
+    {
+
+    }
+
+    //call this when the player loses every 3 times
+    public void LoseAd()
+    {
+        AdmobAds.instance.ShowInterstitialAd();
+    }
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------
 }

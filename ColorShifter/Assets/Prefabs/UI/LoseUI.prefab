@@ -977,7 +977,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7559097369140540223, guid: fbb610af4d57a644f8831d80742ffac0, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartButton
+        m_MethodName: ContinueVideo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
