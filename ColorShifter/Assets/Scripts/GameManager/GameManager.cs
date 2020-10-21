@@ -298,8 +298,7 @@ public class GameManager : MonoBehaviour
 
     public void ContinueRward()
     {
-        deathUI.SetActive(true);
-
+        deathUI.SetActive(false);
         Player.SetActive(true);
     }
 
