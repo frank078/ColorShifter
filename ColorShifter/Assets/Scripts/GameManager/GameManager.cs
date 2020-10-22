@@ -151,8 +151,9 @@ public class GameManager : MonoBehaviour
 
             ShopBehavior.Instance.GetCurrentCharacter();
 
-            GetAdsAtStart();
+            
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
+            GetAdsAtStart();
         }
     }
 

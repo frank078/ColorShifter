@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        highScore.text = "HighScore\n" + PlayerPrefs.GetInt("HighScore", 0).ToString();
+        highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
 
     public void StartGame()
