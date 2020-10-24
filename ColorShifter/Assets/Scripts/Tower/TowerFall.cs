@@ -6,8 +6,8 @@ public class TowerFall : MonoBehaviour
     // Variables
     public Rigidbody[] rb;
     //get set, that way it will not accidently change number
-    [SerializeField] private float m_fallSpeed = 10f; // TODO: Remove SerializeField IN THE FUTURE
-    private float m_maxFallSpeed = 25f;
+    [SerializeField] private float m_fallSpeed = 10f; // TODO: Remove SerializeField once the Speed has been Tested
+    [SerializeField] private float m_maxFallSpeed = 30f; // TODO: Remove SerializeField once the Speed has been Tested
 
     public float fallSpeed
     {
@@ -21,7 +21,7 @@ public class TowerFall : MonoBehaviour
         set { m_maxFallSpeed = value; }
     }
 
-    public float speedMultiplier = .5f; // TODO: SET THIS TO PRIVATE ONCE THE SPEED HAS BEEN TESTED
+    public float speedMultiplier = 1f; // TODO: SET THIS TO PRIVATE ONCE THE SPEED HAS BEEN TESTED
 
     void FixedUpdate()
     {
