@@ -13,8 +13,8 @@ public class AdsManager : MonoBehaviour
     string Rewarded_Ad_ID = "ca-app-pub-3940256099942544/5224354917";
 
     private InterstitialAd loseAd;
-    private RewardBasedVideoAd continueAd;
-    private RewardBasedVideoAd coinsAd;
+    private RewardedAd continueRewardedAd;
+    private RewardedAd extraCoinsRewardedAd;
 
     public static AdsManager instance;
 
@@ -33,6 +33,9 @@ public class AdsManager : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(App_ID);
+
+        this.continueRewardedAd = CreateAndLoadRewardedAd(Rewarded_Ad_ID);
+        this.extraCoinsRewardedAd = CreateAndLoadRewardedAd(Rewarded_Ad_ID);
 
     }
 
@@ -63,39 +66,34 @@ public class AdsManager : MonoBehaviour
         }
     }
 
-    public void RequestLoseAdVideo()
+    public RewardedAd CreateAndLoadRewardedAd(string adUnitId)
     {
-        continueAd = RewardBasedVideoAd.Instance;
+        RewardedAd rewardedAd = new RewardedAd(adUnitId);
+
+        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+        rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        rewardedAd.OnAdClosed += HandleRewardedAdClosed;
 
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded ad with the request.
-        this.continueAd.LoadAd(request, Rewarded_Ad_ID);
+        rewardedAd.LoadAd(request);
+        return rewardedAd;
     }
 
     public void ShowContinueVideoAd()
     {
-        if (this.continueAd.IsLoaded())
+        if (this.continueRewardedAd.IsLoaded())
         {
-            this.continueAd.Show();
+            this.continueRewardedAd.Show();
         }
-    }
-
-    public void RequestCoinsAdVideo()
-    {
-        coinsAd = RewardBasedVideoAd.Instance;
-
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
-        // Load the rewarded ad with the request.
-        this.coinsAd.LoadAd(request, Rewarded_Ad_ID);
     }
 
     public void ShowCoinsVideoAd()
     {
-        if (this.coinsAd.IsLoaded())
+        if (this.extraCoinsRewardedAd.IsLoaded())
         {
-            this.coinsAd.Show();
+            this.extraCoinsRewardedAd.Show();
         }
     }
 
@@ -127,7 +125,6 @@ public class AdsManager : MonoBehaviour
     }
     // ------------------------------------------------------------------------------------------------------------------------------------------
 
-    /*
     // Events and Delgates for Rewarded ads -----------------------------------------------------------------------------------------------------
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
@@ -167,5 +164,4 @@ public class AdsManager : MonoBehaviour
                         + amount.ToString() + " " + type);
     }
     // ------------------------------------------------------------------------------------------------------------------------------------------------
-    */
 }

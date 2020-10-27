@@ -152,8 +152,6 @@ public class GameManager : MonoBehaviour
             ShopBehavior.Instance.GetCurrentCharacter();
 
             AdsManager.instance.RequestInterstitial();
-            AdsManager.instance.RequestLoseAdVideo();
-            AdsManager.instance.RequestCoinsAdVideo();
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
         }
     }
