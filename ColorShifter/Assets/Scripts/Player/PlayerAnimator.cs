@@ -22,6 +22,17 @@ public class PlayerAnimator : MonoBehaviour
             animator.SetTrigger("IsLeft");
         }
 
+        // Input has been lifted, reset immediately
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            animator.ResetTrigger("IsRight");
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            animator.ResetTrigger("IsLeft");
+        }
+
         // Player animations with touch controls
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
         {
@@ -37,5 +48,7 @@ public class PlayerAnimator : MonoBehaviour
                 animator.SetTrigger("IsLeft");
             }
         }
+
+        // TODO: need one for getkeyup
     }
 }
