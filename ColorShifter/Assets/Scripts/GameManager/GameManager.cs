@@ -217,6 +217,8 @@ public class GameManager : MonoBehaviour
 
         deathUI.SetActive(true);
 
+        AdsManager.instance.ShowLoseAd();
+
         //ResetSubscribe();
         //ResetDifficulty();
     }
