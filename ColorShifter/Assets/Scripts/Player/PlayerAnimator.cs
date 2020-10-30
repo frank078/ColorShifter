@@ -23,13 +23,15 @@ public class PlayerAnimator : MonoBehaviour
         }
 
         // Input has been lifted, reset immediately
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
+            Touch touch = Input.GetTouch(0);
             animator.ResetTrigger("IsRight");
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
+            Touch touch = Input.GetTouch(0);
             animator.ResetTrigger("IsLeft");
         }
 
