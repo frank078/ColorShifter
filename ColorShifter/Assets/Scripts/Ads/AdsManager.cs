@@ -162,6 +162,16 @@ public class AdsManager : MonoBehaviour
         MonoBehaviour.print(
             "HandleRewardedAdRewarded event received for "
                         + amount.ToString() + " " + type);
+
+        //if (type == "Continue")
+        //{
+        //    GameManager.Instance.GiveExtraLife();
+        //}
+        //else if(type == "Coins")
+        //{
+        //    GameManager.Instance.GiveExtraCoins();
+        //}
+
     }
     // ------------------------------------------------------------------------------------------------------------------------------------------------
 }

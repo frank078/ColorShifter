@@ -281,4 +281,14 @@ public class GameManager : MonoBehaviour
         coinsMainMenu.text = PlayerPrefs.GetInt("CurrentCoins", 0).ToString();
         coins = PlayerPrefs.GetInt("CurrentCoins", 0);
     }
+
+    public void GiveExtraLife()
+    {
+        Debug.Log("Extra life bitch");
+    }
+
+    public void GiveExtraCoins()
+    {
+        Debug.Log("Youre richer now");
+    }
 }
