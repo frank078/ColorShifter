@@ -117,6 +117,9 @@ public class ShopBehavior : MonoBehaviour
 
         // Set the coins in the UI
         SetCoinsUI();
+
+        //Reset buttons for debugging only
+        //ES3.DeleteKey("Asuna");
     }
 
     void OnShopItemButtonClicked(int itemIndex)
