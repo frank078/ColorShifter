@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
 
             ShopBehavior.Instance.GetCurrentCharacter();
 
-            AdsManager.instance.RequestInterstitial();
+            //AdsManager.instance.RequestInterstitial();
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
         }
     }
@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
 
         deathUI.SetActive(true);
 
-        AdsManager.instance.ShowLoseAd();
+        //AdsManager.instance.ShowLoseAd();
 
         //ResetSubscribe();
         //ResetDifficulty();
