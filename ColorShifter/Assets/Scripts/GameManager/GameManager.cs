@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
 
     public bool isRestart;
 
+    AudioSource menuMusic;
+
     void Awake()
     {
         // SINGLETON
@@ -150,6 +152,9 @@ public class GameManager : MonoBehaviour
             SpendCoins.Instance.Coins = coins;
 
             ShopBehavior.Instance.GetCurrentCharacter();
+
+            menuMusic = gameObject.GetComponent<AudioSource>();
+            menuMusic.Play();
 
             //AdsManager.instance.RequestInterstitial();
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
