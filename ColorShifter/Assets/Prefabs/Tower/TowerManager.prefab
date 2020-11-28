@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 5852287668264497068}
   - {fileID: 5852287668224319639}
   - {fileID: 5852287667658424132}
-  m_fallSpeed: 10
+  m_fallSpeed: 14
   m_maxFallSpeed: 30
   speedMultiplier: 1
 --- !u!114 &8586593395155429559
