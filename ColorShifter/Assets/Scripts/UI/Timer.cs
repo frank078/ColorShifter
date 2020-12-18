@@ -6,7 +6,6 @@ public class Timer : MonoBehaviour
 {
     float timer;
     private float timeSpeed = 1f; // This is for the timer speed
-    bool isTimerPlaying = true;
 
     // for get set, that way it will not accidently change number
     [SerializeField] private float m_targetTimer = 15;
@@ -28,6 +27,8 @@ public class Timer : MonoBehaviour
     private GameObject thePlayer;
     private TowerFall tFall;
 
+    public static bool isContinue;
+
     void Start()
     {
         thePlayer = GameManager.Instance.GetPlayer();
@@ -37,16 +38,9 @@ public class Timer : MonoBehaviour
     void Update()
     {
         // IF OVER TARGET, INCREASE SPEED
-        if (isTimerPlaying && thePlayer != null)
+        if (thePlayer != null)
         {
-            timer += Time.deltaTime * timeSpeed;
-            if (timer >= targetTimer)
-            {
-                targetMultiplier++;
-                tFall.increaseFallSpeed();
-                CheckTimer();
-            }
-            //Debug.Log("Timer is " + timer + "         " + targetTimer); 
+            TowerMoving();
         }
         // When player switches characters
         else if(thePlayer == null)
@@ -56,6 +50,13 @@ public class Timer : MonoBehaviour
             {
                 tFall.StopTower();
             }
+        }
+
+        if (isContinue)
+        {
+            tFall.RestoreSpeed();
+            isContinue = false;
+            Debug.Log("Continue");
         }
     }
 
@@ -81,5 +82,17 @@ public class Timer : MonoBehaviour
             // unlocked pink
             GameManager.Instance.SetPink(true);
         }
+    }
+
+    public void TowerMoving()
+    {
+        timer += Time.deltaTime * timeSpeed;
+        if (timer >= targetTimer)
+        {
+            targetMultiplier++;
+            tFall.increaseFallSpeed();
+            CheckTimer();
+        }
+        //Debug.Log("Timer is " + timer + "         " + targetTimer); 
     }
 }

@@ -23,6 +23,10 @@ public class TowerFall : MonoBehaviour
 
     public float speedMultiplier = 1f; // TODO: SET THIS TO PRIVATE ONCE THE SPEED HAS BEEN TESTED
 
+    float storeCurFallSpeed;
+
+    bool hasStoredSpeed;
+
     void FixedUpdate()
     {
         for (int i = 0; i < rb.Length; i++)
@@ -43,12 +47,25 @@ public class TowerFall : MonoBehaviour
 
     public void StopTower() // call the Enumerator delayStop
     {
-        StartCoroutine(delayStop(1.5f));
+        if (hasStoredSpeed == false)
+        {
+            storeCurFallSpeed = fallSpeed;
+            Debug.Log(storeCurFallSpeed);
+            StartCoroutine(delayStop(1.5f));
+            hasStoredSpeed = true;
+        }
     }
 
     IEnumerator delayStop(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
         fallSpeed = 0f;
+    }
+
+    public void RestoreSpeed()
+    {
+        fallSpeed = storeCurFallSpeed;
+        Debug.Log(storeCurFallSpeed);
+        hasStoredSpeed = false;
     }
 }

@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
     public UnityMonetization AdsManager;
     //true = life, false = extra coins
     bool lifeOrCoins;
+    int maxContinues;
+
+    Button continueButton;
 
     void Awake()
     {
@@ -141,6 +144,8 @@ public class GameManager : MonoBehaviour
             // Lose UI's Restart Button
             loseToRestart = GameObject.Find("RestartButton").GetComponent<Button>();
             loseToRestart.onClick.AddListener(() => RestartOrMenuButton(true));
+
+            continueButton = GameObject.Find("ContinueButton").GetComponent<Button>();
             // ---------------------------------------------------------------------------------------------------------------------
 
             // ---------------------------------------------------------------------------------------------------------------------
@@ -165,6 +170,8 @@ public class GameManager : MonoBehaviour
 
             menuMusic = gameObject.GetComponent<AudioSource>();
             menuMusic.Play();
+
+            maxContinues = 0;
 
             //AdsManager.instance.RequestInterstitial();
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
@@ -225,12 +232,13 @@ public class GameManager : MonoBehaviour
             highScoreText.text = "High Score\n" + score.ToString();
         }
 
-        score = 0;
+        //score = 0;
 
         finalCoins.text = coins.ToString();
         SpendCoins.Instance.Coins = coins;
 
         deathUI.SetActive(true);
+        Debug.Log("okay");
 
         ShowDeathAd();
 
@@ -297,16 +305,6 @@ public class GameManager : MonoBehaviour
         coins = PlayerPrefs.GetInt("CurrentCoins", 0);
     }
 
-    public void GiveExtraLife()
-    {
-        Debug.Log("Extra life bitch");
-    }
-
-    public void GiveExtraCoins()
-    {
-        Debug.Log("Youre richer now");
-    }
-
     public void ShowDeathAd()
     {
         AdsManager.DisplayInterstitialAd();
@@ -329,7 +327,20 @@ public class GameManager : MonoBehaviour
         if (lifeOrCoins == true)
         {
             // extra life
-            deathUI.SetActive(false);
+            maxContinues += 1;
+            if(maxContinues <= 3)
+            {
+                deathUI.SetActive(false);
+                // Respawn the player
+                ShopBehavior.Instance.GetCurrentCharacter();
+                Timer.isContinue = true;
+                lifeOrCoins = false;
+            }
+            
+            if (maxContinues == 3)
+            {
+                continueButton.gameObject.SetActive(false);
+            }
         }
         else if (lifeOrCoins == false)
         {
