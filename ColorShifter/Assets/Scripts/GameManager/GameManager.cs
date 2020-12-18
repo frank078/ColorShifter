@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
             loseToRestart.onClick.AddListener(() => RestartOrMenuButton(true));
 
             continueButton = GameObject.Find("ContinueButton").GetComponent<Button>();
+            continueButton.onClick.AddListener(() => ShowContinueAd());
             // ---------------------------------------------------------------------------------------------------------------------
 
             // ---------------------------------------------------------------------------------------------------------------------
@@ -232,13 +233,10 @@ public class GameManager : MonoBehaviour
             highScoreText.text = "High Score\n" + score.ToString();
         }
 
-        //score = 0;
-
         finalCoins.text = coins.ToString();
         SpendCoins.Instance.Coins = coins;
 
         deathUI.SetActive(true);
-        Debug.Log("okay");
 
         ShowDeathAd();
 
@@ -276,6 +274,8 @@ public class GameManager : MonoBehaviour
         SetGreen(false); // lock green colors
         SetPink(false); // lock pink colors
         SetBlocker(false); // lock blocker
+
+        score = 0;
     }
 
     public void SetGreen(bool value)

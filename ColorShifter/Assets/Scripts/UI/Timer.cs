@@ -56,7 +56,6 @@ public class Timer : MonoBehaviour
         {
             tFall.RestoreSpeed();
             isContinue = false;
-            Debug.Log("Continue");
         }
     }
 

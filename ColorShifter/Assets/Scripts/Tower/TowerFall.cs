@@ -50,7 +50,6 @@ public class TowerFall : MonoBehaviour
         if (hasStoredSpeed == false)
         {
             storeCurFallSpeed = fallSpeed;
-            Debug.Log(storeCurFallSpeed);
             StartCoroutine(delayStop(1.5f));
             hasStoredSpeed = true;
         }
@@ -63,9 +62,15 @@ public class TowerFall : MonoBehaviour
     }
 
     public void RestoreSpeed()
-    {
-        fallSpeed = storeCurFallSpeed;
-        Debug.Log(storeCurFallSpeed);
+    {  
+        if (storeCurFallSpeed > 14)
+        {
+            fallSpeed = storeCurFallSpeed - 1;
+        }
+        else
+        {
+            fallSpeed = storeCurFallSpeed;
+        }
         hasStoredSpeed = false;
     }
 }
