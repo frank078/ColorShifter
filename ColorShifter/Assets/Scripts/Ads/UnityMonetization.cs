@@ -36,6 +36,7 @@ public class UnityMonetization : MonoBehaviour, IUnityAdsListener
         {
             // Reward the user for watching the ad to completion.
             Debug.Log("You get a reward");
+            GameManager.Instance.GiveReward();
         }
         else if (showResult == ShowResult.Skipped)
         {

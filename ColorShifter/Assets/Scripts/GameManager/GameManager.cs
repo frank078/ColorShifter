@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     AudioSource menuMusic;
 
     public UnityMonetization AdsManager;
+    //true = life, false = extra coins
+    bool lifeOrCoins;
 
     void Awake()
     {
@@ -308,5 +310,30 @@ public class GameManager : MonoBehaviour
     public void ShowDeathAd()
     {
         AdsManager.DisplayInterstitialAd();
+    }
+
+    public void ShowContinueAd()
+    {
+        AdsManager.DisplayVideoAd();
+        lifeOrCoins = true;
+    }
+
+    public void ShowCoinsAd()
+    {
+        AdsManager.DisplayVideoAd();
+        lifeOrCoins = false;
+    }
+
+    public void GiveReward()
+    {
+        if (lifeOrCoins == true)
+        {
+            // extra life
+            deathUI.SetActive(false);
+        }
+        else if (lifeOrCoins == false)
+        {
+            // extra coins
+        }
     }
 }

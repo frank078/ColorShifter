@@ -450,15 +450,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 864272599750989951, guid: 9b7bda6c5c6aafd449140f08e9849e18, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowContinueVideoAd
+      value: ShowContinueAd
       objectReference: {fileID: 0}
     - target: {fileID: 864272599750989951, guid: 9b7bda6c5c6aafd449140f08e9849e18, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1220705322}
     - target: {fileID: 864272599750989951, guid: 9b7bda6c5c6aafd449140f08e9849e18, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AdsManager, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2765848171801221010, guid: 9b7bda6c5c6aafd449140f08e9849e18, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
