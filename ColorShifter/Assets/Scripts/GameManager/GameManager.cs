@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     AudioSource menuMusic;
 
+    public UnityMonetization AdsManager;
+
     void Awake()
     {
         // SINGLETON
@@ -139,6 +141,12 @@ public class GameManager : MonoBehaviour
             loseToRestart.onClick.AddListener(() => RestartOrMenuButton(true));
             // ---------------------------------------------------------------------------------------------------------------------
 
+            // ---------------------------------------------------------------------------------------------------------------------
+            // Script
+            AdsManager = GameObject.Find("AdsManager").GetComponent<UnityMonetization>();
+
+            // ---------------------------------------------------------------------------------------------------------------------
+
             highScore.SetActive(false);
             deathUI.SetActive(false);
             pauseUI.SetActive(false);
@@ -222,7 +230,7 @@ public class GameManager : MonoBehaviour
 
         deathUI.SetActive(true);
 
-        //AdsManager.instance.ShowLoseAd();
+        ShowDeathAd();
 
         //ResetSubscribe();
         //ResetDifficulty();
@@ -295,5 +303,10 @@ public class GameManager : MonoBehaviour
     public void GiveExtraCoins()
     {
         Debug.Log("Youre richer now");
+    }
+
+    public void ShowDeathAd()
+    {
+        AdsManager.DisplayInterstitialAd();
     }
 }
