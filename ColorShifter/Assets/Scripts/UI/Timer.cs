@@ -29,6 +29,10 @@ public class Timer : MonoBehaviour
 
     public static bool isContinue;
 
+    float continueTimer;
+    bool isTimerMoving;
+    float continueTargetTimer = 2;
+
     void Start()
     {
         thePlayer = GameManager.Instance.GetPlayer();
@@ -56,6 +60,29 @@ public class Timer : MonoBehaviour
         {
             tFall.RestoreSpeed();
             isContinue = false;
+            isTimerMoving = true;
+        }
+
+        if (isTimerMoving)
+        {
+            Debug.Log("lol");
+            if(tFall.IsSpeedSameAsCurSpeed())
+            {
+                // Increase speed every 2 seconds
+                Debug.Log("Dicky never getting terraria");
+                continueTimer += Time.deltaTime * timeSpeed;
+                if (continueTimer > continueTargetTimer)
+                {
+                    tFall.IncreaseRestoreSpeed(2);
+                    Debug.Log("Waifu");
+                    continueTimer = 0;
+                }
+            }
+            else
+            {
+                isTimerMoving = false;
+                Debug.Log("didint work loser");
+            }
         }
     }
 

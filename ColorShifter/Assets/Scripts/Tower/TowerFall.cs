@@ -27,6 +27,13 @@ public class TowerFall : MonoBehaviour
 
     bool hasStoredSpeed;
 
+    float storeFallSpeed;
+
+    private void Start()
+    {
+        storeFallSpeed = fallSpeed;
+    }
+
     void FixedUpdate()
     {
         for (int i = 0; i < rb.Length; i++)
@@ -62,15 +69,32 @@ public class TowerFall : MonoBehaviour
     }
 
     public void RestoreSpeed()
-    {  
-        if (storeCurFallSpeed > 14)
+    {
+        fallSpeed = storeFallSpeed;
+        hasStoredSpeed = false;
+    }
+
+    public bool IsSpeedSameAsCurSpeed()
+    {
+        if (storeCurFallSpeed >= fallSpeed)
         {
-            fallSpeed = storeCurFallSpeed - 1;
+            return true;
         }
         else
         {
-            fallSpeed = storeCurFallSpeed;
+            return false;
         }
-        hasStoredSpeed = false;
+    }
+
+    public void IncreaseRestoreSpeed(float addedTime)
+    {
+        if (fallSpeed != maxFallSpeed)
+        {
+            fallSpeed += speedMultiplier;
+            if (fallSpeed >= storeCurFallSpeed)
+            {
+                fallSpeed = storeCurFallSpeed;
+            }
+        }
     }
 }
