@@ -7,6 +7,7 @@ public class PlayerCollision : MonoBehaviour
     public Material[] colorSelection; // TODO: Add new colors the further player went
     private SkinnedMeshRenderer currentColor;
     private int nextTower;
+    public Material immortalityColor; // Immortality color
 
     //PARTICLES
     public GameObject playerPassEffect;
@@ -52,7 +53,7 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    public void ChangePlayerColor(int index)
+    void ChangePlayerColor(int index)
     {
         // If the Index is higher than color selection (ex: want green, but havent unlocked yet)
         if (colorSelection.Length - 1 < index)
@@ -136,5 +137,11 @@ public class PlayerCollision : MonoBehaviour
 
         // Play particles
         Instantiate(coinPickup, coin.transform.position, Quaternion.Euler(-90, 0, 0));
+    }
+
+    public void ChangeToImmortalColor()
+    {
+        //currentColor.material = immortalityColor;
+        currentColor.material = colorSelection[1];
     }
 }

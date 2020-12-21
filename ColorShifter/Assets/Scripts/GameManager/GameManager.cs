@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour
         SetGreen(false); // lock green colors
         SetPink(false); // lock pink colors
         SetBlocker(false); // lock blocker
-
+        SetImmortality(false); // disable this as it will still be active if we click restart or menu when immortal is active
         score = 0;
     }
 
@@ -308,7 +308,7 @@ public class GameManager : MonoBehaviour
 
         if (isImmortality)
         {
-            GetPlayer().GetComponent<PlayerCollision>().ChangePlayerColor(5);
+            GetPlayer().GetComponent<PlayerCollision>().ChangeToImmortalColor();
         }
     }
 
@@ -349,7 +349,7 @@ public class GameManager : MonoBehaviour
                 Timer.isContinue = true;
                 lifeOrCoins = false;
 
-                //SetImmortality(true);
+                SetImmortality(true);
             }
             
             if (maxContinues == 3)
