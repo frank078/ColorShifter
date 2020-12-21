@@ -73,7 +73,7 @@ public class WallManager : MonoBehaviour
             float odds = Random.Range(0f, 1f);
             if (0.20f >= odds)
             {
-                // Need the whole gamobject since you need to change the material from that
+                // Need the whole gameobject since you need to change the material from that
                 wallColor.GetComponent<MeshRenderer>().material = colorSelection[i];
                 CheckNewColor(i, wallColor);
                 return;
@@ -127,7 +127,7 @@ public class WallManager : MonoBehaviour
             int totalNumber = 0;
             int indexColoredWalls = 0;
 
-            // chack if the player switched characters
+            // chack if the player switched colors
             if (playerCurrentMaterial == null)
             {
                 thePlayer = GameManager.Instance.GetPlayer();
