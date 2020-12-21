@@ -27,8 +27,8 @@ public class Timer : MonoBehaviour
     private GameObject thePlayer;
     private TowerFall tFall;
 
+    // CONTINUE FROM DEATH
     public static bool isContinue;
-
     float continueTimer;
     bool isTimerMoving;
     float continueTargetTimer = 2;
@@ -53,6 +53,7 @@ public class Timer : MonoBehaviour
             if(thePlayer == null)
             {
                 tFall.StopTower();
+                isTimerMoving = false;
             }
         }
 
