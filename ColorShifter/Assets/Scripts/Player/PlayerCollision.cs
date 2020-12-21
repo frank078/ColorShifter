@@ -52,7 +52,7 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    void ChangePlayerColor(int index)
+    public void ChangePlayerColor(int index)
     {
         // If the Index is higher than color selection (ex: want green, but havent unlocked yet)
         if (colorSelection.Length - 1 < index)

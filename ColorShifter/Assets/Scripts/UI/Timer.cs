@@ -63,25 +63,22 @@ public class Timer : MonoBehaviour
             isTimerMoving = true;
         }
 
+        // If Continue from the Death, Restore Speed
         if (isTimerMoving)
         {
-            Debug.Log("lol");
             if(tFall.IsSpeedSameAsCurSpeed())
             {
-                // Increase speed every 2 seconds
-                Debug.Log("Dicky never getting terraria");
+                // Increase speed every 2 seconds until it reach last speed bfor death
                 continueTimer += Time.deltaTime * timeSpeed;
                 if (continueTimer > continueTargetTimer)
                 {
                     tFall.IncreaseRestoreSpeed(2);
-                    Debug.Log("Waifu");
                     continueTimer = 0;
                 }
             }
             else
             {
                 isTimerMoving = false;
-                Debug.Log("didint work loser");
             }
         }
     }

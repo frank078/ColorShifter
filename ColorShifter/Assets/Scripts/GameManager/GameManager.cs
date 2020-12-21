@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public bool isGreen = false;
     public bool isPink = false;
     public bool isBlocker = false;
+    public bool isImmortality = false;
 
     public int score // GET SET the value
     {
@@ -299,6 +300,18 @@ public class GameManager : MonoBehaviour
         isBlocker = value;
     }
 
+    public void SetImmortality(bool value)
+    {
+        // true = be immortal
+        // false = no immortal
+        isImmortality = value;
+
+        if (isImmortality)
+        {
+            GetPlayer().GetComponent<PlayerCollision>().ChangePlayerColor(5);
+        }
+    }
+
     public void GetLatestCoins()
     {
         coinsMainMenu.text = PlayerPrefs.GetInt("CurrentCoins", 0).ToString();
@@ -335,6 +348,8 @@ public class GameManager : MonoBehaviour
                 ShopBehavior.Instance.GetCurrentCharacter();
                 Timer.isContinue = true;
                 lifeOrCoins = false;
+
+                //SetImmortality(true);
             }
             
             if (maxContinues == 3)
