@@ -216,10 +216,19 @@ public class GameManager : MonoBehaviour
         OnCoinsCollided?.Invoke(coins);
     }
 
-    public void ModifyScoreUI()
+    public void ModifyScoreUI(bool isNotImmortal)
     {
-        score++;
-        OnWallsCollided?.Invoke(score);
+        // if player is not immortal, gain point / score
+        if (isNotImmortal)
+        {
+            score++;
+            OnWallsCollided?.Invoke(score);
+        }
+        else
+        {
+            // we want the immortality to be active only ONCE after death
+            SetImmortality(false);
+        }
     }
     // -------------------------------------------
 

@@ -40,8 +40,8 @@ public class PlayerCollision : MonoBehaviour
             MeshRenderer coloredWallsColor = other.gameObject.GetComponent<MeshRenderer>();
             nextTower = 1 + other.gameObject.transform.parent.parent.GetComponentInParent<TowerObjectPulling>().TowerNumber;
 
-            // if player color is the same as one of the walls that collide
-            if (currentColor.material.name == coloredWallsColor.material.name)
+            // if player color is the same as one of the walls that collide OR player is immortal
+            if (currentColor.material.name == coloredWallsColor.material.name || GameManager.Instance.isImmortality)
             {
                 if (totalTriggered == 0) // AVOID DOUBLE TRIGGER
                 {
@@ -123,8 +123,16 @@ public class PlayerCollision : MonoBehaviour
         yield return new WaitForSeconds(delayTime); // will continue after this delay, before will call it first before delay
         ShufflePlayerColor();
 
-        GameManager.Instance.ModifyScoreUI(); // call the delegate functions for ScoreUI
-
+        // if player is immortal, will not gain point / score
+        if (GameManager.Instance.isImmortality)
+        {
+            GameManager.Instance.ModifyScoreUI(false); // call the delegate functions for ScoreUI
+        }
+        else
+        {
+            GameManager.Instance.ModifyScoreUI(true); // call the delegate functions for ScoreUI
+        }
+        
         //Play particles
         Instantiate(playerPassEffect, transform.position + new Vector3(0, -1, 0), Quaternion.Euler(-90, 0, 0));
 
