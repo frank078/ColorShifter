@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public Text finalCoins, coinsMainMenu;
     public GameObject deathUI, mainMenuUI, pauseUI, highScore, shopUI; //TODO: Change after OnSceneLoaded
-    public Button pauseToMenu, loseToRestart, loseToMenu;
+    public Button pauseToMenu, loseToRestart, loseToMenu, continueButton, extraCoinsButton;
     public TextMeshProUGUI highScoreText;
 
     public bool isRestart;
@@ -58,11 +58,10 @@ public class GameManager : MonoBehaviour
     public UnityMonetization AdsManager;
     //true = life, false = extra coins
     bool lifeOrCoins;
+    bool isCoinAd;
     int maxContinues;
     // 3 = 0,1,2. Initialize to 2 so that the first death plays ad
     int LoseAd3 = 2;
-
-    Button continueButton;
 
     void Awake()
     {
@@ -150,6 +149,9 @@ public class GameManager : MonoBehaviour
 
             continueButton = GameObject.Find("ContinueButton").GetComponent<Button>();
             continueButton.onClick.AddListener(() => ShowContinueAd());
+
+            extraCoinsButton = GameObject.Find("ExtraCoinsButton").GetComponent<Button>();
+            extraCoinsButton.onClick.AddListener(() => ShowCoinsAd());
             // ---------------------------------------------------------------------------------------------------------------------
 
             // ---------------------------------------------------------------------------------------------------------------------
@@ -162,6 +164,7 @@ public class GameManager : MonoBehaviour
             deathUI.SetActive(false);
             pauseUI.SetActive(false);
             shopUI.SetActive(false);
+            extraCoinsButton.gameObject.SetActive(false);
 
             SpawnPlayer(PlayerPawn);
 
@@ -179,6 +182,8 @@ public class GameManager : MonoBehaviour
 
             //AdsManager.instance.RequestInterstitial();
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
+            //ResetCoins(); //Only for testing, COMMENT OUT WHEN DONE TESTING
+
         }
     }
 
@@ -260,6 +265,12 @@ public class GameManager : MonoBehaviour
     public void ResetScore()
     {
         PlayerPrefs.DeleteKey("HighScore");
+    }
+
+    // Reset Coins ONLY FOR DEVELOPEMENT
+    public void ResetCoins()
+    {
+        PlayerPrefs.DeleteKey("CurrentCoins");
     }
 
     // The button to either restart or go to the main menu
@@ -353,6 +364,7 @@ public class GameManager : MonoBehaviour
     {
         AdsManager.DisplayVideoAd();
         lifeOrCoins = false;
+        isCoinAd = true;
     }
 
     public void GiveReward()
@@ -379,7 +391,19 @@ public class GameManager : MonoBehaviour
         }
         else if (lifeOrCoins == false)
         {
-            // extra coins
+            if (maxContinues == 3)
+            {
+                extraCoinsButton.gameObject.SetActive(true);
+            }
+
+            if (isCoinAd == true)
+            {
+                //give the modafucka 20 coins
+                ModifyCoinsUI(20);
+                PlayerPrefs.SetInt("CurrentCoins", coins);
+                finalCoins.text = coins.ToString();
+                isCoinAd = false;
+            }
         }
     }
 }
