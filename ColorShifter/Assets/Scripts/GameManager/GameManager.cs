@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     //true = life, false = extra coins
     bool lifeOrCoins;
     int maxContinues;
+    // 3 = 0,1,2. Initialize to 2 so that the first death plays ad
+    int LoseAd3 = 2;
 
     Button continueButton;
 
@@ -332,7 +334,13 @@ public class GameManager : MonoBehaviour
 
     public void ShowDeathAd()
     {
-        AdsManager.DisplayInterstitialAd();
+        // The death add shows up on every 3rd death
+        if(LoseAd3 == 2)
+        {
+            AdsManager.DisplayInterstitialAd();
+            LoseAd3 = -1;
+        }
+        LoseAd3 += 1;
     }
 
     public void ShowContinueAd()
