@@ -88,6 +88,9 @@ public class ShopBehavior : MonoBehaviour
             }          
         }
 
+        shopScrollView.GetChild(9).GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 90, -180);
+        shopScrollView.GetChild(10).GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 90, -180);
+
         // First button always bought --------------------------------------------------------------
         ShopItemsList[1].IsPurchased = true;
 
