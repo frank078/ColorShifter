@@ -48,7 +48,7 @@ public class ShopBehavior : MonoBehaviour
     void Start()
     {
         //For testing only!
-        //ES3.DeleteKey("Asuna");
+        ES3.DeleteKey("Asuna");
 
         itemTemplate = shopScrollView.GetChild(0).gameObject;
 
