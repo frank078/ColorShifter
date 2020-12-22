@@ -20,7 +20,16 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         currentColor = gameObject.GetComponent<SkinnedMeshRenderer>();
-        ChangePlayerColor(0);
+
+        // if player is restored from death (immortal) 
+        if (GameManager.Instance.isImmortality)
+        {
+            ChangeToImmortalColor();
+        }
+        else // else set it to default color (red)
+        {
+            ChangePlayerColor(0);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -141,7 +150,6 @@ public class PlayerCollision : MonoBehaviour
 
     public void ChangeToImmortalColor()
     {
-        //currentColor.material = immortalityColor;
-        currentColor.material = colorSelection[1];
+        currentColor.material = immortalityColor;
     }
 }

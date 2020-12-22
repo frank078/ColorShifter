@@ -306,10 +306,13 @@ public class GameManager : MonoBehaviour
         // false = no immortal
         isImmortality = value;
 
-        if (isImmortality)
-        {
-            GetPlayer().GetComponent<PlayerCollision>().ChangeToImmortalColor();
-        }
+        // Doesn't have to call here
+        // 1. Can just call it on PlayerCollision Start()
+        // 2. Call from here will give null ref since currentColor is set at Start where we call ChangeToImmortalColor immediately, you can get ref again but it's waste
+        //if (isImmortality)
+        //{
+        //    GetPlayer().GetComponent<PlayerCollision>().ChangeToImmortalColor();
+        //}
     }
 
     public void GetLatestCoins()
