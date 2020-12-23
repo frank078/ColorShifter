@@ -369,11 +369,13 @@ public class GameManager : MonoBehaviour
 
     public void GiveReward()
     {
+        
         if (lifeOrCoins == true)
         {
             // extra life
             maxContinues += 1;
-            if(maxContinues <= 3)
+            Debug.Log(maxContinues);
+            if (maxContinues <= 3)
             {
                 deathUI.SetActive(false);
                 // Respawn the player
@@ -387,21 +389,18 @@ public class GameManager : MonoBehaviour
             if (maxContinues == 3)
             {
                 continueButton.gameObject.SetActive(false);
+                extraCoinsButton.gameObject.SetActive(true);
             }
         }
         else if (lifeOrCoins == false)
         {
-            if (maxContinues == 3)
-            {
-                extraCoinsButton.gameObject.SetActive(true);
-            }
-
             if (isCoinAd == true)
             {
                 //give the modafucka 20 coins
                 ModifyCoinsUI(20);
                 PlayerPrefs.SetInt("CurrentCoins", coins);
                 finalCoins.text = coins.ToString();
+                extraCoinsButton.gameObject.SetActive(false);
                 isCoinAd = false;
             }
         }
