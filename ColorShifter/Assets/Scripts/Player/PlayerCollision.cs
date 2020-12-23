@@ -12,6 +12,7 @@ public class PlayerCollision : MonoBehaviour
     //PARTICLES
     public GameObject playerPassEffect;
     public GameObject coinPickup;
+    public GameObject invincibilityFX;
 
     // AVOID Double Trigger
     private int totalTriggered = 0;
@@ -25,6 +26,7 @@ public class PlayerCollision : MonoBehaviour
         if (GameManager.Instance.isImmortality)
         {
             ChangeToImmortalColor();
+            Instantiate(invincibilityFX, transform.position + new Vector3(0, -1, 0), Quaternion.Euler(-90, 0, 0));
         }
         else // else set it to default color (red)
         {

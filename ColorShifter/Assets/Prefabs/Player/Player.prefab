@@ -84,6 +84,7 @@ MonoBehaviour:
   immortalityColor: {fileID: 2100000, guid: ebf86b671680a0e46ba2247ba75abbd3, type: 2}
   playerPassEffect: {fileID: 4764177790826315072, guid: 61cffc61855a16045836f802ea2f5b03, type: 3}
   coinPickup: {fileID: 2452405642294550420, guid: b36820f45aa199146a5623c88737312b, type: 3}
+  invincibilityFX: {fileID: 8361786377266397182, guid: b174d24f95fbfa247beddaf957a9298d, type: 3}
 --- !u!137 &4283802750733359083
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
