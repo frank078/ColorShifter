@@ -325,39 +325,39 @@ MonoBehaviour:
     IsPurchased: 0
   - ItemObject: {fileID: 2162606127541679097, guid: 8d178b75f1d2144e7a6cac3e3553e459, type: 3}
     playerGameObject: {fileID: 5620671422380894750, guid: 96e851283be37bd40a330a023c1a512f, type: 3}
-    Price: 30
+    Price: 500
     IsPurchased: 0
   - ItemObject: {fileID: 4198128730827539211, guid: d4046c4286cbb44c1bbecb7388e189c2, type: 3}
     playerGameObject: {fileID: 4350628464269774169, guid: cb0fa50398235f04bbb8cbfb94f1e5b3, type: 3}
-    Price: 50
+    Price: 500
     IsPurchased: 0
   - ItemObject: {fileID: 3782499699038555060, guid: ff4a5ca3d4c36438ea48d99af78cb18b, type: 3}
     playerGameObject: {fileID: 3167076719373113693, guid: 5692179a6b0819d4d882838b55c95dda, type: 3}
-    Price: 100
+    Price: 500
     IsPurchased: 0
   - ItemObject: {fileID: -9067625971488988053, guid: dcd3467a04e3248bd8923a3416d4839c, type: 3}
     playerGameObject: {fileID: 5529111718827961989, guid: 65493fb12e1c4bc4799f5db0efbc41e7, type: 3}
-    Price: 200
+    Price: 500
     IsPurchased: 0
   - ItemObject: {fileID: 5248634478950232678, guid: 73e7c64e8abe4754bb300d01537c2b30, type: 3}
     playerGameObject: {fileID: 1550786998522349523, guid: 2113405906ea49340a53fe7087c1ba2e, type: 3}
-    Price: 200
+    Price: 1000
     IsPurchased: 0
   - ItemObject: {fileID: -2883199301548838796, guid: 27a997263e672f54f9b17f44907649f4, type: 3}
     playerGameObject: {fileID: 7302355136800902509, guid: 508a3b35b03d76343bf35968748f9567, type: 3}
-    Price: 200
+    Price: 2000
     IsPurchased: 0
   - ItemObject: {fileID: 6350457921799135387, guid: 4ec8ef7b2e77791448a6e08e97897331, type: 3}
     playerGameObject: {fileID: 1938337787706404846, guid: 32a2571d14290ac4da1f7833adc43e1b, type: 3}
-    Price: 200
+    Price: 2500
     IsPurchased: 0
   - ItemObject: {fileID: 6833043231657624136, guid: 7f0e355473c104c4694441b0d199b63a, type: 3}
     playerGameObject: {fileID: 3398697395368870588, guid: fc3cc3cdd6c3c054394020d6c9632d10, type: 3}
-    Price: 200
+    Price: 3000
     IsPurchased: 0
   - ItemObject: {fileID: 4183689750759965658, guid: 2c08c10123a93254f94320b2bed71481, type: 3}
     playerGameObject: {fileID: 3977229545191874250, guid: 75f967a136636f64b9ae35387e936e86, type: 3}
-    Price: 200
+    Price: 3500
     IsPurchased: 0
   CoinsText: {fileID: 3110584549683997196}
   shopScrollView: {fileID: 6097864335397833711}
