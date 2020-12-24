@@ -48,7 +48,7 @@ public class ShopBehavior : MonoBehaviour
     void Start()
     {
         //For testing only!
-        ES3.DeleteKey("Asuna");
+        //ES3.DeleteKey("Asuna");
 
         itemTemplate = shopScrollView.GetChild(0).gameObject;
 
@@ -85,9 +85,14 @@ public class ShopBehavior : MonoBehaviour
 
                 //Enable the select Button
                 selectButton.gameObject.SetActive(true);
+
+                //Set coins UI to false
+                shopScrollView.GetChild(i + 1).GetChild(1).gameObject.SetActive(false);
+                shopScrollView.GetChild(i + 1).GetChild(2).gameObject.SetActive(false);
             }          
         }
 
+        // Rotate meshes
         shopScrollView.GetChild(9).GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 90, -180);
         shopScrollView.GetChild(10).GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 90, -180);
 
@@ -101,6 +106,10 @@ public class ShopBehavior : MonoBehaviour
         //Enable the select Button
         selectButton = shopScrollView.GetChild(1).GetChild(4).GetComponent<Button>();
         selectButton.gameObject.SetActive(true);
+
+        //Disable cost
+        shopScrollView.GetChild(1).GetChild(1).gameObject.SetActive(false);
+        shopScrollView.GetChild(1).GetChild(2).gameObject.SetActive(false);
         //------------------------------------------------------------------------------------------
 
         // REMINDER: The items on ShopScrollView start at 1
@@ -142,7 +151,10 @@ public class ShopBehavior : MonoBehaviour
             //Enable the select Button
             selectButton = shopScrollView.GetChild(itemIndex).GetChild(4).GetComponent<Button>();
             selectButton.gameObject.SetActive(true);
-            // Set the coins in the UI
+
+            //Set coins UI to false
+            shopScrollView.GetChild(itemIndex).GetChild(1).gameObject.SetActive(false);
+            shopScrollView.GetChild(itemIndex).GetChild(2).gameObject.SetActive(false);
 
             buttonsBought[itemIndex] = true;
             ES3.Save("Asuna", buttonsBought);
