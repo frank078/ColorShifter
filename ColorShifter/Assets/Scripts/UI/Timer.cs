@@ -66,7 +66,7 @@ public class Timer : MonoBehaviour
             }
         }
 
-        // Only run this when player just start the game, stop after exceeding BeginnerMaxTargetSpeed
+        // Only run this when player just start the game or continue from death, stop after exceeding BeginnerMaxTargetSpeed
         if (isBeginningTimerMoving)
         {
             SetTFallBeginningSpeed();

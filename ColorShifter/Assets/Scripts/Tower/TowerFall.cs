@@ -34,7 +34,7 @@ public class TowerFall : MonoBehaviour
 
     private void Start()
     {
-        storeFallSpeed = fallSpeed;
+        storeFallSpeed = beginningSpeed;
         fallSpeed = 0;
     }
 

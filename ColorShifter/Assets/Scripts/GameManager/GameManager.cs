@@ -281,6 +281,7 @@ public class GameManager : MonoBehaviour
         isRestart = isRestarted;
         ResetSubscribe();
         ResetDifficulty();
+        Timer.isArrowPressed = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
