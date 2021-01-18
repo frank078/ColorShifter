@@ -23,15 +23,19 @@ public class TowerFall : MonoBehaviour
 
     public float speedMultiplier = 1f; // TODO: SET THIS TO PRIVATE ONCE THE SPEED HAS BEEN TESTED
 
+    // Stored Speed upon death
     float storeCurFallSpeed;
-
     bool hasStoredSpeed;
-
     float storeFallSpeed;
+
+    // Beginning TargetSpeed
+    float beginningSpeed = 5f;
+    float beginningMaxTargetSpeed = 15f;
 
     private void Start()
     {
         storeFallSpeed = fallSpeed;
+        fallSpeed = 0;
     }
 
     void FixedUpdate()
@@ -85,8 +89,8 @@ public class TowerFall : MonoBehaviour
             return false;
         }
     }
-
-    public void IncreaseRestoreSpeed(float addedTime)
+    // RESTORE SPEED (Did not use addedSpeed)
+    public void IncreaseRestoreSpeed(float addedSpeed)
     {
         if (fallSpeed != maxFallSpeed)
         {
@@ -97,4 +101,36 @@ public class TowerFall : MonoBehaviour
             }
         }
     }
+
+    // BEGINNING SPEED
+    public void SetBeginningSpeed()
+    {
+        fallSpeed = beginningSpeed;
+    }
+
+    public void IncreaseBeginningSpeed(float addedSpeed)
+    {
+        if(fallSpeed != maxFallSpeed)
+        {
+            fallSpeed += addedSpeed;
+            if(fallSpeed >= beginningMaxTargetSpeed)
+            {
+                fallSpeed = beginningMaxTargetSpeed;
+            }
+        }
+    }
+
+    public bool isSpeedSameAsBeginningMaxTargetSpeed()
+    {
+        if(beginningMaxTargetSpeed > fallSpeed)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // --------------------------------------------------
 }

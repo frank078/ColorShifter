@@ -33,6 +33,14 @@ public class Timer : MonoBehaviour
     bool isTimerMoving;
     float continueTargetTimer = 2;
 
+    // NO SPEED AT START GAME
+    public static bool isArrowPressed; // set to true after arrow button pressed;
+    float beginningTimer;
+    bool isBeginningTimerMoving;
+    float beginningTargetTimer = 3;
+    bool isSpeedHasBeenSet; // for setting beginning speed
+
+
     void Start()
     {
         thePlayer = GameManager.Instance.GetPlayer();
@@ -42,9 +50,10 @@ public class Timer : MonoBehaviour
     void Update()
     {
         // IF OVER TARGET, INCREASE SPEED
-        if (thePlayer != null)
+        if (thePlayer != null && isArrowPressed)
         {
             TowerMoving();
+            isBeginningTimerMoving = true;
         }
         // When player switches characters
         else if(thePlayer == null)
@@ -55,6 +64,13 @@ public class Timer : MonoBehaviour
                 tFall.StopTower();
                 isTimerMoving = false;
             }
+        }
+
+        // Only run this when player just start the game, stop after exceeding BeginnerMaxTargetSpeed
+        if (isBeginningTimerMoving)
+        {
+            SetTFallBeginningSpeed();
+            BeginningTimerMoving();
         }
 
         if (isContinue)
@@ -118,5 +134,38 @@ public class Timer : MonoBehaviour
             CheckTimer();
         }
         //Debug.Log("Timer is " + timer + "         " + targetTimer); 
+    }
+
+    // Increase beginning speed
+    public void BeginningTimerMoving()
+    {
+        if (isArrowPressed)
+        {
+            if (tFall.isSpeedSameAsBeginningMaxTargetSpeed())
+            {
+                // Increase speed every 3 sec
+                beginningTimer += Time.deltaTime * timeSpeed;
+                if (beginningTimer >= beginningTargetTimer)
+                {
+                    tFall.IncreaseBeginningSpeed(1);
+                    beginningTimer = 0;
+                }
+            }
+            else
+            {
+                isBeginningTimerMoving = false;
+            }
+
+        }
+    }
+
+    // Set Beggining Speed (RUN ONLY ONCE)
+    public void SetTFallBeginningSpeed()
+    {
+        if (!isSpeedHasBeenSet)
+        {
+            tFall.SetBeginningSpeed();
+            isSpeedHasBeenSet = true;
+        }
     }
 }

@@ -25,17 +25,15 @@ public class TowerRotate : MonoBehaviour
         // Turn Right
         if (Input.GetKey(KeyCode.RightArrow) && thePlayer != null)
         {
-            currentRotation = transform.eulerAngles;
-            currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y + newRotation, Time.deltaTime * speed);
-            transform.eulerAngles = currentRotation;
+            RotateLeftTower();
+            EnableTowerMoving();
         }
 
         // Turn Left
         if (Input.GetKey(KeyCode.LeftArrow) && thePlayer != null)
         {
-            currentRotation = transform.eulerAngles;
-            currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y - newRotation, Time.deltaTime * speed);
-            transform.eulerAngles = currentRotation;
+            RotateRightTower();
+            EnableTowerMoving();
         }
 
         // Touch Controls
@@ -44,16 +42,32 @@ public class TowerRotate : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if (touch.position.x > Screen.width / 2)
             {
-                currentRotation = transform.eulerAngles;
-                currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y + newRotation, Time.deltaTime * speed);
-                transform.eulerAngles = currentRotation;
+                RotateLeftTower();
+                EnableTowerMoving();
             }
             if (touch.position.x < Screen.width / 2)
             {
-                currentRotation = transform.eulerAngles;
-                currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y - newRotation, Time.deltaTime * speed);
-                transform.eulerAngles = currentRotation;
+                RotateRightTower();
+                EnableTowerMoving();
             }
         }
+    }
+
+    void RotateRightTower()
+    {
+        currentRotation = transform.eulerAngles;
+        currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y - newRotation, Time.deltaTime * speed);
+        transform.eulerAngles = currentRotation;
+    }
+    void RotateLeftTower()
+    {
+        currentRotation = transform.eulerAngles;
+        currentRotation.y = Mathf.Lerp(currentRotation.y, currentRotation.y + newRotation, Time.deltaTime * speed);
+        transform.eulerAngles = currentRotation;
+    }
+
+    void EnableTowerMoving()
+    {
+        Timer.isArrowPressed = true;
     }
 }
