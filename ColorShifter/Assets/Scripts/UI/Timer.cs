@@ -40,6 +40,8 @@ public class Timer : MonoBehaviour
     float beginningTargetTimer = 3;
     bool isSpeedHasBeenSet; // for setting beginning speed
 
+    public Animator theArrows;
+
 
     void Start()
     {
@@ -166,6 +168,7 @@ public class Timer : MonoBehaviour
         {
             tFall.SetBeginningSpeed();
             isSpeedHasBeenSet = true;
+            theArrows.SetTrigger("SetIdle");
         }
     }
 }

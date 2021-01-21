@@ -1238,6 +1238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c1785de03a92ae47a9fad3ec3bb1014, type: 3}
+--- !u!95 &8345468102529544038 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1838158586335202472, guid: 0c1785de03a92ae47a9fad3ec3bb1014, type: 3}
+  m_PrefabInstance: {fileID: 8345468102529544037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8586593394039232755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1293,5 +1298,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8586593395155429558, guid: c53e3e2c9b454aa4699dc8068eef7e97, type: 3}
+      propertyPath: theArrows
+      value: 
+      objectReference: {fileID: 8345468102529544038}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c53e3e2c9b454aa4699dc8068eef7e97, type: 3}

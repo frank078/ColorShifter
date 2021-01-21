@@ -1006,6 +1006,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8586593395155429558, guid: c53e3e2c9b454aa4699dc8068eef7e97, type: 3}
+      propertyPath: theArrows
+      value: 
+      objectReference: {fileID: 1964447064}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c53e3e2c9b454aa4699dc8068eef7e97, type: 3}
 --- !u!1 &1806995890 stripped
@@ -1056,6 +1060,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1964447064 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1838158586335202472, guid: 0c1785de03a92ae47a9fad3ec3bb1014, type: 3}
+  m_PrefabInstance: {fileID: 139867606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2476449996073287833
 PrefabInstance:
   m_ObjectHideFlags: 0

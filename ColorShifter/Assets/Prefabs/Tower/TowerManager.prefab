@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetTimer: 15
   m_targetMultiplier: 1
+  theArrows: {fileID: 0}
 --- !u!82 &8586593395155429552
 AudioSource:
   m_ObjectHideFlags: 0
