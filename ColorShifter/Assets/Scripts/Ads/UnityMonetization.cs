@@ -6,6 +6,7 @@ using UnityEngine.Advertisements;
 public class UnityMonetization : MonoBehaviour, IUnityAdsListener
 {
     string Google_ID = "3941907";
+    // False before release to make the ads pop up
     bool testMode = true;
 
     string myPlacementId = "rewardedVideo";
