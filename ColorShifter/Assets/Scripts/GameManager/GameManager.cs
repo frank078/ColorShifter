@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     //true = life, false = extra coins
     bool lifeOrCoins;
     bool isCoinAd;
+    bool isDeathAd;
     int maxContinues;
     // 3 = 0,1,2. Initialize to 2 so that the first death plays ad
     int LoseAd3 = 2;
@@ -351,6 +352,7 @@ public class GameManager : MonoBehaviour
         {
             AdsManager.DisplayInterstitialAd();
             LoseAd3 = -1;
+            isDeathAd = true;
         }
         LoseAd3 += 1;
     }
@@ -359,6 +361,8 @@ public class GameManager : MonoBehaviour
     {
         AdsManager.DisplayVideoAd();
         lifeOrCoins = true;
+        isCoinAd = false;
+        isDeathAd = false;
     }
 
     public void ShowCoinsAd()
@@ -366,43 +370,46 @@ public class GameManager : MonoBehaviour
         AdsManager.DisplayVideoAd();
         lifeOrCoins = false;
         isCoinAd = true;
+        isDeathAd = false;
     }
 
     public void GiveReward()
     {
-        
-        if (lifeOrCoins == true)
+        if (isDeathAd == false)
         {
-            // extra life
-            maxContinues += 1;
-            Debug.Log(maxContinues);
-            if (maxContinues <= 3)
+            if (lifeOrCoins == true)
             {
-                deathUI.SetActive(false);
-                // Respawn the player
-                ShopBehavior.Instance.GetCurrentCharacter();
-                Timer.isContinue = true;
-                lifeOrCoins = false;
+                // extra life
+                maxContinues += 1;
+                Debug.Log(maxContinues);
+                if (maxContinues <= 3)
+                {
+                    deathUI.SetActive(false);
+                    // Respawn the player
+                    ShopBehavior.Instance.GetCurrentCharacter();
+                    Timer.isContinue = true;
+                    lifeOrCoins = false;
 
-                SetImmortality(true);
+                    SetImmortality(true);
+                }
+
+                if (maxContinues == 3)
+                {
+                    continueButton.gameObject.SetActive(false);
+                    extraCoinsButton.gameObject.SetActive(true);
+                }
             }
-            
-            if (maxContinues == 3)
+            else if (lifeOrCoins == false)
             {
-                continueButton.gameObject.SetActive(false);
-                extraCoinsButton.gameObject.SetActive(true);
-            }
-        }
-        else if (lifeOrCoins == false)
-        {
-            if (isCoinAd == true)
-            {
-                //give the modafucka 20 coins
-                ModifyCoinsUI(20);
-                PlayerPrefs.SetInt("CurrentCoins", coins);
-                finalCoins.text = coins.ToString();
-                extraCoinsButton.gameObject.SetActive(false);
-                isCoinAd = false;
+                if (isCoinAd == true)
+                {
+                    //give the modafucka 20 coins
+                    ModifyCoinsUI(20);
+                    PlayerPrefs.SetInt("CurrentCoins", coins);
+                    finalCoins.text = coins.ToString();
+                    extraCoinsButton.gameObject.SetActive(false);
+                    isCoinAd = false;
+                }
             }
         }
     }

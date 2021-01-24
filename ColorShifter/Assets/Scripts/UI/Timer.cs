@@ -141,7 +141,7 @@ public class Timer : MonoBehaviour
     // Increase beginning speed
     public void BeginningTimerMoving()
     {
-        if (isArrowPressed)
+        if (isArrowPressed && thePlayer != null)
         {
             if (tFall.isSpeedSameAsBeginningMaxTargetSpeed())
             {
