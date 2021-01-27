@@ -68,6 +68,10 @@ public class TowerRotate : MonoBehaviour
 
     void EnableTowerMoving()
     {
-        Timer.isArrowPressed = true;
+        // Fixed issue with the game starting when the game first starts without playing the tutorial
+        if(Time.timeScale != 0)
+        {
+            Timer.isArrowPressed = true;
+        }
     }
 }
