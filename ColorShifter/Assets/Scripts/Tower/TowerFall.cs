@@ -94,7 +94,7 @@ public class TowerFall : MonoBehaviour
     {
         if (fallSpeed != maxFallSpeed)
         {
-            fallSpeed += speedMultiplier;
+            fallSpeed += addedSpeed;
             if (fallSpeed >= storeCurFallSpeed)
             {
                 fallSpeed = storeCurFallSpeed;

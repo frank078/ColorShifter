@@ -31,13 +31,13 @@ public class Timer : MonoBehaviour
     public static bool isContinue;
     float continueTimer;
     bool isTimerMoving;
-    float continueTargetTimer = 2;
+    float continueTargetTimer = 3;
 
     // NO SPEED AT START GAME
     public static bool isArrowPressed; // set to true after arrow button pressed;
     float beginningTimer;
     bool isBeginningTimerMoving;
-    float beginningTargetTimer = 3;
+    float beginningTargetTimer = 5;
     bool isSpeedHasBeenSet; // for setting beginning speed
 
     public Animator theArrows;
@@ -87,11 +87,11 @@ public class Timer : MonoBehaviour
         {
             if(tFall.IsSpeedSameAsCurSpeed())
             {
-                // Increase speed every 2 seconds until it reach last speed bfor death
+                // Increase speed every 3 seconds until it reach last speed bfor death
                 continueTimer += Time.deltaTime * timeSpeed;
                 if (continueTimer > continueTargetTimer)
                 {
-                    tFall.IncreaseRestoreSpeed(2);
+                    tFall.IncreaseRestoreSpeed(1);
                     continueTimer = 0;
                 }
             }
@@ -145,7 +145,7 @@ public class Timer : MonoBehaviour
         {
             if (tFall.isSpeedSameAsBeginningMaxTargetSpeed())
             {
-                // Increase speed every 3 sec
+                // Increase speed every 5 sec
                 beginningTimer += Time.deltaTime * timeSpeed;
                 if (beginningTimer >= beginningTargetTimer)
                 {
