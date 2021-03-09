@@ -5,8 +5,20 @@ using UnityEngine;
 public class WallManager : MonoBehaviour
 {
     public GameObject[] coloredWalls; // the ColoredWalls in the gameobject (Cylinder)
-    public Material[] colorSelection; // color that the walls can change
     private int thisTowerNumber;
+
+    // ---------------------------------------------------------------------------------------------------------
+    [System.Serializable] // allows to change color Selections inside unity
+    public class ColorSelections
+    {
+        public string selectionName;
+        public Material[] colorSelection; // TODO: Add new colors the further player went
+    }
+
+    public ColorSelections[] colorType;
+
+    int colorIndex;
+    // ---------------------------------------------------------------------------------------------------------
 
     // PLAYER REFERENCES
     private GameObject thePlayer;
@@ -18,9 +30,10 @@ public class WallManager : MonoBehaviour
         //SUBSCRIPTION
         GameManager.Instance.OnTowerPulling += ModifyColoredWalls;
         GameManager.Instance.OnTowerChecking += CheckPlayerColor;
+        GameManager.Instance.OnColorModeChange += ChangeColorMode;
 
         // CHECK If its Null for coloredWalls
-        if(coloredWalls == null)
+        if (coloredWalls == null)
         {
             Debug.LogError("ColoredWalls has not been set to WallManager");
             return;
@@ -46,7 +59,7 @@ public class WallManager : MonoBehaviour
     void ModifyColoredWalls(int TowerNumber)
     {
         // making sure not all of the tower get shuffle
-        if(thisTowerNumber == TowerNumber)
+        if (thisTowerNumber == TowerNumber)
         {
             foreach (GameObject _coloredWalls in coloredWalls)
             {
@@ -60,6 +73,7 @@ public class WallManager : MonoBehaviour
             foreach (GameObject _coloredWalls in coloredWalls)
             {
                 GachaColor(_coloredWalls);
+                Debug.Log(thisTowerNumber);
             }
         }
     }
@@ -67,20 +81,20 @@ public class WallManager : MonoBehaviour
     public void GachaColor(GameObject wallColor)
     {
         // Color gacha on each walls
-        for (int i = 0; i < colorSelection.Length; i++)
+        for (int i = 0; i < colorType[colorIndex].colorSelection.Length; i++)
         {
             // 20% succession
             float odds = Random.Range(0f, 1f);
             if (0.20f >= odds)
             {
                 // Need the whole gameobject since you need to change the material from that
-                wallColor.GetComponent<MeshRenderer>().material = colorSelection[i];
+                wallColor.GetComponent<MeshRenderer>().material = colorType[colorIndex].colorSelection[i];
                 CheckNewColor(i, wallColor);
                 return;
             }
             else // if none color has been set, regacha again
             {
-                if (i == colorSelection.Length - 1)
+                if (i == colorType[colorIndex].colorSelection.Length - 1)
                 {
                     GachaColor(wallColor); // usign wallColor will be fine since we haven't got any results
                 }
@@ -92,7 +106,7 @@ public class WallManager : MonoBehaviour
     void CheckNewColor(int index, GameObject wallColor)
     {
         // Check if the Game unlocks Green yet
-        if (colorSelection[index].name == "Green")
+        if (colorType[colorIndex].colorSelection[index].name == "Green")
         {
             // If hasn't unlocked, redo the gacha with the coloredWalls index reference
             if (!GameManager.Instance.isGreen)
@@ -103,7 +117,7 @@ public class WallManager : MonoBehaviour
         }
 
         // Check if the Game unlocks Pink yet
-        if (colorSelection[index].name == "Pink")
+        if (colorType[colorIndex].colorSelection[index].name == "Pink")
         {
             // If hasn't unlocked, redo the gacha with the coloredWalls index reference
             if (!GameManager.Instance.isPink)
@@ -192,7 +206,7 @@ public class WallManager : MonoBehaviour
     public Material PlayerColorScan()
     {
         // If there is a color that matched one of the colorSelection index and player color
-        foreach(Material _colorSelection in colorSelection)
+        foreach (Material _colorSelection in colorType[colorIndex].colorSelection)
         {
             // Need the word Instance bcoz once you get or set a material onto a gameobject, it creates a copy which named (Instance) beside the material
             if(_colorSelection.name + " (Instance)" == playerCurrentMaterial.material.name)
@@ -201,5 +215,12 @@ public class WallManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void ChangeColorMode(int _colorIndex)
+    {
+        //colorIndex = GameManager.Instance.colorBlindMode;
+        colorIndex = _colorIndex;
+        ModifyColoredWalls(99);
     }
 }

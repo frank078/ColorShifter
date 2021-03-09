@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public MulticastOneParam OnTowerChecking; // subscribed from WallManager
     public MulticastOneParam OnCoinsCollided; // subscribed from CoinsUI
     public MulticastOneParam OnWallsCollided; // subscribed from ScoreUI
+    public MulticastOneParam OnColorModeChange; // subscribed from WallManager and PlayerCollision
 
     // SCORE & COINS
     private int m_score = 0;
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     public Text finalCoins, coinsMainMenu;
     public GameObject deathUI, mainMenuUI, pauseUI, highScore, shopUI; //TODO: Change after OnSceneLoaded
-    public Button pauseToMenu, loseToRestart, loseToMenu, continueButton, extraCoinsButton;
+    public Button pauseToMenu, loseToRestart, loseToMenu, continueButton, extraCoinsButton, ColorBlindMode;
     public TextMeshProUGUI highScoreText;
 
     public bool isRestart;
@@ -63,6 +64,8 @@ public class GameManager : MonoBehaviour
     int maxContinues;
     // 3 = 0,1,2. Initialize to 2 so that the first death plays ad
     int LoseAd3 = 2;
+
+    public int colorBlindMode;
 
     void Awake()
     {
@@ -153,6 +156,9 @@ public class GameManager : MonoBehaviour
 
             extraCoinsButton = GameObject.Find("ExtraCoinsButton").GetComponent<Button>();
             extraCoinsButton.onClick.AddListener(() => ShowCoinsAd());
+
+            ColorBlindMode = GameObject.Find("ColorBlindModeButton").GetComponent<Button>();
+            ColorBlindMode.onClick.AddListener(() => ChangeToColorBlind());
             // ---------------------------------------------------------------------------------------------------------------------
 
             // ---------------------------------------------------------------------------------------------------------------------
@@ -292,6 +298,7 @@ public class GameManager : MonoBehaviour
         OnTowerChecking = null;
         OnCoinsCollided = null;
         OnWallsCollided = null;
+        OnColorModeChange = null;
     }
 
     public void ResetDifficulty()
@@ -412,5 +419,12 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ChangeToColorBlind()
+    {
+        //colorBlindMode = 1;
+
+        OnColorModeChange?.Invoke(1);
     }
 }
