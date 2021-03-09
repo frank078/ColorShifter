@@ -90,7 +90,7 @@ public class PlayerCollision : MonoBehaviour
         }
 
         // Check if the Game unlocks Green yet
-        if (colorType[colorIndex].colorSelection[index].name == "Green")
+        if (colorType[colorIndex].colorSelection[index].name == "Green" || colorType[colorIndex].colorSelection[index].name == "Green_Pro")
         {
             if (!GameManager.Instance.isGreen)
             {
@@ -100,7 +100,7 @@ public class PlayerCollision : MonoBehaviour
         }
 
         // Check if the Game unlocks Pink yet
-        if (colorType[colorIndex].colorSelection[index].name == "Pink")
+        if (colorType[colorIndex].colorSelection[index].name == "Pink" || colorType[colorIndex].colorSelection[index].name == "Pink_Pro")
         {
             if (!GameManager.Instance.isPink)
             {
