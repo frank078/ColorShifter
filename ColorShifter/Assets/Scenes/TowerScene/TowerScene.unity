@@ -328,6 +328,10 @@ PrefabInstance:
       propertyPath: gameUI
       value: 
       objectReference: {fileID: 294238471}
+    - target: {fileID: 6303197105803634056, guid: 950eda97df0071d4bbf5519b9817be74, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8727738387342617781, guid: 950eda97df0071d4bbf5519b9817be74, type: 3}
       propertyPath: mainMenuUI
       value: 

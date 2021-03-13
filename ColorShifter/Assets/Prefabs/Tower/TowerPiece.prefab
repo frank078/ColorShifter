@@ -437,6 +437,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a191a8d5bb968ae40a2f36c57fb037b6, type: 2}
   - {fileID: 2100000, guid: 986252f49546ff440b062a37cb0c2f76, type: 2}
   - {fileID: 2100000, guid: 49fcce8aadb97ac409393d4e49724545, type: 2}
+  colorBlindSelection:
+  - {fileID: 2100000, guid: bf687c2118a57ae4fa2b3d47713ba250, type: 2}
+  - {fileID: 2100000, guid: 04a8c92fe2306ce4b9c456a967b1f48a, type: 2}
+  - {fileID: 2100000, guid: b3595d42d9320084094ca2fb79985e12, type: 2}
+  - {fileID: 2100000, guid: 415accf294a200846bf241ae7eb738d3, type: 2}
+  - {fileID: 2100000, guid: 445f452e2429a5e42808b2bb9f4f1028, type: 2}
 --- !u!1 &7447287834986992353
 GameObject:
   m_ObjectHideFlags: 0

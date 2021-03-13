@@ -1,17 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WallManager : MonoBehaviour
 {
     public GameObject[] coloredWalls; // the ColoredWalls in the gameobject (Cylinder)
     public Material[] colorSelection; // color that the walls can change
+    public Material[] colorBlindSelection;
+    Material[] storeNormalColors;
     private int thisTowerNumber;
 
     // PLAYER REFERENCES
     private GameObject thePlayer;
     private SkinnedMeshRenderer playerCurrentMaterial;
     // ------------------
+
+    bool isColorBlindMode;
+    GameObject mainMenuUI;
+    Button changeColorBlindMode;
 
     void Start()
     {
@@ -40,6 +47,12 @@ public class WallManager : MonoBehaviour
         // SHUFFLE ALL WALLS BESIDE THE FIRST AND CHECK NEXT WALL (CALL ONCE)
         ModifyColoredWalls(99);
         CheckPlayerColor(99); // on the start of the function it will set to 1 from the if statements
+
+        storeNormalColors = colorSelection;
+
+        mainMenuUI = GameObject.Find("MainMenu");
+        changeColorBlindMode = GameObject.Find("ColorBlindMode").GetComponent<Button>();
+        changeColorBlindMode.onClick.AddListener(() => ChangeColorBlindMode());
     }
 
     // Shuffle Tower Color
@@ -201,5 +214,21 @@ public class WallManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void ChangeColorBlindMode()
+    {
+        if (isColorBlindMode == false)
+        {
+            colorSelection = colorBlindSelection;
+            isColorBlindMode = true;
+        }
+        else
+        {
+            colorSelection = storeNormalColors;
+            isColorBlindMode = false;
+        }
+
+        ModifyColoredWalls(99);
     }
 }

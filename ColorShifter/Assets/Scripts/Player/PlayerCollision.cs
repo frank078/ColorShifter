@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
     public Material[] colorSelection; // TODO: Add new colors the further player went
+    public Material[] colorBlindSelection;
+    Material[] storeNormalColors;
     private SkinnedMeshRenderer currentColor;
     private int nextTower;
     public Material immortalityColor; // Immortality color
@@ -17,6 +20,9 @@ public class PlayerCollision : MonoBehaviour
     // AVOID Double Trigger
     private int totalTriggered = 0;
 
+    bool isColorBlindMode;
+    GameObject mainMenuUI;
+    Button changeColorBlindMode;
 
     private void Start()
     {
@@ -32,6 +38,12 @@ public class PlayerCollision : MonoBehaviour
         {
             ChangePlayerColor(0);
         }
+
+        storeNormalColors = colorSelection;
+
+        mainMenuUI = GameObject.Find("MainMenu");
+        changeColorBlindMode = GameObject.Find("ColorBlindMode").GetComponent<Button>();
+        changeColorBlindMode.onClick.AddListener(() => ChangeColorBlindMode());
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -161,5 +173,21 @@ public class PlayerCollision : MonoBehaviour
     public void ChangeToImmortalColor()
     {
         currentColor.material = immortalityColor;
+    }
+
+    public void ChangeColorBlindMode()
+    {
+        if(isColorBlindMode == false)
+        {
+            colorSelection = colorBlindSelection;
+            isColorBlindMode = true;
+        }
+        else
+        {
+            colorSelection = storeNormalColors;
+            isColorBlindMode = false;
+        }
+
+        ShufflePlayerColor();
     }
 }
