@@ -4,23 +4,10 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public Material[] colorSelection; // TODO: Add new colors the further player went
     private SkinnedMeshRenderer currentColor;
     private int nextTower;
     public Material immortalityColor; // Immortality color
-
-    // ---------------------------------------------------------------------------------------------------------
-    [System.Serializable] // allows to change color Selections inside unity
-    public class ColorSelections
-    {
-        public string selectionName;
-        public Material[] colorSelection; // TODO: Add new colors the further player went
-    }
-
-    public ColorSelections[] colorType;
-
-    int colorIndex;
-    // ---------------------------------------------------------------------------------------------------------
-
 
     //PARTICLES
     public GameObject playerPassEffect;
@@ -33,9 +20,6 @@ public class PlayerCollision : MonoBehaviour
 
     private void Start()
     {
-        //Subscription
-        GameManager.Instance.OnColorModeChange += ChangeColorMode;
-
         currentColor = gameObject.GetComponent<SkinnedMeshRenderer>();
 
         // if player is restored from death (immortal) 
@@ -83,14 +67,14 @@ public class PlayerCollision : MonoBehaviour
     void ChangePlayerColor(int index)
     {
         // If the Index is higher than color selection (ex: want green, but havent unlocked yet)
-        if (colorType[colorIndex].colorSelection.Length - 1 < index)
+        if (colorSelection.Length - 1 < index)
         {
             Debug.LogError("COLOR OUT OF INDEX");
             return;
         }
 
         // Check if the Game unlocks Green yet
-        if (colorType[colorIndex].colorSelection[index].name == "Green")
+        if(colorSelection[index].name == "Green")
         {
             if (!GameManager.Instance.isGreen)
             {
@@ -100,7 +84,7 @@ public class PlayerCollision : MonoBehaviour
         }
 
         // Check if the Game unlocks Pink yet
-        if (colorType[colorIndex].colorSelection[index].name == "Pink")
+        if (colorSelection[index].name == "Pink")
         {
             if (!GameManager.Instance.isPink)
             {
@@ -109,14 +93,14 @@ public class PlayerCollision : MonoBehaviour
             }
         }
 
-        currentColor.material = colorType[colorIndex].colorSelection[index];
+        currentColor.material = colorSelection[index];
         GameManager.Instance.CheckPlayerColor(nextTower); // call it here so that they could get latest material references
     }
 
     void ShufflePlayerColor()
     {
         // Check gacha on each color
-        for (int i = 0; i < colorType[colorIndex].colorSelection.Length; i++)
+        for (int i = 0; i < colorSelection.Length; i++)
         {
             // 20% succession
             float odds = Random.Range(0f, 1f);
@@ -128,7 +112,7 @@ public class PlayerCollision : MonoBehaviour
             else
             {
                 // Shuffle again if this is last element
-                if (i == colorType[colorIndex].colorSelection.Length - 1)
+                if (i == colorSelection.Length - 1)
                 {
                     ShufflePlayerColor();
                 }
@@ -177,12 +161,5 @@ public class PlayerCollision : MonoBehaviour
     public void ChangeToImmortalColor()
     {
         currentColor.material = immortalityColor;
-    }
-
-    public void ChangeColorMode(int _colorIndex)
-    {
-        //colorIndex = GameManager.Instance.colorBlindMode;
-        colorIndex = _colorIndex;
-        ChangePlayerColor(0);
     }
 }
