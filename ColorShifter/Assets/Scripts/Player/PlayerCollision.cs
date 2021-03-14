@@ -21,8 +21,6 @@ public class PlayerCollision : MonoBehaviour
     private int totalTriggered = 0;
 
     bool isColorBlindMode;
-    GameObject mainMenuUI;
-    Button changeColorBlindMode;
 
     private void Start()
     {
@@ -41,9 +39,16 @@ public class PlayerCollision : MonoBehaviour
 
         storeNormalColors = colorSelection;
 
-        mainMenuUI = GameObject.Find("MainMenu");
-        changeColorBlindMode = GameObject.Find("ColorBlindMode").GetComponent<Button>();
-        changeColorBlindMode.onClick.AddListener(() => ChangeColorBlindMode());
+        if (GameManager.Instance.isColorBlindMode == false)
+        {
+            colorSelection = storeNormalColors;
+            ShufflePlayerColor();
+        }
+        else
+        {
+            colorSelection = colorBlindSelection;
+            ShufflePlayerColor();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

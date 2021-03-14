@@ -17,8 +17,6 @@ public class WallManager : MonoBehaviour
     // ------------------
 
     bool isColorBlindMode;
-    GameObject mainMenuUI;
-    Button changeColorBlindMode;
 
     void Start()
     {
@@ -50,9 +48,16 @@ public class WallManager : MonoBehaviour
 
         storeNormalColors = colorSelection;
 
-        mainMenuUI = GameObject.Find("MainMenu");
-        changeColorBlindMode = GameObject.Find("ColorBlindMode").GetComponent<Button>();
-        changeColorBlindMode.onClick.AddListener(() => ChangeColorBlindMode());
+        if (GameManager.Instance.isColorBlindMode == false)
+        {
+            colorSelection = storeNormalColors;
+            ModifyColoredWalls(99);
+        }
+        else
+        {
+            colorSelection = colorBlindSelection;
+            ModifyColoredWalls(99);
+        }
     }
 
     // Shuffle Tower Color
@@ -68,7 +73,7 @@ public class WallManager : MonoBehaviour
         }
 
         // ONLY GETS CALL AT THE START (ONLY TOWER 1 WILL NOT BE SHUFFLED)
-        if(TowerNumber == 99 && thisTowerNumber != 1)
+        if(TowerNumber == 99)
         {
             foreach (GameObject _coloredWalls in coloredWalls)
             {

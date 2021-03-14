@@ -34,6 +34,12 @@ public class GameManager : MonoBehaviour
     public bool isBlocker = false;
     public bool isImmortality = false;
 
+    public bool isColorBlindMode;
+
+    // All 5 colored walls, This looks Ugly af... sorry
+    WallManager colorWall1, colorWall2, colorWall3, colorWall4, colorWall5;
+
+
     public int score // GET SET the value
     {
         get { return m_score; }
@@ -48,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     public Text finalCoins, coinsMainMenu;
     public GameObject deathUI, mainMenuUI, pauseUI, highScore, shopUI; //TODO: Change after OnSceneLoaded
-    public Button pauseToMenu, loseToRestart, loseToMenu, continueButton, extraCoinsButton;
+    public Button pauseToMenu, loseToRestart, loseToMenu, continueButton, extraCoinsButton, changeColorBlindMode;
     public TextMeshProUGUI highScoreText;
 
     public bool isRestart;
@@ -153,12 +159,16 @@ public class GameManager : MonoBehaviour
 
             extraCoinsButton = GameObject.Find("ExtraCoinsButton").GetComponent<Button>();
             extraCoinsButton.onClick.AddListener(() => ShowCoinsAd());
+
+            changeColorBlindMode = GameObject.Find("ColorBlindMode").GetComponent<Button>();
+            changeColorBlindMode.onClick.AddListener(() => ChangeColorBlindMode());
             // ---------------------------------------------------------------------------------------------------------------------
 
             // ---------------------------------------------------------------------------------------------------------------------
             // Script
             AdsManager = GameObject.Find("AdsManager").GetComponent<UnityMonetization>();
 
+            GetColorWallRefrence();
             // ---------------------------------------------------------------------------------------------------------------------
 
             highScore.SetActive(false);
@@ -412,5 +422,38 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ChangeColorBlindMode()
+    {
+        if (isColorBlindMode == false)
+        {
+            isColorBlindMode = true;
+            Player.GetComponent<PlayerCollision>().ChangeColorBlindMode();
+            colorWall1.ChangeColorBlindMode();
+            colorWall2.ChangeColorBlindMode();
+            colorWall3.ChangeColorBlindMode();
+            colorWall4.ChangeColorBlindMode();
+            colorWall5.ChangeColorBlindMode();
+        }
+        else
+        {
+            isColorBlindMode = false;
+            Player.GetComponent<PlayerCollision>().ChangeColorBlindMode();
+            colorWall1.ChangeColorBlindMode();
+            colorWall2.ChangeColorBlindMode();
+            colorWall3.ChangeColorBlindMode();
+            colorWall4.ChangeColorBlindMode();
+            colorWall5.ChangeColorBlindMode();
+        }
+    }
+
+    public void GetColorWallRefrence()
+    {
+        colorWall1 = GameObject.Find("TowerPiece").transform.GetChild(0).GetComponent<WallManager>();
+        colorWall2 = GameObject.Find("TowerPiece (1)").transform.GetChild(0).GetComponent<WallManager>();
+        colorWall3 = GameObject.Find("TowerPiece (2)").transform.GetChild(0).GetComponent<WallManager>();
+        colorWall4 = GameObject.Find("TowerPiece (3)").transform.GetChild(0).GetComponent<WallManager>();
+        colorWall5 = GameObject.Find("TowerPiece (4)").transform.GetChild(0).GetComponent<WallManager>();
     }
 }
