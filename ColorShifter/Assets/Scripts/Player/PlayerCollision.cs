@@ -39,16 +39,7 @@ public class PlayerCollision : MonoBehaviour
 
         storeNormalColors = colorSelection;
 
-        if (GameManager.Instance.isColorBlindMode == false)
-        {
-            colorSelection = storeNormalColors;
-            ShufflePlayerColor();
-        }
-        else
-        {
-            colorSelection = colorBlindSelection;
-            ShufflePlayerColor();
-        }
+        ChangeColorBlindMode();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -182,17 +173,15 @@ public class PlayerCollision : MonoBehaviour
 
     public void ChangeColorBlindMode()
     {
-        if(isColorBlindMode == false)
+        if (GameManager.Instance.isColorBlindMode == false)
         {
-            colorSelection = colorBlindSelection;
-            isColorBlindMode = true;
+            colorSelection = storeNormalColors;
+            ShufflePlayerColor();
         }
         else
         {
-            colorSelection = storeNormalColors;
-            isColorBlindMode = false;
+            colorSelection = colorBlindSelection;
+            ShufflePlayerColor();
         }
-
-        ShufflePlayerColor();
     }
 }

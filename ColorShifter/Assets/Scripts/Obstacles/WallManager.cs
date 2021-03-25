@@ -48,16 +48,7 @@ public class WallManager : MonoBehaviour
 
         storeNormalColors = colorSelection;
 
-        if (GameManager.Instance.isColorBlindMode == false)
-        {
-            colorSelection = storeNormalColors;
-            ModifyColoredWalls(99);
-        }
-        else
-        {
-            colorSelection = colorBlindSelection;
-            ModifyColoredWalls(99);
-        }
+        ChangeColorBlindMode();
     }
 
     // Shuffle Tower Color
@@ -223,17 +214,15 @@ public class WallManager : MonoBehaviour
 
     public void ChangeColorBlindMode()
     {
-        if (isColorBlindMode == false)
+        if (GameManager.Instance.isColorBlindMode == false)
         {
-            colorSelection = colorBlindSelection;
-            isColorBlindMode = true;
+            colorSelection = storeNormalColors;
+            ModifyColoredWalls(99);
         }
         else
         {
-            colorSelection = storeNormalColors;
-            isColorBlindMode = false;
+            colorSelection = colorBlindSelection;
+            ModifyColoredWalls(99);
         }
-
-        ModifyColoredWalls(99);
     }
 }

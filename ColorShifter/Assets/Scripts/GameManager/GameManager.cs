@@ -191,6 +191,8 @@ public class GameManager : MonoBehaviour
 
             maxContinues = 0;
 
+            Debug.Log(isColorBlindMode);
+
             //AdsManager.instance.RequestInterstitial();
             //ResetScore(); //Only for testing, COMMENT OUT WHEN DONE TESTING
             //ResetCoins(); //Only for testing, COMMENT OUT WHEN DONE TESTING
