@@ -101,7 +101,7 @@ public class WallManager : MonoBehaviour
     void CheckNewColor(int index, GameObject wallColor)
     {
         // Check if the Game unlocks Green yet
-        if (colorSelection[index].name == "Green")
+        if (colorSelection[index].name == "Green" || colorSelection[index].name == "Green_CB")
         {
             // If hasn't unlocked, redo the gacha with the coloredWalls index reference
             if (!GameManager.Instance.isGreen)
@@ -112,7 +112,7 @@ public class WallManager : MonoBehaviour
         }
 
         // Check if the Game unlocks Pink yet
-        if (colorSelection[index].name == "Pink")
+        if (colorSelection[index].name == "Pink" || colorSelection[index].name == "LightBlue_CB")
         {
             // If hasn't unlocked, redo the gacha with the coloredWalls index reference
             if (!GameManager.Instance.isPink)
