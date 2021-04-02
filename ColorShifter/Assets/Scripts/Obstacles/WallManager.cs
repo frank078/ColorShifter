@@ -16,8 +16,6 @@ public class WallManager : MonoBehaviour
     private SkinnedMeshRenderer playerCurrentMaterial;
     // ------------------
 
-    bool isColorBlindMode;
-
     void Start()
     {
         //SUBSCRIPTION

@@ -20,11 +20,13 @@ public class PlayerCollision : MonoBehaviour
     // AVOID Double Trigger
     private int totalTriggered = 0;
 
-    bool isColorBlindMode;
-
     private void Start()
     {
         currentColor = gameObject.GetComponent<SkinnedMeshRenderer>();
+
+        storeNormalColors = colorSelection;
+
+        ChangeColorBlindMode();
 
         // if player is restored from death (immortal) 
         if (GameManager.Instance.isImmortality)
@@ -36,10 +38,6 @@ public class PlayerCollision : MonoBehaviour
         {
             ChangePlayerColor(0);
         }
-
-        storeNormalColors = colorSelection;
-
-        ChangeColorBlindMode();
     }
     private void OnTriggerEnter(Collider other)
     {
