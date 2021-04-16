@@ -216,11 +216,13 @@ public class WallManager : MonoBehaviour
         {
             colorSelection = storeNormalColors;
             ModifyColoredWalls(99);
+            CheckPlayerColor(1);
         }
         else
         {
             colorSelection = colorBlindSelection;
             ModifyColoredWalls(99);
+            CheckPlayerColor(1);
         }
     }
 }
